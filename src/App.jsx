@@ -7,7 +7,6 @@ import ThemeExplorer from './components/ThemeExplorer.jsx';
 import FinalSynthesis from './components/FinalSynthesis.jsx';
 import Supporters from './components/Supporters.jsx';
 import SiteFooter from './components/SiteFooter.jsx';
-import ThemePreview from './components/ThemePreview.jsx';
 import ContentPage from './components/ContentPage.jsx';
 import { getContent } from './data/content.js';
 import { useRoute } from './hooks/useRoute.js';
@@ -41,7 +40,6 @@ export default function App() {
         )}
       </main>
       <SiteFooter />
-      <ThemePreview />
     </>
   );
 }

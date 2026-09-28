@@ -96,12 +96,17 @@ const joinNames = (names) =>
 export const supportedBy = (names) =>
   names.length === 1 ? `da ${names[0]}` : `das empresas ${joinNames(names)}`;
 
+// "pela Empresa X" (uma empresa) ou "pelas empresas X, Y e Z" (várias)
+const requestedBy = (names) =>
+  names.length === 1 ? `pela ${names[0]}` : `pelas empresas ${joinNames(names)}`;
+
 const sponsorNames = supporters.map((s) => s.name);
 // Como o conteúdo deste site é nomeado no aviso ("Nenhuma parte desta cobertura...")
 const productName = 'desta cobertura';
 
 export const disclosure = {
-  top: `Desenvolvido pela Medscape com o apoio ${supportedBy(sponsorNames)}`,
+  // Componente B do PDF: "Solicitado pela [Pharma] e Desenvolvido pela Medscape"
+  top: `Solicitado ${requestedBy(sponsorNames)} e desenvolvido pela Medscape`,
   // Aviso de "Cobertura de Conferência" (versão em português do PDF de diretrizes)
   footer:
     `A cobertura da conferência foi desenvolvida pela Medscape com o apoio ${supportedBy(sponsorNames)}. ` +

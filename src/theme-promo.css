@@ -1,14 +1,13 @@
 /*
-  Tema "Promo" — Nova paleta Medscape Comercial.
-  Só troca tokens definidos em styles.css; para desligar, remova o import em main.jsx
-  (ou use o botão de pré-visualização no canto da tela).
+  Paleta oficial do site — Nova paleta Medscape Comercial ("Promo").
+  Sobrescreve os tokens definidos em styles.css (por isso é importada depois dele).
 
   Especificação:
   - Títulos: Montserrat, #054AA7 (azul escuro institucional)
   - Texto: Poppins 14/16, #747474
   - Azul claro #0F9ED5 · Azul escuro #054AA7 · Azul profundo #156082
 */
-:root[data-tema='promo'] {
+:root {
   --font-heading: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
   --font-body: 'Poppins', system-ui, sans-serif;
 
@@ -28,20 +27,20 @@
 }
 
 /* Montserrat é mais larga que a serifada: títulos sem o espaçamento negativo */
-:root[data-tema='promo'] .hero-title,
-:root[data-tema='promo'] .section-title,
-:root[data-tema='promo'] .synthesis-title { letter-spacing: -.01em; }
-:root[data-tema='promo'] .synthesis-title { font-size: clamp(28px, 7.4cqi, 50px); line-height: 1.12; }
-:root[data-tema='promo'] .section-title { font-size: clamp(26px, 3vw, 34px); }
-:root[data-tema='promo'] .card-title { font-size: 17px; font-weight: 700; }
-:root[data-tema='promo'] .video-strip-count { font-weight: 700; font-size: 15px; }
+:root .hero-title,
+:root .section-title,
+:root .synthesis-title { letter-spacing: -.01em; }
+:root .synthesis-title { font-size: clamp(28px, 7.4cqi, 50px); line-height: 1.12; }
+:root .section-title { font-size: clamp(26px, 3vw, 34px); }
+:root .card-title { font-size: 17px; font-weight: 700; }
+:root .video-strip-count { font-weight: 700; font-size: 15px; }
 /* Títulos que ficam sobre o azul continuam brancos */
-:root[data-tema='promo'] .hero-title { color: #fff; }
-:root[data-tema='promo'] .synthesis-title { color: var(--ink); }
-:root[data-tema='promo'] .nav-link,
-:root[data-tema='promo'] .chip { color: var(--ink); }
-:root[data-tema='promo'] .chip.is-active { color: #fff; }
+:root .hero-title { color: #fff; }
+:root .synthesis-title { color: var(--ink); }
+:root .nav-link,
+:root .chip { color: var(--ink); }
+:root .chip.is-active { color: #fff; }
 
 @media (max-width: 640px) {
-  :root[data-tema='promo'] .section-title { font-size: 23px; }
+  :root .section-title { font-size: 23px; }
 }

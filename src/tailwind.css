@@ -1,0 +1,24 @@
+/*
+  Tailwind v4 SEM o preflight (reset global): o site já tem o próprio CSS (styles.css),
+  e o reset desmontaria margens, títulos e listas existentes. Só tema + utilitários.
+*/
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* "inline": o valor vai direto na classe, então var(--duration) e var(--gap) são lidos no próprio
+   elemento do BrandScroller (e não na raiz, onde não existem) */
+@theme inline {
+  /* Animações do BrandScroller (components/ui/brand-scroller.tsx) */
+  --animate-marquee: marquee var(--duration) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--duration) linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap))); }
+  }
+  @keyframes marquee-reverse {
+    from { transform: translateX(calc(-100% - var(--gap))); }
+    to { transform: translateX(0); }
+  }
+}

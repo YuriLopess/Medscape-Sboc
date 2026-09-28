@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import Brand from './Brand.jsx';
-import { ChevronDown, Close, Menu, Search } from './Icons.jsx';
+import { ChevronDown, Close, Menu } from './Icons.jsx';
 import { disclosure, navLinks } from '../data/content.js';
 import { useDismiss } from '../hooks/useDismiss.js';
 
@@ -51,13 +50,17 @@ export default function SiteHeader() {
       <div className="topbar">
         <div className="container topbar-inner">
           <span>Conteúdo destinado a profissionais de saúde.</span>
-          {/* Aviso obrigatório no topo da página (diretrizes Medscape) */}
+          {/* B: aviso obrigatório no topo da página (diretrizes Medscape) */}
           <span className="topbar-disclosure">{disclosure.top}</span>
         </div>
       </div>
       <header className="site-header">
         <div className="container header-inner">
-          <Brand />
+          {/* A: marca que chancela o programa (como "Avalado por la" no exemplo de referência) */}
+          <a href="#/" className="hb hb--left" aria-label="SBOC, voltar ao início">
+            <span className="hb-label">Com a participação da</span>
+            <img className="hb-sboc" src="images/logos/sboc-horizontal.png" alt="" width="342" height="120" />
+          </a>
           <button
             type="button"
             className="menu-toggle"
@@ -80,10 +83,12 @@ export default function SiteHeader() {
                 )
               )}
             </ul>
-            <a className="search-link" href="#explorar" aria-label="Buscar conteúdos por tema" onClick={closeMenu}>
-              <Search />
-            </a>
           </nav>
+          {/* C: logo Medscape, separado das outras marcas (diretrizes Medscape) */}
+          <a href="#/" className="hb hb--right" aria-label="Desenvolvido pela Medscape, voltar ao início">
+            <span className="hb-label">Desenvolvido por</span>
+            <img className="hb-medscape" src="images/logos/medscape.png" alt="" width="698" height="160" />
+          </a>
         </div>
       </header>
     </>
