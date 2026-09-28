@@ -1,0 +1,47 @@
+/*
+  Tema "Promo" — Nova paleta Medscape Comercial.
+  Só troca tokens definidos em styles.css; para desligar, remova o import em main.jsx
+  (ou use o botão de pré-visualização no canto da tela).
+
+  Especificação:
+  - Títulos: Montserrat, #054AA7 (azul escuro institucional)
+  - Texto: Poppins 14/16, #747474
+  - Azul claro #0F9ED5 · Azul escuro #054AA7 · Azul profundo #156082
+*/
+:root[data-tema='promo'] {
+  --font-heading: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Poppins', system-ui, sans-serif;
+
+  --navy: #054aa7;         /* fundo do banner, rodapé, botões escuros */
+  --navy-rgb: 5 74 167;
+  --navy-deep: #156082;    /* hover dos botões escuros */
+  --blue: #054aa7;         /* botões e filtros preenchidos (texto branco com contraste AA) */
+  --accent-light: #0f9ed5; /* detalhes decorativos */
+  --kind: #156082;         /* rótulos pequenos: #0F9ED5 não tem contraste suficiente no branco */
+  --arc: #0f9ed5;
+  --blue-soft: #e8f5fb;
+  --blue-line: #c3e4f3;
+
+  --ink: #054aa7;          /* títulos */
+  --text: #747474;         /* corpo de texto */
+  --muted: #747474;
+}
+
+/* Montserrat é mais larga que a serifada: títulos sem o espaçamento negativo */
+:root[data-tema='promo'] .hero-title,
+:root[data-tema='promo'] .section-title,
+:root[data-tema='promo'] .synthesis-title { letter-spacing: -.01em; }
+:root[data-tema='promo'] .synthesis-title { font-size: clamp(28px, 7.4cqi, 50px); line-height: 1.12; }
+:root[data-tema='promo'] .section-title { font-size: clamp(26px, 3vw, 34px); }
+:root[data-tema='promo'] .card-title { font-size: 17px; font-weight: 700; }
+:root[data-tema='promo'] .video-strip-count { font-weight: 700; font-size: 15px; }
+/* Títulos que ficam sobre o azul continuam brancos */
+:root[data-tema='promo'] .hero-title { color: #fff; }
+:root[data-tema='promo'] .synthesis-title { color: var(--ink); }
+:root[data-tema='promo'] .nav-link,
+:root[data-tema='promo'] .chip { color: var(--ink); }
+:root[data-tema='promo'] .chip.is-active { color: #fff; }
+
+@media (max-width: 640px) {
+  :root[data-tema='promo'] .section-title { font-size: 23px; }
+}

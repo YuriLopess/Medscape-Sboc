@@ -1,0 +1,47 @@
+import { useEffect } from 'react';
+import SiteHeader from './components/SiteHeader.jsx';
+import Hero from './components/Hero.jsx';
+import VideoStrip from './components/VideoStrip.jsx';
+import FeaturedCarousel from './components/FeaturedCarousel.jsx';
+import ThemeExplorer from './components/ThemeExplorer.jsx';
+import FinalSynthesis from './components/FinalSynthesis.jsx';
+import Supporters from './components/Supporters.jsx';
+import SiteFooter from './components/SiteFooter.jsx';
+import ThemePreview from './components/ThemePreview.jsx';
+import ContentPage from './components/ContentPage.jsx';
+import { getContent } from './data/content.js';
+import { useRoute } from './hooks/useRoute.js';
+
+const SITE_TITLE = 'ESMO 2026 · Medscape + SBOC';
+
+export default function App() {
+  const route = useRoute();
+  const item = route.page === 'content' ? getContent(route.id) : null;
+
+  useEffect(() => {
+    document.title = item ? `${item.title} · ${SITE_TITLE}` : SITE_TITLE;
+  }, [item]);
+
+  return (
+    <>
+      <a className="skip" href="#conteudo">Ir para o conteúdo</a>
+      <SiteHeader />
+      <main id="conteudo">
+        {route.page === 'content' ? (
+          <ContentPage key={route.id} item={item} />
+        ) : (
+          <>
+            <Hero />
+            <VideoStrip />
+            <FeaturedCarousel />
+            <ThemeExplorer />
+            <FinalSynthesis />
+            <Supporters />
+          </>
+        )}
+      </main>
+      <SiteFooter />
+      <ThemePreview />
+    </>
+  );
+}
