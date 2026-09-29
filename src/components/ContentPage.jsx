@@ -4,15 +4,33 @@ import { ArrowLeft, User } from './Icons.jsx';
 import { Duration, Media, PlayBadge } from './Media.jsx';
 import { event, relatedContent, supportedBy } from '../data/content.js';
 
+// Selo com a logo da empresa patrocinadora, sobre o canto do vídeo (só em conteúdo com apoio)
+function SponsorBadge({ sponsor }) {
+  if (!sponsor) return null;
+  return (
+    <span className="cp-player-sponsor">
+      <span className="cp-player-sponsor-label">Com o apoio de</span>
+      {sponsor.logo ? (
+        <img src={sponsor.logo} alt={sponsor.name} style={{ '--logo-h': `${Math.round((sponsor.logoHeight ?? 48) * 0.5)}px` }} />
+      ) : (
+        <strong>{sponsor.name}</strong>
+      )}
+    </span>
+  );
+}
+
 // Player: usa o vídeo hospedado no próprio site (videoSrc). Sem arquivo ainda, mostra a capa
 // e avisa ao clicar, em vez de um botão que não faz nada.
 function VideoPlayer({ item }) {
   const [asked, setAsked] = useState(false);
+  const [playing, setPlaying] = useState(false);
 
   if (item.videoSrc) {
     return (
       <div className="cp-player">
-        <video controls preload="none" poster={item.image} src={item.videoSrc}>
+        {/* O selo sai da frente enquanto o vídeo toca */}
+        {!playing && <SponsorBadge sponsor={item.sponsorInfo} />}
+        <video controls preload="none" poster={item.image} src={item.videoSrc} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}>
           {item.captionsSrc && <track kind="captions" srcLang="pt" label="Português" src={item.captionsSrc} default />}
         </video>
       </div>
@@ -25,6 +43,7 @@ function VideoPlayer({ item }) {
         <Media src={item.image} focus={item.focus} className="cp-player-media">
           <PlayBadge large />
           {item.duration && <Duration>{item.duration}</Duration>}
+          <SponsorBadge sponsor={item.sponsorInfo} />
         </Media>
       </button>
       {asked && (

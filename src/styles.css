@@ -380,6 +380,17 @@ button { font: inherit; color: inherit; }
 .cp-player-media .duration { right: 16px; bottom: 16px; padding: 4px 10px; font-size: 14px; }
 .cp-player video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; background: #000; }
 .cp-player-note { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
+.cp-player { position: relative; }
+/* Selo do patrocinador no canto do vídeo: fundo branco para a logo manter as cores originais */
+.cp-player-sponsor { position: absolute; top: 16px; left: 16px; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 10px 14px 12px; border-radius: 8px; background: rgb(255 255 255 / .95); box-shadow: 0 6px 18px rgb(2 20 60 / .25); pointer-events: none; }
+.cp-player-sponsor-label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.cp-player-sponsor img { display: block; height: var(--logo-h); width: auto; max-width: 140px; object-fit: contain; }
+.cp-player-sponsor strong { font-size: 15px; color: var(--ink); }
+@media (max-width: 640px) {
+  .cp-player-sponsor { top: 10px; left: 10px; gap: 4px; padding: 7px 10px 8px; }
+  .cp-player-sponsor-label { font-size: 8.5px; }
+  .cp-player-sponsor img { height: calc(var(--logo-h) * .78); max-width: 104px; }
+}
 .cp-body p { max-width: 68ch; margin: 0 0 18px; font-size: 17px; line-height: 1.75; color: var(--text); }
 
 /* Coluna lateral minimalista: só um fio à esquerda, tipografia e espaço */
