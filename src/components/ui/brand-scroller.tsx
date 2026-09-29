@@ -5,6 +5,8 @@ export type Brand = {
   name: string;
   /** Logo em imagem (SVG/PNG). Quando existe, substitui ícone + nome. */
   logo?: string;
+  /** Altura da logo em px (logos quadradas precisam de mais altura para ter o mesmo peso visual). */
+  logoHeight?: number;
   /** Ícone ao lado do nome, quando não há logo em imagem. */
   icon?: ReactNode;
 };
@@ -23,9 +25,15 @@ const COPIES = 4;
 
 function BrandItem({ brand }: { brand: Brand }) {
   return (
-    <div className="flex h-24 w-56 shrink-0 items-center justify-center gap-3 rounded-2xl border border-[var(--line)] bg-white px-6 text-[#6b7c8f] opacity-80 grayscale transition duration-300 hover:-translate-y-1 hover:border-[var(--blue-line)] hover:text-[var(--blue)] hover:opacity-100 hover:shadow-[0_14px_30px_rgb(var(--navy-rgb)/.12)] hover:grayscale-0 max-sm:h-20 max-sm:w-44 max-sm:px-4">
+    // Logos coloridas, sem cartão. Hover: a logo em foco cresce e ganha sombra; as demais da faixa ficam mais suaves
+    <div className="flex h-24 w-56 shrink-0 items-center justify-center gap-3 px-6 text-[var(--ink)] transition duration-300 ease-out group-hover:opacity-55 hover:!opacity-100 hover:-translate-y-1 hover:scale-110 hover:drop-shadow-[0_10px_18px_rgb(var(--navy-rgb)/.22)] max-sm:h-20 max-sm:w-44 max-sm:px-4">
       {brand.logo ? (
-        <img src={brand.logo} alt="" className="max-h-12 max-w-full object-contain" />
+        <img
+          src={brand.logo}
+          alt=""
+          className="h-[var(--logo-h)] w-auto max-w-full object-contain max-sm:h-[calc(var(--logo-h)*.82)]"
+          style={{ ['--logo-h' as string]: `${brand.logoHeight ?? 48}px` }}
+        />
       ) : (
         <>
           <span className="flex shrink-0 [&>svg]:size-7 max-sm:[&>svg]:size-6">{brand.icon}</span>

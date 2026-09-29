@@ -1,23 +1,11 @@
 import { BrandScroller, BrandScrollerReverse } from '@/components/ui/brand-scroller';
 import { supporters } from '../data/content.js';
 
-// Formas genéricas no lugar dos logotipos reais. Com logo real, preencha "logo" em content.js
-// (ex.: logo: 'images/logos/apoiador-a.svg') e a imagem substitui a forma + nome.
-const shapes = {
-  triangle: <polygon points="16,3 30,29 2,29" />,
-  circle: <circle cx="16" cy="16" r="14" />,
-  hexagon: <polygon points="16,2 29,9.5 29,22.5 16,30 3,22.5 3,9.5" />,
-  square: <rect x="3" y="3" width="26" height="26" rx="2" />,
-};
-
-const brands = supporters.map((s) => ({
-  name: s.name,
-  logo: s.logo,
-  icon: <svg viewBox="0 0 32 32" fill="currentColor">{shapes[s.shape]}</svg>,
-}));
+// Só as logos (campo "logo" em content.js). Para adicionar um apoiador, inclua um item na lista.
+const brands = supporters.map((s) => ({ name: s.name, logo: s.logo, logoHeight: s.logoHeight }));
 
 // Segunda fileira começa em outra ordem, para as duas não andarem "espelhadas"
-const shifted = [...brands.slice(2), ...brands.slice(0, 2)];
+const shifted = [...brands.slice(1), ...brands.slice(0, 1)];
 
 export default function Supporters() {
   return (
@@ -34,8 +22,8 @@ export default function Supporters() {
 
       {/* A animação pausa ao passar o mouse e fica parada para quem pediu menos movimento no sistema */}
       <div className="sp-rows">
-        <BrandScroller brands={brands} duration="45s" />
-        <BrandScrollerReverse brands={shifted} duration="45s" />
+        <BrandScroller brands={brands} duration="40s" />
+        <BrandScrollerReverse brands={shifted} duration="40s" />
       </div>
     </section>
   );
