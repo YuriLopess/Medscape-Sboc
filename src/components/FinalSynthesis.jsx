@@ -8,6 +8,12 @@ export default function FinalSynthesis() {
 
   return (
     <section id="sintese" className="synthesis" aria-labelledby="sintese-title">
+      {/* Mesmos arcos do banner, passando por trás do vídeo */}
+      <svg className="synthesis-arcs" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M430 -10 C 520 180, 640 300, 1010 330" />
+        <path d="M470 610 C 560 420, 720 330, 1010 300" />
+      </svg>
+
       <div className="container synthesis-inner">
         <div className="synthesis-text">
           <p className="eyebrow">{s.eyebrow}</p>
@@ -15,28 +21,38 @@ export default function FinalSynthesis() {
             {s.title[0]}<br />{' '}{s.title[1]}
           </h2>
           <p className="synthesis-lead">{s.description}</p>
-          <a className="btn btn--dark" href={contentHref(first.id)}>
+
+          {/* As conversas numeradas: cada linha abre o vídeo correspondente */}
+          <ol className="synthesis-parts">
+            {finalVideos.map((v, i) => (
+              <li key={v.id}>
+                <a className="synthesis-part" href={contentHref(v.id)}>
+                  <span className="synthesis-part-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="synthesis-part-title">{v.title}</span>
+                  <span className="synthesis-part-duration"><span className="sr-only">Duração </span>{v.duration}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+
+          <a className="btn btn--light" href={contentHref(first.id)}>
             Assistir à síntese <ArrowRight />
           </a>
         </div>
 
-        {/* Os 2 vídeos finais lado a lado */}
-        <ul className="synthesis-videos">
-          {finalVideos.map((v, i) => (
-            <li key={v.id}>
-              <a className="synthesis-video" href={contentHref(v.id)}>
-                <Media src={v.image} className="synthesis-media">
-                  <PlayBadge large />
-                  <Duration>{v.duration}</Duration>
-                </Media>
-                <span className="synthesis-video-body">
-                  <span className="synthesis-video-kicker">Parte {i + 1}</span>
-                  <span className="synthesis-video-title">{v.title}</span>
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        {/* Parte 1 em destaque, com o título sobre a imagem */}
+        <a className="synthesis-video" href={contentHref(first.id)}>
+          <Media src={first.image} className="synthesis-media">
+            <Duration>{first.duration}</Duration>
+            <span className="synthesis-caption">
+              <PlayBadge large />
+              <span className="synthesis-caption-text">
+                <span className="synthesis-caption-kicker">Parte 1</span>
+                <span className="synthesis-caption-title">{first.title}</span>
+              </span>
+            </span>
+          </Media>
+        </a>
       </div>
     </section>
   );

@@ -36,7 +36,7 @@
 :root .video-strip-count { font-weight: 700; font-size: 15px; }
 /* Títulos que ficam sobre o azul continuam brancos */
 :root .hero-title { color: #fff; }
-:root .synthesis-title { color: var(--ink); }
+:root .synthesis-title { color: #fff; }
 :root .nav-link,
 :root .chip { color: var(--ink); }
 :root .chip.is-active { color: #fff; }
