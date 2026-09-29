@@ -1,9 +1,10 @@
 import { ArrowRight } from './Icons.jsx';
 import { Duration, Media, PlayBadge } from './Media.jsx';
-import { finalSynthesis as s, finalVideos } from '../data/content.js';
+import { useContent } from '../i18n.jsx';
 import { contentHref } from '../hooks/useRoute.js';
 
 export default function FinalSynthesis() {
+  const { finalSynthesis: s, finalVideos, ui } = useContent();
   const [first] = finalVideos;
 
   return (
@@ -29,14 +30,14 @@ export default function FinalSynthesis() {
                 <a className="synthesis-part" href={contentHref(v.id)}>
                   <span className="synthesis-part-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                   <span className="synthesis-part-title">{v.title}</span>
-                  <span className="synthesis-part-duration"><span className="sr-only">Duração </span>{v.duration}</span>
+                  <span className="synthesis-part-duration"><span className="sr-only">{ui.duration} </span>{v.duration}</span>
                 </a>
               </li>
             ))}
           </ol>
 
           <a className="btn btn--light" href={contentHref(first.id)}>
-            Assistir à síntese <ArrowRight />
+            {ui.watchSynthesis} <ArrowRight />
           </a>
         </div>
 
@@ -47,7 +48,7 @@ export default function FinalSynthesis() {
             <span className="synthesis-caption">
               <PlayBadge large />
               <span className="synthesis-caption-text">
-                <span className="synthesis-caption-kicker">Parte 1</span>
+                <span className="synthesis-caption-kicker">{ui.part(1)}</span>
                 <span className="synthesis-caption-title">{first.title}</span>
               </span>
             </span>

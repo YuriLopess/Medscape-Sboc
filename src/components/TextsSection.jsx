@@ -1,31 +1,31 @@
 import { ArrowRight } from './Icons.jsx';
 import { Media } from './Media.jsx';
-import { event, supportedBy, texts, topicLabel } from '../data/content.js';
+import { useContent } from '../i18n.jsx';
 import { contentHref } from '../hooks/useRoute.js';
 
 // Layout editorial no padrão das listas de notícias do Medscape:
 // 1 texto em destaque + 2 ao lado, e o restante em lista de duas colunas com miniatura à direita.
-const [lead, ...others] = texts;
-const side = others.slice(0, 2);
-const list = others.slice(2);
 
-// Linha de metadados: origem em itálico | tempo de leitura
+// Linha de metadados: origem | tempo de leitura
 function Meta({ item }) {
+  const { event, ui } = useContent();
   return (
     <p className="tx-meta">
-      <span>Cobertura {event.name}</span>
-      {item.readTime && <><span className="tx-sep" aria-hidden="true">|</span>{item.readTime} de leitura</>}
+      <span>{ui.coverageOf(event.name)}</span>
+      {item.readTime && <><span className="tx-sep" aria-hidden="true">|</span>{ui.readTime(item.readTime)}</>}
     </p>
   );
 }
 
 // Identificação exigida pelas diretrizes Medscape para conteúdo com apoio de empresa
 function Sponsor({ item }) {
+  const { sponsorLine } = useContent();
   if (!item.sponsor) return null;
-  return <p className="tx-sponsor">Desenvolvido pela Medscape com o apoio {supportedBy([item.sponsor])}</p>;
+  return <p className="tx-sponsor">{sponsorLine([item.sponsor])}</p>;
 }
 
 function Row({ item, kicker = true }) {
+  const { topicLabel } = useContent();
   const topic = topicLabel(item.topic);
   return (
     <li className="tx-row">
@@ -43,13 +43,18 @@ function Row({ item, kicker = true }) {
 }
 
 export default function TextsSection() {
+  const { texts, topicLabel, ui } = useContent();
+  const [lead, ...others] = texts;
+  const side = others.slice(0, 2);
+  const list = others.slice(2);
+
   return (
     <section id="textos" className="section texts" aria-labelledby="textos-title">
       <div className="container">
         <div className="section-head">
           <div>
-            <h2 id="textos-title" className="section-title">Textos da cobertura</h2>
-            <p className="section-sub">Análises escritas sobre os estudos e debates do congresso.</p>
+            <h2 id="textos-title" className="section-title">{ui.textsTitle}</h2>
+            <p className="section-sub">{ui.textsSub}</p>
           </div>
         </div>
 
@@ -71,7 +76,7 @@ export default function TextsSection() {
         </div>
 
         <div className="tx-list-head">
-          <a className="tx-all" href="#explorar">Explorar por tema <ArrowRight /></a>
+          <a className="tx-all" href="#explorar">{ui.exploreByTopic} <ArrowRight /></a>
         </div>
         <ul className="tx-list">
           {list.map((t) => <Row key={t.id} item={t} />)}

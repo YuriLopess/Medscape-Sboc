@@ -3,11 +3,13 @@ import CarouselControls from './CarouselControls.jsx';
 import CarouselProgress from './CarouselProgress.jsx';
 import ContentCard from './ContentCard.jsx';
 import { ChevronDown } from './Icons.jsx';
-import { exploreItems, topics, visibleTopicCount } from '../data/content.js';
+import { visibleTopicCount } from '../data/content.js';
+import { useContent } from '../i18n.jsx';
 import { useCarousel } from '../hooks/useCarousel.js';
 import { useDismiss } from '../hooks/useDismiss.js';
 
 function MoreTopics({ items, active, onSelect }) {
+  const { ui } = useContent();
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
   const close = useCallback(() => setOpen(false), []);
@@ -22,7 +24,7 @@ function MoreTopics({ items, active, onSelect }) {
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
       >
-        {selected ? selected.label : 'Mais temas'} <ChevronDown />
+        {selected ? selected.label : ui.moreTopics} <ChevronDown />
       </button>
       {open && (
         <ul className="dropdown-menu">
@@ -40,6 +42,7 @@ function MoreTopics({ items, active, onSelect }) {
 }
 
 export default function ThemeExplorer() {
+  const { exploreItems, topics, ui } = useContent();
   const [active, setActive] = useState('todos');
   const items = active === 'todos' ? exploreItems : exploreItems.filter((i) => i.topic === active);
   const carousel = useCarousel(items.length);
@@ -50,19 +53,17 @@ export default function ThemeExplorer() {
   }, [active]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // No celular todos os temas viram botões numa linha com rolagem; no desktop os extras ficam em "Mais temas"
-  const chips = [{ id: 'todos', label: 'Todos' }, ...topics].map((t, i) => ({ ...t, extra: i > visibleTopicCount }));
+  const chips = [{ id: 'todos', label: ui.all }, ...topics].map((t, i) => ({ ...t, extra: i > visibleTopicCount }));
 
   return (
     <section id="explorar" className="section" aria-labelledby="explorar-title">
       <div className="container">
-        <h2 id="explorar-title" className="section-title">Explore por tema</h2>
-        <p className="section-sub">
-          Conteúdos selecionados, incluindo vídeos e análises, para você se aprofundar nos temas de maior interesse.
-        </p>
+        <h2 id="explorar-title" className="section-title">{ui.exploreTitle}</h2>
+        <p className="section-sub">{ui.exploreSub}</p>
       </div>
 
       <div className="container filter-row">
-        <div className="chips" role="group" aria-label="Filtrar por tema">
+        <div className="chips" role="group" aria-label={ui.filterByTopic}>
           {chips.map((t) => (
             <button
               key={t.id}
@@ -76,7 +77,7 @@ export default function ThemeExplorer() {
           ))}
           <MoreTopics items={topics.slice(visibleTopicCount)} active={active} onSelect={setActive} />
         </div>
-        <CarouselControls carousel={carousel} label="Temas" />
+        <CarouselControls carousel={carousel} label={ui.topicsLabel} />
       </div>
 
       {items.length > 0 ? (
@@ -85,10 +86,10 @@ export default function ThemeExplorer() {
         </div>
       ) : (
         <p className="container empty-state" ref={carousel.trackRef}>
-          Ainda não há conteúdos publicados para este tema.
+          {ui.emptyTopic}
         </p>
       )}
-      <CarouselProgress key={active} carousel={carousel} items={items} label="Ir para o conteúdo" />
+      <CarouselProgress key={active} carousel={carousel} items={items} label={ui.goToContent} />
     </section>
   );
 }

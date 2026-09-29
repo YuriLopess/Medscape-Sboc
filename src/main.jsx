@@ -7,12 +7,15 @@ import '@fontsource/poppins/500.css';
 import '@fontsource/poppins/600.css';
 import '@fontsource/poppins/700.css';
 import App from './App.jsx';
+import { LanguageProvider } from './i18n.jsx';
 import './tailwind.css';
 import './styles.css';
 import './theme-promo.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <LanguageProvider>
+      <App />
+    </LanguageProvider>
   </StrictMode>
 );

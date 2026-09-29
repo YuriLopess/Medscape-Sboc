@@ -1,44 +1,35 @@
-import Brand from './Brand.jsx';
-import { disclosure, footer } from '../data/content.js';
+import { useContent } from '../i18n.jsx';
 
+// Rodapé mínimo: "Desenvolvido por" + Medscape à esquerda, SBOC à direita, e no centro o aviso de público,
+// o aviso obrigatório (D) e a Política de Privacidade (E), como pedem as diretrizes Medscape.
+// Regra Medscape: o logo dela só aparece no cabeçalho e no rodapé, nunca colado ao logo de uma empresa farmacêutica.
 export default function SiteFooter() {
+  const { disclosure, footer, ui } = useContent();
+
   return (
-    <footer className="site-footer" aria-labelledby="footer-title">
+    <footer className="site-footer">
       <div className="container">
-        <h2 id="footer-title" className="sr-only">Informações institucionais</h2>
-
-        <div className="footer-grid">
-          <div className="footer-col footer-col--about">
-            <Brand inverted />
-            <h3 className="sr-only">Sobre esta cobertura</h3>
-            <p>{footer.about}</p>
-          </div>
-
-          <div className="footer-col">
-            <h3>Conteúdo e transparência</h3>
-            <p>{footer.transparency}</p>
-          </div>
-
-          <nav className="footer-col" aria-labelledby="footer-links-title">
-            <h3 id="footer-links-title">Institucional</h3>
-            <ul className="footer-links">
-              {footer.links.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer">
-                    {link.label}
-                    <span aria-hidden="true"> ↗</span>
-                    <span className="sr-only"> (abre em nova aba)</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        <div className="footer-brands">
+          <a href="#/" className="footer-medscape" aria-label={ui.homeMedscape}>
+            <span className="footer-label">{footer.developedBy}</span>
+            <img src="images/logos/medscape.png" alt="" width="698" height="160" />
+          </a>
+          <a href="#/" className="footer-sboc" aria-label={ui.homeSboc}>
+            <img src="images/logos/sboc-horizontal.png" alt="" width="342" height="120" />
+          </a>
         </div>
 
-        <div className="footer-bottom">
+        <div className="footer-center">
           <p className="footer-audience">{footer.audience}</p>
-          {/* Aviso de "Cobertura de Conferência", obrigatório no rodapé de todas as páginas */}
+
+          {/* D: aviso de "Cobertura de Conferência", obrigatório no rodapé de todas as páginas */}
           <p className="footer-legal">{disclosure.footer}</p>
+
+          {/* E: link para a Política de Privacidade da Medscape */}
+          <a className="footer-privacy" href={footer.privacy.href} target="_blank" rel="noopener noreferrer">
+            {footer.privacy.label}
+            <span className="sr-only"> {footer.newTab}</span>
+          </a>
         </div>
       </div>
     </footer>

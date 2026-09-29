@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Play } from './Icons.jsx';
+import { useContent } from '../i18n.jsx';
 
 // Imagem com placeholder: se o arquivo ainda não existir em /public, mostra um fundo da marca.
 // focus: ponto que o recorte automático preserva (CSS object-position), ex.: 'center 30%'
@@ -34,5 +35,6 @@ export function PlayBadge({ large = false }) {
 }
 
 export function Duration({ children }) {
-  return <span className="duration"><span className="sr-only">Duração </span>{children}</span>;
+  const { ui } = useContent();
+  return <span className="duration"><span className="sr-only">{ui.duration} </span>{children}</span>;
 }

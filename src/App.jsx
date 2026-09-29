@@ -9,13 +9,14 @@ import FinalSynthesis from './components/FinalSynthesis.jsx';
 import Supporters from './components/Supporters.jsx';
 import SiteFooter from './components/SiteFooter.jsx';
 import ContentPage from './components/ContentPage.jsx';
-import { getContent } from './data/content.js';
+import { useContent } from './i18n.jsx';
 import { useRoute } from './hooks/useRoute.js';
 
 const SITE_TITLE = 'ESMO 2026 · Medscape + SBOC';
 
 export default function App() {
   const route = useRoute();
+  const { getContent, ui } = useContent();
   const item = route.page === 'content' ? getContent(route.id) : null;
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export default function App() {
 
   return (
     <>
-      <a className="skip" href="#conteudo">Ir para o conteúdo</a>
+      <a className="skip" href="#conteudo">{ui.skip}</a>
       <SiteHeader />
       <main id="conteudo">
         {route.page === 'content' ? (

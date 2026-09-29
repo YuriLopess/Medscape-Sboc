@@ -2,14 +2,15 @@ import { useState } from 'react';
 import ContentCard from './ContentCard.jsx';
 import { ArrowLeft, User } from './Icons.jsx';
 import { Duration, Media, PlayBadge } from './Media.jsx';
-import { event, relatedContent, supportedBy } from '../data/content.js';
+import { useContent } from '../i18n.jsx';
 
 // Selo com a logo da empresa patrocinadora, sobre o canto do vídeo (só em conteúdo com apoio)
 function SponsorBadge({ sponsor }) {
+  const { page } = useContent();
   if (!sponsor) return null;
   return (
     <span className="cp-player-sponsor">
-      <span className="cp-player-sponsor-label">Com o apoio de</span>
+      <span className="cp-player-sponsor-label">{page.supportedBy}</span>
       {sponsor.logo ? (
         <img src={sponsor.logo} alt={sponsor.name} style={{ '--logo-h': `${Math.round((sponsor.logoHeight ?? 48) * 0.5)}px` }} />
       ) : (
@@ -22,6 +23,7 @@ function SponsorBadge({ sponsor }) {
 // Player: usa o vídeo hospedado no próprio site (videoSrc). Sem arquivo ainda, mostra a capa
 // e avisa ao clicar, em vez de um botão que não faz nada.
 function VideoPlayer({ item }) {
+  const { page } = useContent();
   const [asked, setAsked] = useState(false);
   const [playing, setPlaying] = useState(false);
 
@@ -39,7 +41,7 @@ function VideoPlayer({ item }) {
 
   return (
     <div className="cp-player">
-      <button type="button" className="cp-player-poster" onClick={() => setAsked(true)} aria-label={`Assistir: ${item.title}`}>
+      <button type="button" className="cp-player-poster" onClick={() => setAsked(true)} aria-label={page.watch(item.title)}>
         <Media src={item.image} focus={item.focus} className="cp-player-media">
           <PlayBadge large />
           {item.duration && <Duration>{item.duration}</Duration>}
@@ -48,7 +50,7 @@ function VideoPlayer({ item }) {
       </button>
       {asked && (
         <p className="cp-player-note" role="status">
-          O vídeo será publicado aqui assim que a gravação final for aprovada.
+          {page.videoSoon}
         </p>
       )}
     </div>
@@ -74,12 +76,13 @@ function Avatar({ speaker }) {
 
 // Coluna lateral: quem fala + ficha do conteúdo
 function Sidebar({ item }) {
+  const { event, page, sponsorLine, ui } = useContent();
   const { speakers } = item;
   const facts = [
-    ['Formato', item.isVideo ? 'Vídeo' : 'Texto'],
-    ['Tema', item.topicLabel],
-    ['Duração', item.duration],
-    ['Evento', `${event.name} · ${event.city}`],
+    [page.format, item.isVideo ? ui.video : ui.text],
+    [page.topic, item.topicLabel],
+    [ui.duration, item.duration],
+    [page.event, `${event.name} · ${event.city}`],
   ].filter(([, value]) => value);
 
   return (
@@ -87,7 +90,7 @@ function Sidebar({ item }) {
       {/* Conteúdo patrocinado: bloco com a logo da empresa (separado do logo Medscape, que fica só no cabeçalho/rodapé) */}
       {item.sponsorInfo && (
         <section className="cp-side-block cp-sponsor-block" aria-labelledby="cp-sponsor-title">
-          <h2 id="cp-sponsor-title" className="cp-side-title">Com o apoio de</h2>
+          <h2 id="cp-sponsor-title" className="cp-side-title">{page.supportedBy}</h2>
           <div className="cp-sponsor-logo">
             {item.sponsorInfo.logo ? (
               <img src={item.sponsorInfo.logo} alt={item.sponsorInfo.name} style={{ height: `${Math.round((item.sponsorInfo.logoHeight ?? 48) * 0.95)}px` }} />
@@ -96,13 +99,13 @@ function Sidebar({ item }) {
             )}
           </div>
           <p className="cp-sponsor-note">
-            Desenvolvido pela Medscape com o apoio {supportedBy([item.sponsorInfo.name])}.
+            {sponsorLine([item.sponsorInfo.name])}.
           </p>
         </section>
       )}
       <section className="cp-side-block" aria-labelledby="cp-speakers-title">
         <h2 id="cp-speakers-title" className="cp-side-title">
-          {speakers.length > 1 ? 'Especialistas' : 'Especialista'}
+          {speakers.length > 1 ? page.experts : page.expert}
         </h2>
         <ul className="cp-speakers">
           {speakers.map((s) => (
@@ -119,7 +122,7 @@ function Sidebar({ item }) {
 
       <section className="cp-side-block" aria-labelledby="cp-facts-title">
         <h2 id="cp-facts-title" className="cp-side-title">
-          {item.isVideo ? 'Sobre este vídeo' : 'Sobre este texto'}
+          {item.isVideo ? page.aboutVideo : page.aboutText}
         </h2>
         <dl className="cp-facts">
           {facts.map(([label, value]) => (
@@ -135,12 +138,13 @@ function Sidebar({ item }) {
 }
 
 export default function ContentPage({ item }) {
+  const { event, page, relatedContent, sponsorLine, ui } = useContent();
   if (!item) {
     return (
       <section className="container cp-missing">
-        <h1>Conteúdo não encontrado</h1>
-        <p>O link pode estar incompleto ou o conteúdo ainda não foi publicado.</p>
-        <a className="btn btn--dark" href="#/">Voltar para a cobertura</a>
+        <h1>{page.notFound}</h1>
+        <p>{page.notFoundText}</p>
+        <a className="btn btn--dark" href="#/">{page.notFoundBack}</a>
       </section>
     );
   }
@@ -152,7 +156,7 @@ export default function ContentPage({ item }) {
       <header className="cp-hero">
         <div className="container cp-hero-inner">
           <div className="cp-hero-text">
-            <a className="cp-back" href="#/"><ArrowLeft /> Voltar para a cobertura</a>
+            <a className="cp-back" href="#/"><ArrowLeft /> {page.back}</a>
             <p className="cp-kicker">
               <span className="cp-kicker-event">{event.name}</span>
               <span aria-hidden="true"> • </span>
@@ -162,7 +166,7 @@ export default function ContentPage({ item }) {
             <h1 className="cp-title">{item.title}</h1>
             {/* Identificação exigida pelas diretrizes Medscape para conteúdo com apoio de empresa */}
             {item.sponsor && (
-              <p className="cp-sponsor">Desenvolvido pela Medscape com o apoio {supportedBy([item.sponsor])}</p>
+              <p className="cp-sponsor">{sponsorLine([item.sponsor])}</p>
             )}
             <p className="cp-summary">{item.summary}</p>
           </div>
@@ -173,7 +177,7 @@ export default function ContentPage({ item }) {
         </div>
       </header>
 
-      <section className="container cp-main" aria-label={item.isVideo ? 'Vídeo' : 'Texto'}>
+      <section className="container cp-main" aria-label={item.isVideo ? ui.video : ui.text}>
         <div className="cp-primary">
           {item.isVideo ? (
             <VideoPlayer item={item} />
@@ -189,8 +193,8 @@ export default function ContentPage({ item }) {
       {related.length > 0 && (
         <section className="section cp-related" aria-labelledby="cp-related-title">
           <div className="container">
-            <h2 id="cp-related-title" className="section-title">Continue explorando</h2>
-            <p className="section-sub">Outros vídeos e análises da cobertura do {event.name}.</p>
+            <h2 id="cp-related-title" className="section-title">{page.related}</h2>
+            <p className="section-sub">{page.relatedSub(event.name)}</p>
           </div>
           <div className="carousel-track">
             {related.map((r) => <ContentCard key={r.id} item={r} />)}

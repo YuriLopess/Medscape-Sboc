@@ -1,12 +1,13 @@
 import CarouselControls from './CarouselControls.jsx';
 import CarouselProgress from './CarouselProgress.jsx';
 import ContentCard from './ContentCard.jsx';
-import { featuredVideos } from '../data/content.js';
+import { useContent } from '../i18n.jsx';
 import { useCarousel } from '../hooks/useCarousel.js';
 
 const pad = (n) => String(n).padStart(2, '0');
 
 export default function FeaturedCarousel() {
+  const { featuredVideos, ui } = useContent();
   const carousel = useCarousel(featuredVideos.length);
   const total = featuredVideos.length;
 
@@ -14,10 +15,10 @@ export default function FeaturedCarousel() {
     <section id="destaques" className="section" aria-labelledby="destaques-title">
       <div className="container section-head">
         <div>
-          <h2 id="destaques-title" className="section-title">Em destaque na cobertura</h2>
-          <p className="section-sub">Vídeos e análises para acompanhar os temas do congresso.</p>
+          <h2 id="destaques-title" className="section-title">{ui.featuredTitle}</h2>
+          <p className="section-sub">{ui.featuredSub}</p>
         </div>
-        <CarouselControls carousel={carousel} label="Destaques" counter={`${pad(carousel.index + 1)} / ${pad(total)}`} />
+        <CarouselControls carousel={carousel} label={ui.featuredLabel} counter={`${pad(carousel.index + 1)} / ${pad(total)}`} />
       </div>
 
       <div className="carousel-track" ref={carousel.trackRef}>
@@ -26,7 +27,7 @@ export default function FeaturedCarousel() {
         ))}
       </div>
 
-      <CarouselProgress carousel={carousel} items={featuredVideos} label="Ir para o vídeo" />
+      <CarouselProgress carousel={carousel} items={featuredVideos} label={ui.goToVideo} />
     </section>
   );
 }

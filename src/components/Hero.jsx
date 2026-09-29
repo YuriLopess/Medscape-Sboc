@@ -1,13 +1,14 @@
 import { ArrowRight, Pin } from './Icons.jsx';
 import { Media } from './Media.jsx';
-import { event } from '../data/content.js';
+import { useContent } from '../i18n.jsx';
 
 export default function Hero() {
+  const { event, ui } = useContent();
   return (
     <section className="hero" aria-labelledby="hero-title">
       <Media
         src={event.heroImage}
-        alt="Plenária do congresso ESMO 2026 com o público diante do palco"
+        alt={event.heroAlt}
         className="hero-media"
       />
       <svg className="hero-arcs" viewBox="0 0 846 558" preserveAspectRatio="none" aria-hidden="true">
@@ -24,7 +25,7 @@ export default function Hero() {
         </h1>
         <p className="hero-lead">{event.lead}</p>
         <a className="btn btn--light" href="#destaques">
-          Explorar a cobertura <ArrowRight />
+          {ui.exploreCoverage} <ArrowRight />
         </a>
         <div className="hero-meta">
           <span><Pin /> {event.city}</span>
