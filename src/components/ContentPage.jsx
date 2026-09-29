@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ContentCard from './ContentCard.jsx';
+import Disclosure from './Disclosure.jsx';
 import { ArrowLeft, User } from './Icons.jsx';
 import { Duration, Media, PlayBadge } from './Media.jsx';
 import { useContent } from '../i18n.jsx';
@@ -142,6 +143,7 @@ export default function ContentPage({ item }) {
   if (!item) {
     return (
       <section className="container cp-missing">
+        <Disclosure />
         <h1>{page.notFound}</h1>
         <p>{page.notFoundText}</p>
         <a className="btn btn--dark" href="#/">{page.notFoundBack}</a>
@@ -155,6 +157,8 @@ export default function ContentPage({ item }) {
     <article className="cp">
       <header className="cp-hero">
         <div className="container cp-hero-inner">
+          {/* Só no celular: aviso obrigatório no topo da página */}
+          <Disclosure />
           <div className="cp-hero-text">
             <a className="cp-back" href="#/"><ArrowLeft /> {page.back}</a>
             <p className="cp-kicker">

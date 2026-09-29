@@ -79,6 +79,26 @@ function LanguageSelect() {
   );
 }
 
+// Versão do celular, dentro do menu: as três opções sempre abertas, em linhas largas com bandeira
+function LanguageList({ onPick }) {
+  const { lang, setLang, ui } = useContent();
+  return (
+    <div className="lang-list" role="group" aria-labelledby="lang-list-title">
+      <p id="lang-list-title" className="lang-list-title">{ui.language}</p>
+      <ul>
+        {languages.map((l) => (
+          <li key={l.code}>
+            <button type="button" lang={l.code} aria-pressed={l.code === lang} onClick={() => { setLang(l.code); onPick(); }}>
+              <Flag code={l.code} />
+              {l.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export default function SiteHeader() {
   const { disclosure, navLinks, ui } = useContent();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -141,6 +161,8 @@ export default function SiteHeader() {
                 )
               )}
             </ul>
+            {/* No celular a faixa do topo some; o idioma fica aqui, no fim do menu */}
+            <LanguageList onPick={closeMenu} />
           </nav>
           {/* C: logo Medscape sozinho, separado das outras marcas; a menção à Medscape fica só no aviso B */}
           <a href="#/" className="hb hb--right" aria-label={ui.homeMedscape}>

@@ -72,6 +72,8 @@ button { font: inherit; color: inherit; }
 .flag { display: inline-flex; flex: none; width: 16px; height: 16px; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 1px rgb(0 0 0 / .1); }
 .flag svg { width: 100%; height: 100%; }
 .lang-select-menu .flag { width: 18px; height: 18px; }
+/* Versões do celular (aviso no alto da primeira seção, idioma no menu): escondidas no desktop */
+.m-disclosure, .hero-disclosure, .lang-list { display: none; }
 
 .site-header { position: sticky; top: 0; z-index: 20; background: #fff; border-bottom: 1px solid var(--line); }
 /* Cabeçalho em 3 zonas (referência: SBOC à esquerda, menu no centro, Medscape à direita) */
@@ -359,6 +361,14 @@ button { font: inherit; color: inherit; }
   .footer-medscape img { height: 28px; }
   .footer-sboc img { height: 32px; }
   .footer-label { font-size: 12px; }
+  /* Celular: tudo alinhado à esquerda (texto longo centralizado fica com as bordas irregulares e cansa a leitura) */
+  .footer-brands { padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+  .footer-center { align-items: stretch; gap: 12px; margin-top: 22px; text-align: left; }
+  .footer-audience { font-size: 13.5px; font-weight: 600; line-height: 1.4; }
+  /* D vira uma nota com fio à esquerda, sem caixa: mais leve e fácil de ler */
+  .footer-legal { max-width: none; padding: 2px 0 2px 14px; border-top: 0; border-left: 3px solid var(--blue-line); border-radius: 0; background: none; font-size: 11.5px; line-height: 1.7; }
+  .footer-privacy { align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 600; }
+  .footer-privacy::after { content: "↗"; content: "↗" / ""; margin-left: 6px; font-size: 13px; }
 }
 
 /* ---------- Página interna de conteúdo ---------- */
@@ -493,12 +503,27 @@ button { font: inherit; color: inherit; }
 /* Celular */
 @media (max-width: 640px) {
   html { scroll-padding-top: 70px; }
-  /* Faixa do topo compacta: aviso obrigatório + seletor de idioma */
-  .topbar-inner { min-height: 0; padding-block: 6px; }
-  /* Aviso à esquerda, seletor de idioma à direita na mesma linha */
-  .topbar-inner { justify-content: space-between; }
-  .topbar-disclosure { flex: 1; min-width: 0; font-size: 11px; line-height: 1.45; text-wrap: balance; }
-  .lang-select { margin-left: 10px; padding-left: 6px; }
+  /* Sem faixa do topo no celular: o aviso vai para o alto da primeira seção (selo) e o idioma para o menu */
+  .topbar { display: none; }
+  .m-disclosure { display: block; width: fit-content; max-width: 100%; margin: 0; padding: 8px 12px; border-radius: 10px; font-size: 11px; line-height: 1.45; letter-spacing: .01em; text-wrap: balance; }
+  .m-disclosure strong { white-space: nowrap; }
+  .m-disclosure strong { font-weight: 600; }
+  /* Sobre a foto do banner: vidro escuro, no mesmo estilo do selo "ESMO 2026" */
+  .hero-disclosure { display: block; position: absolute; top: 14px; left: 0; right: 0; z-index: 2; }
+  .m-disclosure--dark { border: 1px solid rgb(255 255 255 / .28); background: rgb(4 30 80 / .42); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); color: rgb(255 255 255 / .85); }
+  .m-disclosure--dark strong { color: #fff; }
+  /* Páginas internas: selo claro no topo do fundo degradê */
+  .m-disclosure--light { order: -3; margin-bottom: 14px; border: 1px solid var(--blue-line); background: rgb(255 255 255 / .75); color: var(--kind); }
+  .m-disclosure--light strong { color: var(--ink); }
+  .cp-missing .m-disclosure { margin-bottom: 20px; }
+  /* Idioma no fim do menu: as três opções em linhas largas */
+  .lang-list { display: block; margin-top: 18px; }
+  .lang-list-title { margin: 0 0 8px; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .lang-list ul { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+  .main-nav .lang-list li { border: 0; }
+  .lang-list button { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 46px; padding: 10px 12px; border: 0; border-radius: 8px; background: none; font-size: 15px; color: var(--ink); text-align: left; cursor: pointer; }
+  .lang-list button[aria-pressed="true"] { background: var(--blue-soft); font-weight: 600; }
+  .lang-list .flag { width: 20px; height: 20px; }
   /* Cabeçalho: logos com o mesmo peso visual, rótulos legíveis */
   .header-inner { min-height: 64px; gap: 14px; padding-block: 8px; }
   .hb { gap: 5px; }

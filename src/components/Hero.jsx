@@ -1,4 +1,5 @@
 import { ArrowRight, Pin } from './Icons.jsx';
+import Disclosure from './Disclosure.jsx';
 import { Media } from './Media.jsx';
 import { useContent } from '../i18n.jsx';
 
@@ -16,6 +17,8 @@ export default function Hero() {
         {/* As duas linhas terminam abaixo da borda inferior (y > 558), saindo do banner */}
         <path d="M160 0 C 90 160, 100 320, 280 420 C 450 510, 700 545, 846 575" />
       </svg>
+      {/* Só no celular: aviso obrigatório em selo de vidro no alto da foto */}
+      <div className="container hero-disclosure"><Disclosure variant="dark" /></div>
 
       <div className="container hero-content">
         <p className="hero-event">{event.name}</p>
