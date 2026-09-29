@@ -1,11 +1,8 @@
-import { BrandScroller, BrandScrollerReverse } from '@/components/ui/brand-scroller';
+import { BrandScroller } from '@/components/ui/brand-scroller';
 import { supporters } from '../data/content.js';
 
 // Só as logos (campo "logo" em content.js). Para adicionar um apoiador, inclua um item na lista.
 const brands = supporters.map((s) => ({ name: s.name, logo: s.logo, logoHeight: s.logoHeight }));
-
-// Segunda fileira começa em outra ordem, para as duas não andarem "espelhadas"
-const shifted = [...brands.slice(1), ...brands.slice(0, 1)];
 
 export default function Supporters() {
   return (
@@ -23,7 +20,6 @@ export default function Supporters() {
       {/* A animação pausa ao passar o mouse e fica parada para quem pediu menos movimento no sistema */}
       <div className="sp-rows">
         <BrandScroller brands={brands} duration="40s" />
-        <BrandScrollerReverse brands={shifted} duration="40s" />
       </div>
     </section>
   );
