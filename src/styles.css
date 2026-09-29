@@ -15,11 +15,13 @@
   --font-body: var(--sans);
   --navy-rgb: 11 42 85;        /* mesma cor de --navy, para degradês com transparência */
   --accent-light: var(--blue); /* detalhes decorativos: barras de progresso, ícones */
-  --kind: var(--blue);         /* rótulos "Vídeo" / "Análise" */
+  --kind: var(--blue);         /* rótulos "Vídeo" / "Texto" */
   --arc: #2e9cf0;              /* arcos do hero */
   --max: 1200px;
   --gutter: clamp(16px, 4vw, 40px);
   --radius: 6px;
+  /* Degradê suave azul-claro → branco → rosa (topo das páginas internas e Síntese final) */
+  --soft-gradient: linear-gradient(100deg, var(--blue-soft) 0%, #fff 42%, #fff 58%, #fdf1f6 100%);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -229,7 +231,15 @@ button { font: inherit; color: inherit; }
 .empty-state { margin-top: 22px; color: var(--muted); }
 
 /* ---------- Síntese final ---------- */
-.synthesis { background: var(--blue-soft); padding-block: clamp(48px, 7vw, 96px); }
+/* Fundo azul-claro com manchas de luz desfocadas: branco atrás do texto (contraste),
+   rosa e azul atrás do vídeo (mesma harmonia do topo das páginas internas) */
+.synthesis { position: relative; isolation: isolate; overflow: hidden; background: var(--blue-soft); }
+.synthesis::before, .synthesis::after { content: ''; position: absolute; z-index: -1; border-radius: 50%; filter: blur(60px); pointer-events: none; }
+/* Esquerda: branco (contraste do texto) com borda azul-clara */
+.synthesis::before { width: 42%; height: 85%; left: -6%; top: 8%; background: radial-gradient(circle at 45% 45%, #fff 0 40%, rgb(15 158 213 / .22) 75%, transparent 100%); }
+/* Direita: rosa atrás do vídeo, com borda azul (mesmas cores da arte das páginas internas) */
+.synthesis::after { width: 34%; height: 80%; right: -4%; top: 10%; background: radial-gradient(circle at 55% 45%, rgb(247 170 208 / .75) 0 30%, rgb(15 158 213 / .3) 65%, transparent 88%); }
+.synthesis { padding-block: clamp(48px, 7vw, 96px); }
 /* Mesmas margens laterais do resto do site; texto e vídeo dividem a largura */
 .synthesis-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(28px, 5vw, 72px); }
 .synthesis .eyebrow { font-size: 13px; }
@@ -238,12 +248,25 @@ button { font: inherit; color: inherit; }
 .synthesis-title { margin: 14px 0 18px; font-family: var(--font-heading); font-size: clamp(30px, 8.4cqi, 56px); font-weight: 700; line-height: 1.06; letter-spacing: -.02em; color: var(--navy); }
 .synthesis-lead { text-wrap: balance; max-width: 48ch; margin: 0 0 32px; font-size: clamp(16px, 1.4vw, 19px); line-height: 1.55; color: var(--text); }
 .synthesis .btn { padding: 16px 30px; font-size: 16.5px; }
-.synthesis-video { display: block; border-radius: var(--radius); overflow: hidden; box-shadow: 0 16px 40px rgb(var(--navy-rgb) / .18); }
+/* 2 vídeos finais lado a lado, cada um com título abaixo */
+.synthesis-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0; padding: 0; list-style: none; }
+.synthesis-video { display: flex; flex-direction: column; height: 100%; border-radius: 10px; overflow: hidden; background: #fff; text-decoration: none; box-shadow: 0 16px 40px rgb(var(--navy-rgb) / .16); transition: transform .25s ease, box-shadow .25s ease; }
+.synthesis-video:hover { transform: translateY(-3px); box-shadow: 0 22px 48px rgb(var(--navy-rgb) / .22); }
 .synthesis-video:hover .play-badge { background: var(--blue); border-color: var(--blue); }
-.synthesis-media { aspect-ratio: 2 / 1; }
-.synthesis-media .play-badge--large { width: 68px; height: 68px; left: 24px; bottom: 22px; }
-.synthesis-media .play-badge--large svg { width: 28px; height: 28px; }
-.synthesis-media .duration { right: 18px; bottom: 18px; padding: 4px 10px; font-size: 14px; }
+.synthesis-media { aspect-ratio: 4 / 3; }
+.synthesis-media .play-badge--large { width: 56px; height: 56px; left: 16px; bottom: 16px; }
+.synthesis-media .play-badge--large svg { width: 24px; height: 24px; }
+.synthesis-media .duration { right: 14px; bottom: 14px; padding: 3px 9px; font-size: 13px; }
+.synthesis-video-body { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px 18px; }
+.synthesis-video-kicker { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--kind); }
+.synthesis-video-title { font-family: var(--font-heading); font-size: 16.5px; font-weight: 700; line-height: 1.3; color: var(--ink); }
+
+/* ---------- Textos (versão inicial) ---------- */
+.texts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 22px; }
+.texts-grid .card { flex: none; }
+.texts-grid .card-media { aspect-ratio: 16 / 9; }
+@media (max-width: 1100px) { .texts-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .texts-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Apoiadores ---------- */
 /* Faixa contínua de logos: cartões em loop, bordas esfumadas, cor ao passar o mouse */
@@ -276,7 +299,7 @@ button { font: inherit; color: inherit; }
 .footer-legal { max-width: 110ch; color: rgba(255,255,255,.62); }
 
 /* ---------- Página interna de conteúdo ---------- */
-.cp-hero { position: relative; overflow: hidden; background: linear-gradient(100deg, var(--blue-soft) 0%, #fff 42%, #fff 58%, #fdf1f6 100%); border-bottom: 1px solid var(--line); }
+.cp-hero { position: relative; overflow: hidden; background: var(--soft-gradient); border-bottom: 1px solid var(--line); }
 .cp-hero-inner { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: clamp(32px, 5vw, 72px); min-height: 460px; padding-block: 36px 48px; }
 .cp-back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 28px; font-size: 14px; font-weight: 600; color: var(--blue); text-decoration: none; }
 .cp-back:hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -303,8 +326,14 @@ button { font: inherit; color: inherit; }
 .cp-body p { max-width: 68ch; margin: 0 0 18px; font-size: 17px; line-height: 1.75; color: var(--text); }
 
 /* Coluna lateral minimalista: só um fio à esquerda, tipografia e espaço */
-.cp-sidebar { position: sticky; top: 100px; padding-left: clamp(20px, 2.5vw, 36px); border-left: 1px solid var(--line); }
+.cp-sidebar { padding-left: clamp(20px, 2.5vw, 36px); border-left: 1px solid var(--line); }
 .cp-side-block + .cp-side-block { margin-top: 36px; }
+/* Bloco do patrocinador na página interna */
+.cp-sponsor-block { padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.cp-sponsor-block .cp-side-title { margin-bottom: 14px; }
+.cp-sponsor-logo { display: flex; align-items: center; min-height: 64px; }
+.cp-sponsor-logo img { width: auto; max-width: 100%; object-fit: contain; }
+.cp-sponsor-note { margin: 12px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--muted); }
 .cp-side-title { margin: 0 0 16px; font-family: var(--font-body); font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .cp-speakers { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
 .cp-speakers li { display: flex; align-items: center; gap: 14px; }
@@ -327,7 +356,7 @@ button { font: inherit; color: inherit; }
   .cp-back { order: -2; margin-bottom: 18px; }
   .cp-hero-text { display: contents; }
   .cp-main { grid-template-columns: 1fr; }
-  .cp-sidebar { position: static; padding: 28px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+  .cp-sidebar { padding: 28px 0 0; border-left: 0; border-top: 1px solid var(--line); }
 }
 @media (max-width: 640px) {
   .cp-kicker { font-size: 12.5px; }
@@ -380,7 +409,7 @@ button { font: inherit; color: inherit; }
   .filter-row .carousel-controls { flex: none; }
 
   .synthesis-inner { grid-template-columns: 1fr; }
-  .synthesis-video { order: -1; }
+  .synthesis-videos { order: -1; }
   .synthesis-title br { display: none; }
 
 

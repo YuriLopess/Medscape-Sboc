@@ -3,7 +3,7 @@ import CarouselControls from './CarouselControls.jsx';
 import CarouselProgress from './CarouselProgress.jsx';
 import ContentCard from './ContentCard.jsx';
 import { ChevronDown } from './Icons.jsx';
-import { themeItems, topics, visibleTopicCount } from '../data/content.js';
+import { exploreItems, topics, visibleTopicCount } from '../data/content.js';
 import { useCarousel } from '../hooks/useCarousel.js';
 import { useDismiss } from '../hooks/useDismiss.js';
 
@@ -41,7 +41,7 @@ function MoreTopics({ items, active, onSelect }) {
 
 export default function ThemeExplorer() {
   const [active, setActive] = useState('todos');
-  const items = active === 'todos' ? themeItems : themeItems.filter((i) => i.topic === active);
+  const items = active === 'todos' ? exploreItems : exploreItems.filter((i) => i.topic === active);
   const carousel = useCarousel(items.length);
 
   // Ao trocar o filtro, volta o carrossel ao início

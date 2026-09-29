@@ -23,6 +23,7 @@ export const navLinks = [
     children: [
       { label: 'Em destaque', href: '#destaques' },
       { label: 'Explore por tema', href: '#explorar' },
+      { label: 'Textos', href: '#textos' },
     ],
   },
   { label: 'Vídeos', href: '#destaques' },
@@ -30,25 +31,68 @@ export const navLinks = [
   { label: 'Apoiadores', href: '#apoiadores' },
 ];
 
-// Os 10 vídeos de cobertura (carrossel "Em destaque")
-// focus (opcional): parte da imagem que deve ficar visível quando o card recorta a foto, ex.: 'center 15%'
+/*
+  Entregáveis combinados:
+  - 15 vídeos curtos (highlights) → carrossel "Em destaque"
+  - 2 vídeos finais               → seção "Síntese final"
+  - 8 textos                      → seção "Textos"
+  Por empresa:  AbbVie 3 vídeos + 2 textos · Merck 2 + 1 · GSK 1 + 0 · SBOC 11 + 5 (sem patrocínio)
+
+  sponsor: nome da empresa patrocinadora (deve existir em "supporters", com logo). Sem sponsor = conteúdo SBOC.
+  Os patrocinados ficam intercalados, sem dois seguidos e sem agrupar por empresa.
+  focus (opcional): parte da imagem que deve ficar visível quando o card recorta a foto, ex.: 'center 15%'
+  Títulos, descrições, durações e imagens são provisórios até a lista final.
+*/
+
+// 15 vídeos curtos: 9 SBOC · 3 AbbVie · 2 Merck · 1 GSK
 export const featuredVideos = [
-  { id: 'panorama', title: 'Panorama do congresso', description: 'Uma visão geral dos principais temas e discussões desta edição do ESMO.', duration: '12:36', image: 'images/videos/panorama.jpg' },
-  { id: 'mama', topic: 'mama', title: 'Destaques em câncer de mama', description: 'Avanços, desafios e perspectivas para a prática clínica.', duration: '14:22', image: 'images/videos/mama.jpg' },
-  { id: 'toracicos', topic: 'pulmao', title: 'Tumores torácicos', description: 'O que foi apresentado e o que muda na prática.', duration: '13:05', image: 'images/videos/toracicos.jpg', focus: 'center 15%' },
-  { id: 'gastro', topic: 'gastro', title: 'Tumores gastrointestinais', description: 'Estudos que podem redefinir condutas no tratamento.', duration: '11:50', image: 'images/videos/gastro.jpg' },
-  { id: 'gineco', topic: 'gineco', title: 'Tumores ginecológicos', description: 'Novas abordagens e o impacto nas pacientes.', duration: '10:48', image: 'images/videos/gineco.jpg' },
-  { id: 'gu', topic: 'gu', title: 'Tumores geniturinários', description: 'Próstata, bexiga e rim: os dados mais comentados.', duration: '12:10', image: 'images/videos/gu.jpg' },
-  { id: 'imuno', title: 'Imunoterapia', description: 'Combinações, sequenciamento e seleção de pacientes.', duration: '15:02', image: 'images/videos/imuno.jpg' },
-  { id: 'precisao', topic: 'precisao', title: 'Oncologia de precisão', description: 'Biomarcadores e terapias-alvo em evolução.', duration: '09:44', image: 'images/videos/precisao.jpg' },
-  { id: 'melanoma', title: 'Melanoma e pele', description: 'Resultados de longo prazo e novas estratégias.', duration: '08:57', image: 'images/videos/melanoma.jpg' },
-  { id: 'cabeca-pescoco', title: 'Cabeça e pescoço', description: 'Perspectivas para o tratamento multidisciplinar.', duration: '10:21', image: 'images/videos/cabeca-pescoco.jpg' },
+  { id: 'panorama', title: 'Panorama do congresso', description: 'Uma visão geral dos principais temas e discussões desta edição do ESMO.', duration: '04:36', image: 'images/videos/panorama.jpg' },
+  { id: 'mama', topic: 'mama', sponsor: 'AbbVie', title: 'Destaques em câncer de mama', description: 'Avanços, desafios e perspectivas para a prática clínica.', duration: '05:22', image: 'images/videos/mama.jpg' },
+  { id: 'toracicos', topic: 'pulmao', title: 'Tumores torácicos', description: 'O que foi apresentado e o que muda na prática.', duration: '05:05', image: 'images/videos/toracicos.jpg', focus: 'center 15%' },
+  { id: 'gastro', topic: 'gastro', sponsor: 'Merck', title: 'Tumores gastrointestinais', description: 'Estudos que podem redefinir condutas no tratamento.', duration: '04:50', image: 'images/videos/gastro.jpg' },
+  { id: 'gineco', topic: 'gineco', title: 'Tumores ginecológicos', description: 'Novas abordagens e o impacto nas pacientes.', duration: '04:48' },
+  { id: 'gu', topic: 'gu', title: 'Tumores geniturinários', description: 'Próstata, bexiga e rim: os dados mais comentados.', duration: '05:10' },
+  { id: 'imuno', topic: 'imuno', sponsor: 'GSK', title: 'Imunoterapia', description: 'Combinações, sequenciamento e seleção de pacientes.', duration: '06:02' },
+  { id: 'precisao', topic: 'precisao', title: 'Oncologia de precisão', description: 'Biomarcadores e terapias-alvo em evolução.', duration: '04:44' },
+  { id: 'linfomas', topic: 'hemato', sponsor: 'AbbVie', title: 'Linfomas e leucemias', description: 'Novas combinações e o lugar das terapias-alvo.', duration: '05:15' },
+  { id: 'melanoma', topic: 'imuno', title: 'Melanoma e pele', description: 'Resultados de longo prazo e novas estratégias.', duration: '03:57' },
+  { id: 'cabeca-pescoco', title: 'Cabeça e pescoço', description: 'Perspectivas para o tratamento multidisciplinar.', duration: '04:21' },
+  { id: 'pulmao-avancado', topic: 'pulmao', sponsor: 'Merck', title: 'Pulmão avançado', description: 'Primeira linha, sequenciamento e biomarcadores.', duration: '05:40' },
+  { id: 'suporte', title: 'Cuidados de suporte', description: 'Qualidade de vida e manejo de toxicidades.', duration: '04:05' },
+  { id: 'mieloma', topic: 'hemato', sponsor: 'AbbVie', title: 'Mieloma múltiplo', description: 'Estratégias de indução e manutenção em debate.', duration: '05:02' },
+  { id: 'sarcomas', title: 'Sarcomas e tumores raros', description: 'Como os dados do congresso chegam aos casos menos frequentes.', duration: '04:30' },
+];
+
+// 2 vídeos finais (SBOC)
+export const finalVideos = [
+  { id: 'sintese', title: 'Os principais destaques do congresso', description: 'Uma visão integrada dos temas que marcaram o ESMO 2026.', duration: '18:40', image: 'images/sintese.jpg' },
+  { id: 'sintese-pratica', title: 'O que muda na prática no Brasil', description: 'Os especialistas traduzem os resultados para a realidade brasileira.', duration: '16:15' },
+];
+
+export const finalSynthesis = {
+  eyebrow: 'Síntese final',
+  title: ['Os principais destaques,', 'em duas conversas.'],
+  description: 'Uma visão integrada dos temas que marcaram o congresso e do que muda na prática.',
+};
+
+// 8 textos: 5 SBOC · 2 AbbVie · 1 Merck
+export const texts = [
+  { id: 'texto-mama', type: 'analise', topic: 'mama', title: 'Mama: o que muda após o ESMO', description: 'Leitura crítica dos estudos com maior potencial de impacto.' },
+  { id: 'texto-biomarcadores', type: 'analise', topic: 'precisao', sponsor: 'AbbVie', title: 'Biomarcadores em foco', description: 'O papel dos biomarcadores na personalização do tratamento oncológico.' },
+  { id: 'texto-digestivos', type: 'analise', topic: 'gastro', title: 'O panorama dos tumores digestivos', description: 'Discussões que podem impactar a prática clínica nos próximos anos.' },
+  { id: 'texto-pulmao', type: 'analise', topic: 'pulmao', sponsor: 'Merck', title: 'Pulmão: da adjuvância à doença avançada', description: 'Dados apresentados e questões ainda em aberto.' },
+  { id: 'texto-gineco', type: 'analise', topic: 'gineco', title: 'Novas abordagens em ginecológicos', description: 'O que o congresso trouxe como horizonte.' },
+  { id: 'texto-hemato', type: 'analise', topic: 'hemato', sponsor: 'AbbVie', title: 'Onco-hematologia: combinações em debate', description: 'O que os novos dados indicam para linfomas e mieloma.' },
+  { id: 'texto-prostata', type: 'analise', topic: 'gu', title: 'Próstata em debate', description: 'Intensificação de tratamento e seleção de pacientes.' },
+  { id: 'texto-suporte', type: 'analise', title: 'Qualidade de vida no centro do cuidado', description: 'Cuidados de suporte e desfechos relatados pelos pacientes.' },
 ];
 
 export const topics = [
   { id: 'mama', label: 'Mama' },
   { id: 'pulmao', label: 'Pulmão' },
   { id: 'gastro', label: 'Gastrointestinais' },
+  { id: 'hemato', label: 'Onco-hematologia' },
+  { id: 'imuno', label: 'Imunoterapia' },
   { id: 'gineco', label: 'Ginecológicos' },
   { id: 'gu', label: 'Geniturinários' },
   { id: 'precisao', label: 'Oncologia de precisão' },
@@ -57,29 +101,15 @@ export const topics = [
 // Quantos temas aparecem como botão; o restante vai para "Mais temas"
 export const visibleTopicCount = 3;
 
-// Cards de "Explore por tema". type: 'video' | 'analise'. sponsor: nome do apoiador, se houver.
-export const themeItems = [
-  { id: 't1', type: 'video', topic: 'gastro', title: 'O panorama dos tumores digestivos', description: 'Discussões que podem impactar a prática clínica nos próximos anos.', duration: '11:50', image: 'images/temas/digestivos.jpg' },
-  { id: 't2', type: 'analise', topic: 'precisao', title: 'Biomarcadores em foco', description: 'O papel dos biomarcadores na personalização do tratamento oncológico.', sponsor: 'Apoiador A', image: 'images/temas/biomarcadores.jpg' },
-  { id: 't3', type: 'video', topic: 'gineco', title: 'Novas abordagens em ginecológicos', description: 'O que o congresso trouxe como horizonte.', duration: '10:48', image: 'images/temas/ginecologicos.jpg' },
-  { id: 't4', type: 'analise', topic: 'mama', title: 'Mama: o que muda após o ESMO', description: 'Leitura crítica dos estudos com maior potencial de impacto.', image: 'images/temas/mama.jpg' },
-  { id: 't5', type: 'video', topic: 'pulmao', title: 'Pulmão: da adjuvância à doença avançada', description: 'Dados apresentados e questões ainda em aberto.', duration: '13:05', image: 'images/temas/pulmao.jpg' },
-  { id: 't6', type: 'analise', topic: 'gu', title: 'Próstata em debate', description: 'Intensificação de tratamento e seleção de pacientes.', sponsor: 'Apoiador C', image: 'images/temas/prostata.jpg' },
-];
-
-export const finalSynthesis = {
-  eyebrow: 'Síntese final',
-  title: ['Os principais destaques,', 'em uma conversa.'],
-  description: 'Uma visão integrada dos temas que marcaram o congresso.',
-  duration: '18:40',
-  image: 'images/sintese.jpg',
-};
-
 export const supporters = [
-  { name: 'Apoiador A', shape: 'triangle' },
-  { name: 'Apoiador B', shape: 'circle' },
-  { name: 'Apoiador C', shape: 'hexagon' },
-  { name: 'Apoiador D', shape: 'square' },
+  // pharma: true → empresa patrocinadora; só essas entram nos avisos obrigatórios (topo, rodapé, cards)
+  // logoHeight (opcional, px): logos quadradas precisam de mais altura para ter o mesmo peso das horizontais
+  { name: 'AbbVie', logo: 'images/logos/abbvie.png', pharma: true },
+  { name: 'GSK', logo: 'images/logos/gsk.png', logoHeight: 68, pharma: true },
+  { name: 'SBOC', logo: 'images/logos/sboc-horizontal.png' },
+  { name: 'Merck', logo: 'images/logos/merck.png', logoHeight: 60, pharma: true },
+  // Atenção: as diretrizes Medscape pedem o logo da Medscape só no cabeçalho/rodapé, nunca ao lado de farmacêutica
+  { name: 'Medscape', logo: 'images/logos/medscape.png' },
 ];
 
 /*
@@ -87,7 +117,7 @@ export const supporters = [
   - Topo da página: "Desenvolvido pela Medscape com o apoio da [Pharma]"
   - Rodapé de todas as páginas: aviso de "Cobertura de Conferência"
   - Nunca usar "parceria" para a relação Medscape + empresa farmacêutica
-  Os nomes vêm da lista de apoiadores acima: ao trocar "Apoiador A..." pelos nomes reais, os avisos se atualizam.
+  Os nomes vêm das empresas marcadas com "pharma: true" na lista de apoiadores acima.
 */
 const joinNames = (names) =>
   names.length <= 1 ? names.join('') : `${names.slice(0, -1).join(', ')} e ${names.at(-1)}`;
@@ -100,7 +130,7 @@ export const supportedBy = (names) =>
 const requestedBy = (names) =>
   names.length === 1 ? `pela ${names[0]}` : `pelas empresas ${joinNames(names)}`;
 
-const sponsorNames = supporters.map((s) => s.name);
+const sponsorNames = supporters.filter((s) => s.pharma).map((s) => s.name);
 // Como o conteúdo deste site é nomeado no aviso ("Nenhuma parte desta cobertura...")
 const productName = 'desta cobertura';
 
@@ -137,7 +167,7 @@ export const footer = {
 
 
 /* ---------- Página interna de conteúdo ----------
-  Campos opcionais por conteúdo (em featuredVideos, themeItems ou finalSynthesis):
+  Campos opcionais por conteúdo (em featuredVideos, finalVideos ou texts):
   - summary:  texto de apresentação no topo da página (sem ele, usa "description")
   - body:     lista de parágrafos, para análises em texto
   - speakers: [{ name, role, photo? }] — especialistas do conteúdo
@@ -149,19 +179,17 @@ const PLACEHOLDER_SPEAKERS = [{ name: 'Nome do especialista', role: 'Cargo e ins
 
 export const allContent = [
   ...featuredVideos.map((v) => ({ ...v, type: 'video' })),
-  ...themeItems,
-  {
-    id: 'sintese',
-    type: 'video',
-    title: finalSynthesis.title.join(' '),
-    description: finalSynthesis.description,
-    duration: finalSynthesis.duration,
-    image: finalSynthesis.image,
-    kicker: 'Síntese final',
-  },
+  ...finalVideos.map((v) => ({ ...v, type: 'video', final: true, kicker: 'Síntese final' })),
+  ...texts,
 ];
 
+// "Explore por tema": todo o catálogo (vídeos e textos), exceto os vídeos finais
+export const exploreItems = allContent.filter((c) => !c.final);
+
 const topicLabel = (id) => topics.find((t) => t.id === id)?.label;
+
+// Logo da empresa patrocinadora (vem da lista de apoiadores)
+export const sponsorOf = (name) => supporters.find((s) => s.name === name);
 
 export function getContent(id) {
   const item = allContent.find((c) => c.id === id);
@@ -170,7 +198,8 @@ export function getContent(id) {
   return {
     ...item,
     isVideo,
-    kicker: item.kicker ?? (isVideo ? 'Vídeo da cobertura' : 'Análise da cobertura'),
+    kicker: item.kicker ?? (isVideo ? 'Vídeo da cobertura' : 'Texto da cobertura'),
+    sponsorInfo: item.sponsor ? sponsorOf(item.sponsor) : null,
     topicLabel: topicLabel(item.topic),
     summary:
       item.summary ??
@@ -187,7 +216,7 @@ export function getContent(id) {
 // Outros conteúdos para continuar a navegação: primeiro os do mesmo tema, depois os demais.
 // Mistura vídeos e análises, com e sem apoio, sem agrupar por empresa.
 export function relatedContent(item, count = 3) {
-  const others = allContent.filter((c) => c.id !== item.id && c.id !== 'sintese');
+  const others = allContent.filter((c) => c.id !== item.id && !c.final);
   const sameTopic = others.filter((c) => item.topic && c.topic === item.topic);
   const rest = others.filter((c) => !sameTopic.includes(c));
   return [...sameTopic, ...rest].slice(0, count);

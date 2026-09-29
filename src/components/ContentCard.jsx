@@ -16,7 +16,7 @@ export default function ContentCard({ item, size = 'md' }) {
           {item.duration && <Duration>{item.duration}</Duration>}
         </Media>
         <div className="card-body">
-          <span className="card-kind">{isVideo ? 'Vídeo' : 'Análise'}</span>
+          <span className="card-kind">{isVideo ? 'Vídeo' : 'Texto'}</span>
           <h3 className="card-title">{item.title}</h3>
           <p className="card-text">{item.description}</p>
         </div>

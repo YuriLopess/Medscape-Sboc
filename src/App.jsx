@@ -4,6 +4,7 @@ import Hero from './components/Hero.jsx';
 import VideoStrip from './components/VideoStrip.jsx';
 import FeaturedCarousel from './components/FeaturedCarousel.jsx';
 import ThemeExplorer from './components/ThemeExplorer.jsx';
+import TextsSection from './components/TextsSection.jsx';
 import FinalSynthesis from './components/FinalSynthesis.jsx';
 import Supporters from './components/Supporters.jsx';
 import SiteFooter from './components/SiteFooter.jsx';
@@ -34,6 +35,7 @@ export default function App() {
             <VideoStrip />
             <FeaturedCarousel />
             <ThemeExplorer />
+            <TextsSection />
             <FinalSynthesis />
             <Supporters />
           </>

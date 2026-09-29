@@ -57,7 +57,7 @@ function Avatar({ speaker }) {
 function Sidebar({ item }) {
   const { speakers } = item;
   const facts = [
-    ['Formato', item.isVideo ? 'Vídeo' : 'Análise'],
+    ['Formato', item.isVideo ? 'Vídeo' : 'Texto'],
     ['Tema', item.topicLabel],
     ['Duração', item.duration],
     ['Evento', `${event.name} · ${event.city}`],
@@ -65,6 +65,22 @@ function Sidebar({ item }) {
 
   return (
     <aside className="cp-sidebar">
+      {/* Conteúdo patrocinado: bloco com a logo da empresa (separado do logo Medscape, que fica só no cabeçalho/rodapé) */}
+      {item.sponsorInfo && (
+        <section className="cp-side-block cp-sponsor-block" aria-labelledby="cp-sponsor-title">
+          <h2 id="cp-sponsor-title" className="cp-side-title">Com o apoio de</h2>
+          <div className="cp-sponsor-logo">
+            {item.sponsorInfo.logo ? (
+              <img src={item.sponsorInfo.logo} alt={item.sponsorInfo.name} style={{ height: `${Math.round((item.sponsorInfo.logoHeight ?? 48) * 0.95)}px` }} />
+            ) : (
+              <span>{item.sponsorInfo.name}</span>
+            )}
+          </div>
+          <p className="cp-sponsor-note">
+            Desenvolvido pela Medscape com o apoio {supportedBy([item.sponsorInfo.name])}.
+          </p>
+        </section>
+      )}
       <section className="cp-side-block" aria-labelledby="cp-speakers-title">
         <h2 id="cp-speakers-title" className="cp-side-title">
           {speakers.length > 1 ? 'Especialistas' : 'Especialista'}
@@ -84,7 +100,7 @@ function Sidebar({ item }) {
 
       <section className="cp-side-block" aria-labelledby="cp-facts-title">
         <h2 id="cp-facts-title" className="cp-side-title">
-          {item.isVideo ? 'Sobre este vídeo' : 'Sobre esta análise'}
+          {item.isVideo ? 'Sobre este vídeo' : 'Sobre este texto'}
         </h2>
         <dl className="cp-facts">
           {facts.map(([label, value]) => (
@@ -138,7 +154,7 @@ export default function ContentPage({ item }) {
         </div>
       </header>
 
-      <section className="container cp-main" aria-label={item.isVideo ? 'Vídeo' : 'Análise'}>
+      <section className="container cp-main" aria-label={item.isVideo ? 'Vídeo' : 'Texto'}>
         <div className="cp-primary">
           {item.isVideo ? (
             <VideoPlayer item={item} />
