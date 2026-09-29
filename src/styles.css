@@ -54,8 +54,9 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Topo e cabeçalho ---------- */
 .topbar { background: var(--blue-soft); color: var(--muted); font-size: 12px; padding-block: 6px; }
-.topbar-inner { display: flex; justify-content: space-between; gap: 4px 24px; flex-wrap: wrap; }
-.topbar-disclosure { font-weight: 600; color: var(--ink); }
+/* Só o aviso B, discreto e à direita (como no exemplo do PDF de diretrizes) */
+.topbar-inner { display: flex; justify-content: flex-end; }
+.topbar-disclosure { margin: 0; font-weight: 600; color: var(--ink); }
 
 .site-header { position: sticky; top: 0; z-index: 20; background: #fff; border-bottom: 1px solid var(--line); }
 /* Cabeçalho em 3 zonas (referência: SBOC à esquerda, menu no centro, Medscape à direita) */
@@ -63,7 +64,8 @@ button { font: inherit; color: inherit; }
 /* align-items: flex-start → a logo mantém a proporção em vez de esticar até a largura do rótulo */
 .hb { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; text-decoration: none; }
 .hb--left { justify-self: start; }
-.hb--right { justify-self: end; align-items: flex-start; }
+/* Medscape sozinho, com um fio à esquerda marcando que é independente das outras marcas */
+.hb--right { justify-self: end; padding-left: 20px; border-left: 1px solid var(--line); }
 .hb-label { font-size: 11px; font-weight: 600; letter-spacing: .02em; line-height: 1; color: var(--text); }
 .hb-sboc { height: 46px; width: auto; border-radius: 4px; }
 .hb-medscape { height: 34px; width: auto; }
@@ -421,11 +423,9 @@ button { font: inherit; color: inherit; }
 /* Celular */
 @media (max-width: 640px) {
   html { scroll-padding-top: 70px; }
-  /* Faixa do topo: só o aviso obrigatório, numa linha compacta e centralizada
-     (o aviso de público continua no rodapé) */
+  /* Faixa do topo: o aviso obrigatório numa linha compacta e centralizada */
   .topbar { padding-block: 7px; }
   .topbar-inner { justify-content: center; text-align: center; }
-  .topbar-inner > span:first-child { display: none; }
   .topbar-disclosure { font-size: 11px; line-height: 1.45; text-wrap: balance; }
   /* Cabeçalho: logos com o mesmo peso visual, rótulos legíveis */
   .header-inner { min-height: 64px; gap: 14px; padding-block: 8px; }
@@ -433,7 +433,7 @@ button { font: inherit; color: inherit; }
   .hb-label { font-size: 10px; letter-spacing: .01em; }
   .hb-sboc { height: 30px; }
   .hb-medscape { height: 24px; }
-  .hb--right { padding-left: 14px; border-left: 1px solid var(--line); }
+  .hb--right { padding-left: 14px; }
   .main-nav { max-height: calc(100dvh - 64px); }
   .brand { gap: 10px; }
   .brand-logo { height: 26px; }

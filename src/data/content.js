@@ -18,14 +18,8 @@ export const event = {
 };
 
 export const navLinks = [
-  {
-    label: 'Cobertura',
-    children: [
-      { label: 'Em destaque', href: '#destaques' },
-      { label: 'Explore por tema', href: '#explorar' },
-      { label: 'Textos', href: '#textos' },
-    ],
-  },
+  // Itens com "children" viram um submenu
+  { label: 'Textos', href: '#textos' },
   { label: 'Vídeos', href: '#destaques' },
   { label: 'Síntese final', href: '#sintese' },
   { label: 'Apoiadores', href: '#apoiadores' },
@@ -108,8 +102,7 @@ export const supporters = [
   { name: 'GSK', logo: 'images/logos/gsk.png', logoHeight: 68, pharma: true },
   { name: 'SBOC', logo: 'images/logos/sboc-horizontal.png' },
   { name: 'Merck', logo: 'images/logos/merck.png', logoHeight: 60, pharma: true },
-  // Atenção: as diretrizes Medscape pedem o logo da Medscape só no cabeçalho/rodapé, nunca ao lado de farmacêutica
-  { name: 'Medscape', logo: 'images/logos/medscape.png' },
+  // Não incluir a Medscape aqui: pelas diretrizes, o logo dela só aparece no cabeçalho/rodapé, nunca ao lado de farmacêutica
 ];
 
 /*
@@ -126,17 +119,13 @@ const joinNames = (names) =>
 export const supportedBy = (names) =>
   names.length === 1 ? `da ${names[0]}` : `das empresas ${joinNames(names)}`;
 
-// "pela Empresa X" (uma empresa) ou "pelas empresas X, Y e Z" (várias)
-const requestedBy = (names) =>
-  names.length === 1 ? `pela ${names[0]}` : `pelas empresas ${joinNames(names)}`;
-
 const sponsorNames = supporters.filter((s) => s.pharma).map((s) => s.name);
 // Como o conteúdo deste site é nomeado no aviso ("Nenhuma parte desta cobertura...")
 const productName = 'desta cobertura';
 
 export const disclosure = {
-  // Componente B do PDF: "Solicitado pela [Pharma] e Desenvolvido pela Medscape"
-  top: `Solicitado ${requestedBy(sponsorNames)} e desenvolvido pela Medscape`,
+  // Componente B do PDF: texto literal do aviso de topo em português
+  top: `Desenvolvido pela Medscape com o apoio ${supportedBy(sponsorNames)}`,
   // Aviso de "Cobertura de Conferência" (versão em português do PDF de diretrizes)
   footer:
     `A cobertura da conferência foi desenvolvida pela Medscape com o apoio ${supportedBy(sponsorNames)}. ` +

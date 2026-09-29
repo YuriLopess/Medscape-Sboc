@@ -48,10 +48,9 @@ export default function SiteHeader() {
   return (
     <>
       <div className="topbar">
+        {/* B: aviso obrigatório no topo da página (diretrizes Medscape). O aviso de público fica no rodapé. */}
         <div className="container topbar-inner">
-          <span>Conteúdo destinado a profissionais de saúde.</span>
-          {/* B: aviso obrigatório no topo da página (diretrizes Medscape) */}
-          <span className="topbar-disclosure">{disclosure.top}</span>
+          <p className="topbar-disclosure">{disclosure.top}</p>
         </div>
       </div>
       <header className="site-header">
@@ -84,9 +83,8 @@ export default function SiteHeader() {
               )}
             </ul>
           </nav>
-          {/* C: logo Medscape, separado das outras marcas (diretrizes Medscape) */}
-          <a href="#/" className="hb hb--right" aria-label="Desenvolvido pela Medscape, voltar ao início">
-            <span className="hb-label">Desenvolvido por</span>
+          {/* C: logo Medscape sozinho, separado das outras marcas; a menção à Medscape fica só no aviso B */}
+          <a href="#/" className="hb hb--right" aria-label="Medscape, voltar ao início">
             <img className="hb-medscape" src="images/logos/medscape.png" alt="" width="698" height="160" />
           </a>
         </div>
