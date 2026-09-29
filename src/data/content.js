@@ -69,16 +69,17 @@ export const finalSynthesis = {
   description: 'Uma visão integrada dos temas que marcaram o congresso e do que muda na prática.',
 };
 
-// 8 textos: 5 SBOC · 2 AbbVie · 1 Merck
+// 8 textos: 5 SBOC · 2 AbbVie · 1 Merck. O primeiro é o destaque da seção (use um com imagem).
+// readTime: tempo estimado de leitura (provisório)
 export const texts = [
-  { id: 'texto-mama', type: 'analise', topic: 'mama', title: 'Mama: o que muda após o ESMO', description: 'Leitura crítica dos estudos com maior potencial de impacto.' },
-  { id: 'texto-biomarcadores', type: 'analise', topic: 'precisao', sponsor: 'AbbVie', title: 'Biomarcadores em foco', description: 'O papel dos biomarcadores na personalização do tratamento oncológico.' },
-  { id: 'texto-digestivos', type: 'analise', topic: 'gastro', title: 'O panorama dos tumores digestivos', description: 'Discussões que podem impactar a prática clínica nos próximos anos.' },
-  { id: 'texto-pulmao', type: 'analise', topic: 'pulmao', sponsor: 'Merck', title: 'Pulmão: da adjuvância à doença avançada', description: 'Dados apresentados e questões ainda em aberto.' },
-  { id: 'texto-gineco', type: 'analise', topic: 'gineco', title: 'Novas abordagens em ginecológicos', description: 'O que o congresso trouxe como horizonte.' },
-  { id: 'texto-hemato', type: 'analise', topic: 'hemato', sponsor: 'AbbVie', title: 'Onco-hematologia: combinações em debate', description: 'O que os novos dados indicam para linfomas e mieloma.' },
-  { id: 'texto-prostata', type: 'analise', topic: 'gu', title: 'Próstata em debate', description: 'Intensificação de tratamento e seleção de pacientes.' },
-  { id: 'texto-suporte', type: 'analise', title: 'Qualidade de vida no centro do cuidado', description: 'Cuidados de suporte e desfechos relatados pelos pacientes.' },
+  { id: 'texto-digestivos', type: 'analise', topic: 'gastro', title: 'O panorama dos tumores digestivos', description: 'Discussões que podem impactar a prática clínica nos próximos anos.', readTime: '6 min', image: 'images/temas/digestivos.jpg' },
+  { id: 'texto-biomarcadores', type: 'analise', topic: 'precisao', sponsor: 'AbbVie', title: 'Biomarcadores em foco', description: 'O papel dos biomarcadores na personalização do tratamento oncológico.', readTime: '5 min', image: 'images/temas/biomarcadores.jpg' },
+  { id: 'texto-mama', type: 'analise', topic: 'mama', title: 'Mama: o que muda após o ESMO', description: 'Leitura crítica dos estudos com maior potencial de impacto.', readTime: '7 min' },
+  { id: 'texto-pulmao', type: 'analise', topic: 'pulmao', sponsor: 'Merck', title: 'Pulmão: da adjuvância à doença avançada', description: 'Dados apresentados e questões ainda em aberto.', readTime: '6 min' },
+  { id: 'texto-gineco', type: 'analise', topic: 'gineco', title: 'Novas abordagens em ginecológicos', description: 'O que o congresso trouxe como horizonte.', readTime: '5 min', image: 'images/temas/ginecologicos.jpg' },
+  { id: 'texto-hemato', type: 'analise', topic: 'hemato', sponsor: 'AbbVie', title: 'Onco-hematologia: combinações em debate', description: 'O que os novos dados indicam para linfomas e mieloma.', readTime: '6 min' },
+  { id: 'texto-prostata', type: 'analise', topic: 'gu', title: 'Próstata em debate', description: 'Intensificação de tratamento e seleção de pacientes.', readTime: '4 min' },
+  { id: 'texto-suporte', type: 'analise', title: 'Qualidade de vida no centro do cuidado', description: 'Cuidados de suporte e desfechos relatados pelos pacientes.', readTime: '5 min' },
 ];
 
 export const topics = [
@@ -175,7 +176,7 @@ export const allContent = [
 // "Explore por tema": todo o catálogo (vídeos e textos), exceto os vídeos finais
 export const exploreItems = allContent.filter((c) => !c.final);
 
-const topicLabel = (id) => topics.find((t) => t.id === id)?.label;
+export const topicLabel = (id) => topics.find((t) => t.id === id)?.label;
 
 // Logo da empresa patrocinadora (vem da lista de apoiadores)
 export const sponsorOf = (name) => supporters.find((s) => s.name === name);

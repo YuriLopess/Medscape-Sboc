@@ -275,12 +275,55 @@ button { font: inherit; color: inherit; }
 .synthesis-caption-kicker { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgb(255 255 255 / .8); }
 .synthesis-caption-title { font-family: var(--font-heading); font-size: clamp(17px, 1.6vw, 22px); font-weight: 700; line-height: 1.25; color: #fff; }
 
-/* ---------- Textos (versão inicial) ---------- */
-.texts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 22px; }
-.texts-grid .card { flex: none; }
-.texts-grid .card-media { aspect-ratio: 16 / 9; }
-@media (max-width: 1100px) { .texts-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .texts-grid { grid-template-columns: 1fr; } }
+/* ---------- Textos: layout editorial (listas de notícias do Medscape) na identidade do site ---------- */
+/* Mesmo título de seção, Montserrat azul nos títulos, rótulos como os dos cards, fios e cantos do site */
+.tx-top { margin-top: 28px; }
+.tx-kicker { display: block; margin-bottom: 4px; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--kind); }
+.tx-meta { margin: 6px 0 0; font-size: 12.5px; line-height: 1.4; color: var(--muted); }
+.tx-sep { margin-inline: 8px; color: var(--line); }
+.tx-sponsor { margin: 6px 0 0; font-size: 11.5px; font-weight: 600; line-height: 1.4; color: var(--navy); }
+.tx-title, .tx-lead-title { font-family: var(--font-heading); font-weight: 700; color: var(--ink); text-decoration: underline transparent; text-decoration-thickness: 2px; text-underline-offset: 4px; transition: text-decoration-color .2s ease; }
+.tx-title { display: block; font-size: 17px; line-height: 1.3; }
+.tx-lead:hover .tx-lead-title, .tx-row-link:hover .tx-title { text-decoration-color: var(--accent-light); }
+.tx-lead:hover .tx-lead-media img, .tx-row-link:hover .tx-thumb img { transform: scale(1.04); }
+.tx-lead-media img, .tx-thumb img { transition: transform .35s ease; }
+
+/* Topo: destaque (imagem + título + resumo) e 2 textos ao lado */
+.tx-top { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 44px); padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+.tx-lead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; text-decoration: none; }
+.tx-lead-media { aspect-ratio: 16 / 10; border-radius: var(--radius); }
+.tx-lead-body { display: flex; flex-direction: column; }
+.tx-lead-title { font-size: clamp(22px, 2vw, 28px); line-height: 1.2; }
+.tx-lead-dek { margin-top: 14px; font-size: 16px; line-height: 1.5; color: var(--text); }
+.tx-side { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.tx-side .tx-row:first-child .tx-row-link { padding-top: 0; }
+.tx-side .tx-row:last-child .tx-row-link { border-bottom: 0; }
+
+/* Linha de lista: texto à esquerda, miniatura à direita */
+.tx-row-link { display: flex; align-items: flex-start; gap: 18px; padding-block: 16px; border-bottom: 1px solid var(--line); text-decoration: none; }
+.tx-row-body { flex: 1; min-width: 0; }
+.tx-thumb { flex: none; width: 88px; aspect-ratio: 16 / 9; margin-top: 4px; border-radius: var(--radius); }
+.tx-thumb .media-placeholder span { display: none; }
+
+/* Lista "Mais textos" em duas colunas */
+.tx-list-head { display: flex; align-items: baseline; gap: 16px; margin-top: 32px; }
+.tx-all { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 600; color: var(--blue); text-decoration: none; }
+.tx-all:hover { text-decoration: underline; text-underline-offset: 3px; }
+.tx-all svg { width: 14px; height: 14px; }
+.tx-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(32px, 6vw, 96px); margin: 8px 0 0; padding: 0; list-style: none; }
+
+@media (max-width: 1024px) {
+  .tx-top { grid-template-columns: 1fr; }
+  .tx-side { border-top: 1px solid var(--line); }
+  .tx-side .tx-row:first-child .tx-row-link { padding-top: 16px; }
+}
+@media (max-width: 720px) {
+  .tx-lead { grid-template-columns: 1fr; gap: 16px; }
+  .tx-lead-media { aspect-ratio: 16 / 9; }
+  .tx-list { grid-template-columns: 1fr; }
+  .tx-title { font-size: 16.5px; }
+  .tx-thumb { width: 80px; }
+}
 
 /* ---------- Apoiadores ---------- */
 /* Faixa contínua de logos: cartões em loop, bordas esfumadas, cor ao passar o mouse */

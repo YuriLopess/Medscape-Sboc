@@ -33,10 +33,10 @@ export default function App() {
           <>
             <Hero />
             <VideoStrip />
-            <FeaturedCarousel />
-            <ThemeExplorer />
             <TextsSection />
+            <FeaturedCarousel />
             <FinalSynthesis />
+            <ThemeExplorer />
             <Supporters />
           </>
         )}
