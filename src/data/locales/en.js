@@ -16,9 +16,9 @@ export default {
   event: {
     dates: 'Oct 23 – 27, 2026',
     city: 'Madrid, Spain',
-    tagline: 'Science. People. A healthier future.',
-    title: ['Oncology', 'in perspective.'],
-    lead: 'Analysis and perspectives on the key topics of the congress, with the participation of SBOC.',
+    tagline: 'Global knowledge • Brazilian perspective • Oncology practice',
+    title: ['ESMO 2026 as seen by', 'Brazilian oncology.'],
+    lead: 'Medscape and SBOC bring together Brazilian experts to analyze the studies, debates and advances that deserve attention.',
     heroCaption: ['Madrid', 'connects', 'ideas for', 'more lives'],
     heroAlt: 'ESMO 2026 plenary session with the audience facing the stage',
   },
@@ -97,7 +97,8 @@ export default {
   },
 
   // Required disclaimers (Medscape guidelines, English version from the PDF)
-  sponsorParts: (names) => ['Developed by Medscape with support from', join(names)],
+  // Aviso do topo da página, em duas partes [começo da frase, instituição] para o celular quebrar a linha no ponto certo
+  topDisclosure: ['Developed by Medscape with support from the', 'Brazilian Society of Clinical Oncology'],
   sponsorLine: (names) => `Developed by Medscape with support from ${join(names)}`,
   footerDisclaimer: (names) =>
     `Conference coverage has been developed by Medscape with support from ${join(names)}. ` +
@@ -117,13 +118,13 @@ export default {
     skip: 'Skip to content',
     homeSboc: 'SBOC, back to home',
     homeMedscape: 'Medscape, back to home',
-    participation: 'With the participation of',
+    participation: 'In partnership with',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     mainNav: 'Main',
     language: 'Language',
 
-    exploreCoverage: 'Explore the coverage',
+    exploreCoverage: 'Follow ESMO 2026',
     videosCount: (n) => `${n} coverage videos`,
     atYourPace: 'Explore at your own pace.',
     seeAll: 'See all',

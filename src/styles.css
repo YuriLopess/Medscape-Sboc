@@ -150,8 +150,8 @@ button { font: inherit; color: inherit; }
 .hero-content { padding-block: 56px 44px; }
 .hero-event { margin: 0; font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: .06em; }
 .hero-dates { margin: 6px 0 0; font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; opacity: .92; }
-.hero-title-line { display: block; }
-.hero-title { margin: 24px 0 18px; font-family: var(--font-heading); font-size: clamp(36px, 4.6vw, 64px); font-weight: 700; line-height: .98; letter-spacing: -.015em; }
+.hero-title-line { display: block; text-wrap: balance; } /* se a linha quebrar (celular), quebra equilibrada */
+.hero-title { margin: 24px 0 18px; font-family: var(--font-heading); font-size: clamp(32px, 3.2vw, 44px); /* título longo: cada linha cabe na coluna de texto, sem entrar na foto */ font-weight: 700; line-height: .98; letter-spacing: -.015em; }
 .hero-lead { max-width: 30em; margin: 0 0 30px; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.5; opacity: .95; }
 .hero .btn { padding: 13px 26px; font-size: 15px; border-radius: 5px; }
 .hero-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 28px; margin-top: 40px; font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }

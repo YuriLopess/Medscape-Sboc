@@ -266,8 +266,9 @@ export function buildContent(lang) {
     // Frase de apoio de um conteúdo: "Desenvolvido pela Medscape com o apoio da [Pharma]"
     sponsorLine: (names) => L.sponsorLine(names),
     disclosure: {
-      top: L.sponsorLine(sponsorNames),
-      topParts: L.sponsorParts(sponsorNames),
+      // Topo da página: apoio da SBOC (as farmacêuticas aparecem nos cards, nas páginas de conteúdo e no rodapé)
+      top: L.topDisclosure.join(' '),
+      topParts: L.topDisclosure,
       footer: L.footerDisclaimer(sponsorNames),
     },
     footer: L.footer,

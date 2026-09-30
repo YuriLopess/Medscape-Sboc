@@ -16,9 +16,9 @@ export default {
   event: {
     dates: '23 – 27 out 2026',
     city: 'Madri, Espanha',
-    tagline: 'Ciência. Pessoas. Um futuro mais saudável.',
-    title: ['A oncologia', 'em perspectiva.'],
-    lead: 'Análises e perspectivas sobre os principais temas do congresso, com a participação da SBOC.',
+    tagline: 'Conhecimento global • Perspectiva brasileira • Prática oncológica',
+    title: ['O ESMO 2026 sob o olhar', 'da oncologia brasileira.'],
+    lead: 'Medscape e SBOC reúnem especialistas brasileiros para analisar os estudos, debates e avanços que merecem atenção.',
     heroCaption: ['Madri', 'conecta', 'ideias para', 'mais vidas'],
     heroAlt: 'Plenária do congresso ESMO 2026 com o público diante do palco',
   },
@@ -99,11 +99,8 @@ export default {
 
   /* Avisos obrigatórios (diretrizes Medscape, versão em português do PDF).
      Nunca usar "parceria" para a relação Medscape + empresa farmacêutica. */
-  // Aviso em duas partes [começo da frase, empresas], para o celular poder quebrar a linha no ponto certo
-  sponsorParts: (names) => [
-    names.length === 1 ? 'Desenvolvido pela Medscape com o apoio da' : 'Desenvolvido pela Medscape com o apoio das empresas',
-    join(names),
-  ],
+  // Aviso do topo da página, em duas partes [começo da frase, instituição] para o celular quebrar a linha no ponto certo
+  topDisclosure: ['Desenvolvido pelo Medscape com o apoio da', 'Sociedade Brasileira de Oncologia Clínica'],
   sponsorLine: (names) => `Desenvolvido pela Medscape com o apoio ${supportedBy(names)}`,
   footerDisclaimer: (names) =>
     `A cobertura da conferência foi desenvolvida pela Medscape com o apoio ${supportedBy(names)}. ` +
@@ -124,13 +121,13 @@ export default {
     skip: 'Ir para o conteúdo',
     homeSboc: 'SBOC, voltar ao início',
     homeMedscape: 'Medscape, voltar ao início',
-    participation: 'Com a participação da',
+    participation: 'Em parceria com a',
     openMenu: 'Abrir menu',
     closeMenu: 'Fechar menu',
     mainNav: 'Principal',
     language: 'Idioma',
 
-    exploreCoverage: 'Explorar a cobertura',
+    exploreCoverage: 'Acompanhar o ESMO 2026',
     videosCount: (n) => `${n} vídeos de cobertura`,
     atYourPace: 'Explore no seu ritmo.',
     seeAll: 'Ver todos',
