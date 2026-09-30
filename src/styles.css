@@ -281,9 +281,13 @@ button { font: inherit; color: inherit; }
    degradê azul embaixo, nome em branco. No hover a foto aproxima, o azul se aprofunda e os arcos do
    banner se desenham sobre a foto. */
 .areas { padding-bottom: 0; }
-.areas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0 0; padding: 0; list-style: none; }
+/* Mosaico na escala de "Em destaque": as duas primeiras áreas ocupam meia largura cada (a largura dos
+   cards de vídeo), as outras oito vêm em duas fileiras de quatro */
+.areas-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; margin: 24px 0 0; padding: 0; list-style: none; }
+.areas-grid li { grid-column: span 3; }
+.areas-grid li:nth-child(-n+2) { grid-column: span 6; }
 .areas-grid li { display: flex; } /* cards da mesma linha com a mesma altura */
-.area-card { position: relative; isolation: isolate; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; min-height: 210px; padding: 16px 18px 16px; border-radius: var(--radius); overflow: hidden; background: var(--navy); color: #fff; text-decoration: none; transition: transform .3s ease, box-shadow .3s ease; }
+.area-card { position: relative; isolation: isolate; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; min-height: 240px; padding: 20px 22px; border-radius: var(--radius); overflow: hidden; background: var(--navy); color: #fff; text-decoration: none; transition: transform .3s ease, box-shadow .3s ease; }
 /* Camadas, de trás para a frente: foto, degradê, arcos, texto */
 .area-media { position: absolute; inset: 0; z-index: -3; }
 .area-media img { transition: transform .7s var(--ease-out, ease); }
@@ -292,9 +296,9 @@ button { font: inherit; color: inherit; }
 .area-card::after { content: ''; position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, rgb(var(--navy-rgb) / .45) 0%, rgb(3 22 60 / .94) 100%); opacity: 0; transition: opacity .4s ease; }
 .area-arcs { position: absolute; top: 0; right: 0; bottom: 0; left: 38%; z-index: -1; width: auto; height: 100%; overflow: visible; pointer-events: none; clip-path: inset(0 0 100% 0); transition: clip-path .15s ease; }
 .area-arcs path { fill: none; stroke: var(--arc); stroke-width: 1.5; opacity: .85; vector-effect: non-scaling-stroke; }
-.area-name { font-family: var(--font-heading); font-size: 17px; font-weight: 700; line-height: 1.25; color: #fff; text-shadow: 0 1px 10px rgb(3 22 60 / .45); }
+.area-name { font-family: var(--font-heading); font-size: 19px; font-weight: 700; line-height: 1.25; color: #fff; text-shadow: 0 1px 10px rgb(3 22 60 / .45); }
 .area-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; }
-.area-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: rgb(255 255 255 / .82); }
+.area-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; color: rgb(255 255 255 / .82); }
 .area-tag svg { width: 11px; height: 11px; color: #fff; opacity: .8; }
 .area-arrow { position: absolute; top: 14px; right: 14px; width: 18px; height: 18px; color: #fff; opacity: 0; transform: translateX(-6px); transition: opacity .3s ease, transform .3s ease; }
 /* Hover e foco pelo teclado */
@@ -304,11 +308,20 @@ button { font: inherit; color: inherit; }
 .area-card:hover .area-arcs, .area-card:focus-visible .area-arcs { clip-path: inset(-20%); transition: clip-path .9s .15s cubic-bezier(.55, 0, .2, 1); }
 .area-card:hover .area-arrow, .area-card:focus-visible .area-arrow { opacity: 1; transform: none; }
 .area-card:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 3px; }
-@media (min-width: 1101px) { .areas-grid { grid-template-columns: repeat(5, 1fr); } } /* 10 áreas em 2 fileiras cheias */
-@media (max-width: 900px) { .areas-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+/* Áreas em destaque: mais altas e com o nome maior */
+.areas-grid li:nth-child(-n+2) .area-card { min-height: 300px; padding: 24px 28px; }
+.areas-grid li:nth-child(-n+2) .area-name { font-size: clamp(22px, 2.2vw, 28px); }
+.areas-grid li:nth-child(-n+2) .area-tag { font-size: 13.5px; }
+@media (max-width: 900px) {
+  .areas-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .areas-grid li { grid-column: span 1; }
+  .areas-grid li:nth-child(-n+2) { grid-column: span 2; }
+}
 @media (max-width: 640px) {
-  .area-card { min-height: 150px; padding: 12px 14px; }
-  .area-name { font-size: 15.5px; }
+  .area-card { min-height: 160px; padding: 12px 14px; }
+  .area-name { font-size: 16px; }
+  .areas-grid li:nth-child(-n+2) .area-card { min-height: 210px; padding: 16px 18px; }
+  .areas-grid li:nth-child(-n+2) .area-name { font-size: 21px; }
   .area-tag { font-size: 11.5px; }
   .area-arrow { opacity: 1; transform: none; top: 10px; right: 10px; width: 16px; height: 16px; }
 }
