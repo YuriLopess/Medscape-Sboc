@@ -209,7 +209,7 @@ button { font: inherit; color: inherit; }
 .card--lg .card-media { aspect-ratio: 16 / 7.4; }
 .card-body { padding: 14px 16px 18px; }
 .card-kind { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--kind); }
-.card-kind--sponsored, .tx-kicker--sponsored { display: inline-block; padding: 2px 9px; border-radius: 999px; background: var(--blue-soft); color: var(--navy); }
+.card-kind--sponsored, .tx-kicker--sponsored { display: inline-block; width: fit-content; /* pílula do tamanho do texto, mesmo quando .tx-kicker vira bloco */ padding: 2px 9px; border-radius: 999px; background: var(--blue-soft); color: var(--navy); }
 .card-meta { display: flex; flex-wrap: wrap; margin: 10px 0 0; font-size: 12px; color: var(--muted); }
 .card-meta span + span::before { content: '·'; margin-inline: 7px; color: var(--line); }
 .card-title { margin: 4px 0 6px; font-family: var(--font-heading); font-size: 19px; font-weight: 700; line-height: 1.25; color: var(--ink); }
@@ -331,7 +331,8 @@ button { font: inherit; color: inherit; }
 .tx-top { margin-top: 28px; }
 .tx-kicker { display: block; margin-bottom: 4px; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--kind); }
 .tx-meta { display: flex; flex-wrap: wrap; align-items: center; margin: 6px 0 0; font-size: 12.5px; line-height: 1.4; color: var(--muted); }
-.tx-sep { margin-inline: 8px; color: var(--line); }
+/* Separador preso ao item seguinte: quando a linha quebra, ele desce junto e não sobra no fim da linha */
+.tx-meta > span + span::before { content: '|'; margin-inline: 8px; color: var(--line); }
 .tx-sponsor { margin: 6px 0 0; font-size: 11.5px; font-weight: 600; line-height: 1.4; color: var(--navy); }
 .tx-title, .tx-lead-title { font-family: var(--font-heading); font-weight: 700; color: var(--ink); text-decoration: underline transparent; text-decoration-thickness: 2px; text-underline-offset: 4px; transition: text-decoration-color .2s ease; }
 .tx-title { display: block; font-size: 17px; line-height: 1.3; }
@@ -370,6 +371,12 @@ button { font: inherit; color: inherit; }
 }
 @media (max-width: 720px) {
   .tx-lead { grid-template-columns: 1fr; gap: 16px; }
+  /* Celular: destaque e lista viram uma coluna só, com o mesmo espaçamento entre todas as linhas */
+  .tx-top { padding-bottom: 0; border-bottom: 0; }
+  .tx-side .tx-row:last-child .tx-row-link { border-bottom: 1px solid var(--line); }
+  .tx-list { margin-top: 0; }
+  /* Nas linhas estreitas, só área e data; o tempo de leitura fica no destaque */
+  .tx-row .tx-meta-read { display: none; }
   .tx-lead-media { aspect-ratio: 16 / 9; }
   .tx-list { grid-template-columns: 1fr; }
   .tx-title { font-size: 16.5px; }
@@ -711,7 +718,8 @@ button { font: inherit; color: inherit; }
   .carousel-progress { margin-top: 16px; }
   .section-title { font-size: 25px; }
   .section-sub { font-size: 14.5px; }
-  .chips { padding-inline: var(--gutter); }
+  /* Filtros das listagens: a fileira rola até a borda da tela e o primeiro filtro fica alinhado ao texto */
+  .lp-filters { margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter) 40px; }
 
   .synthesis .btn { width: 100%; justify-content: center; min-height: 48px; }
   .synthesis-media .play-badge--large { width: 48px; height: 48px; }

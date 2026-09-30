@@ -58,7 +58,6 @@ export default function SearchPage({ q }) {
                       <span className="se-dek">{item.description}</span>
                       <span className="tx-meta">
                         {topicLabel(item.topic) && <span>{topicLabel(item.topic)}</span>}
-                        <span className="tx-sep" aria-hidden="true">|</span>
                         <span>{item.dateLabel}</span>
                       </span>
                     </span>

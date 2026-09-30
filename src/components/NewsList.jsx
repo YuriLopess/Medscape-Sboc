@@ -23,9 +23,9 @@ function Meta({ item }) {
   const topic = topicLabel(item.topic);
   return (
     <p className="tx-meta">
-      {topic && <><span>{topic}</span><span className="tx-sep" aria-hidden="true">|</span></>}
+      {topic && <span>{topic}</span>}
       <span>{item.dateLabel}</span>
-      {item.readTime && <><span className="tx-sep" aria-hidden="true">|</span>{ui.readTime(item.readTime)}</>}
+      {item.readTime && <span className="tx-meta-read">{ui.readTime(item.readTime)}</span>}
     </p>
   );
 }
