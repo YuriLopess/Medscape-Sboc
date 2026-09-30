@@ -282,7 +282,7 @@ button { font: inherit; color: inherit; }
    azul-claro se desenha embaixo do nome (sem cobrir a foto). */
 .areas { padding-bottom: 0; }
 /* Mosaico na escala de "Em destaque": as duas primeiras áreas ocupam meia largura cada (a largura dos
-   cards de vídeo), as outras oito vêm em duas fileiras de quatro */
+   cards de vídeo), as outras quatro vêm numa fileira embaixo */
 .areas-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; margin: 24px 0 0; padding: 0; list-style: none; }
 .areas-grid li { grid-column: span 3; }
 .areas-grid li:nth-child(-n+2) { grid-column: span 6; }

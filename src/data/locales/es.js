@@ -24,12 +24,8 @@ export default {
   topics: {
     mama: 'Mama',
     pulmao: 'Pulmón',
-    gastro: 'Gastrointestinales',
-    hemato: 'Oncohematología',
-    imuno: 'Inmunoterapia',
-    gineco: 'Ginecológicos',
-    gu: 'Genitourinarios',
-    precisao: 'Oncología de precisión',
+    gastro: 'Gastrointestinal',
+    gineco: 'Ginecológico',
     pele: 'Piel y melanoma',
     outros: 'Otros temas',
   },
@@ -52,29 +48,13 @@ export default {
       intro: 'En ovario, endometrio y cuello uterino, el congreso reforzó el peso de la clasificación molecular y de las combinaciones con inmunoterapia en la elección del tratamiento.',
       points: ['Clasificación molecular en cáncer de endometrio', 'Mantenimiento en cáncer de ovario', 'Inmunoterapia en cáncer de cuello uterino avanzado'],
     },
-    hemato: {
-      intro: 'Linfomas, leucemias y mieloma múltiple presentaron nuevos datos sobre anticuerpos biespecíficos, terapias celulares y la secuencia de las líneas de tratamiento.',
-      points: ['Anticuerpos biespecíficos y terapias celulares', 'Inducción y mantenimiento en mieloma múltiple', 'Secuencia de tratamientos en linfomas'],
-    },
-    gu: {
-      intro: 'Próstata, vejiga y riñón se discutieron a la luz de la intensificación del tratamiento en la enfermedad sensible a la castración, los conjugados en urotelio y las combinaciones en riñón.',
-      points: ['Intensificación del tratamiento en cáncer de próstata', 'Conjugados anticuerpo-fármaco en cáncer urotelial', 'Combinaciones con inmunoterapia en carcinoma renal'],
-    },
-    imuno: {
-      intro: 'La inmunoterapia atraviesa todas las áreas del congreso: combinaciones, uso antes de la cirugía y la búsqueda de marcadores que indiquen quién responde.',
-      points: ['Inmunoterapia neoadyuvante y perioperatoria', 'Combinaciones y manejo de toxicidades', 'Marcadores de respuesta'],
-    },
-    precisao: {
-      intro: 'Secuenciación genómica, biopsia líquida y terapias dirigidas para alteraciones raras muestran cómo la oncología de precisión llega a la práctica.',
-      points: ['Biopsia líquida en el diagnóstico y el seguimiento', 'Terapias dirigidas para alteraciones moleculares raras', 'Acceso a pruebas genómicas en la rutina'],
-    },
     pele: {
       intro: 'El melanoma y otros tumores de piel reunieron resultados a largo plazo de la inmunoterapia y nuevas estrategias para la enfermedad de alto riesgo.',
       points: ['Resultados a largo plazo de la inmunoterapia en melanoma', 'Tratamiento adyuvante y neoadyuvante en enfermedad de alto riesgo', 'Carcinomas cutáneos avanzados'],
     },
     outros: {
-      intro: 'Temas que atraviesan las especialidades: cuidados de soporte, tumores raros, cabeza y cuello y el panorama general del congreso.',
-      points: ['Cuidados de soporte y calidad de vida', 'Sarcomas y tumores raros', 'Tumores de cabeza y cuello'],
+      intro: 'Oncohematología, tumores genitourinarios, inmunoterapia, oncología de precisión, cuidados de soporte y tumores raros: los temas que completan la cobertura del congreso.',
+      points: ['Linfomas, leucemias y mieloma múltiple', 'Tumores genitourinarios e inmunoterapia', 'Oncología de precisión y cuidados de soporte'],
     },
   },
 

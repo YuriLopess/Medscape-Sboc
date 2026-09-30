@@ -29,11 +29,7 @@ export default {
     mama: 'Breast',
     pulmao: 'Lung',
     gastro: 'Gastrointestinal',
-    hemato: 'Hematologic oncology',
-    imuno: 'Immunotherapy',
     gineco: 'Gynecologic',
-    gu: 'Genitourinary',
-    precisao: 'Precision oncology',
     pele: 'Skin and melanoma',
     outros: 'Other topics',
   },
@@ -56,29 +52,13 @@ export default {
       intro: 'In ovarian, endometrial and cervical cancer, the congress reinforced the weight of molecular classification and immunotherapy combinations in choosing treatment.',
       points: ['Molecular classification in endometrial cancer', 'Maintenance therapy in ovarian cancer', 'Immunotherapy in advanced cervical cancer'],
     },
-    hemato: {
-      intro: 'Lymphoma, leukemia and multiple myeloma featured new data on bispecific antibodies, cell therapies and the sequencing of treatment lines.',
-      points: ['Bispecific antibodies and cell therapies', 'Induction and maintenance in multiple myeloma', 'Treatment sequencing in lymphoma'],
-    },
-    gu: {
-      intro: 'Prostate, bladder and kidney cancers were discussed in light of treatment intensification in castration-sensitive disease, conjugates in urothelial cancer and combinations in kidney cancer.',
-      points: ['Treatment intensification in prostate cancer', 'Antibody-drug conjugates in urothelial cancer', 'Immunotherapy combinations in renal cell carcinoma'],
-    },
-    imuno: {
-      intro: 'Immunotherapy runs through every area of the congress: combinations, use before surgery and the search for markers of who responds.',
-      points: ['Neoadjuvant and perioperative immunotherapy', 'Combinations and toxicity management', 'Markers of response'],
-    },
-    precisao: {
-      intro: 'Genomic sequencing, liquid biopsy and targeted therapies for rare alterations show how precision oncology reaches practice.',
-      points: ['Liquid biopsy in diagnosis and follow-up', 'Targeted therapies for rare molecular alterations', 'Access to genomic testing in routine care'],
-    },
     pele: {
       intro: 'Melanoma and other skin cancers brought long-term immunotherapy results and new strategies for high-risk disease.',
       points: ['Long-term immunotherapy results in melanoma', 'Adjuvant and neoadjuvant treatment in high-risk disease', 'Advanced cutaneous carcinomas'],
     },
     outros: {
-      intro: 'Topics that cut across specialties: supportive care, rare tumors, head and neck cancer and the overall view of the congress.',
-      points: ['Supportive care and quality of life', 'Sarcomas and rare tumors', 'Head and neck cancers'],
+      intro: 'Hematologic oncology, genitourinary tumors, immunotherapy, precision oncology, supportive care and rare tumors: the topics that round out the congress coverage.',
+      points: ['Lymphoma, leukemia and multiple myeloma', 'Genitourinary tumors and immunotherapy', 'Precision oncology and supportive care'],
     },
   },
 
