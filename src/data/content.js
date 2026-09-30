@@ -25,6 +25,20 @@ const eventBase = {
 */
 const topicIds = ['pulmao', 'mama', 'gastro', 'gineco', 'hemato', 'gu', 'imuno', 'precisao', 'pele', 'outros'];
 
+// Foto de capa de cada área no "Explore por área terapêutica" (as dez são diferentes entre si)
+const topicCovers = {
+  pulmao: 'images/banco/tomografia-pulmao.jpg',
+  mama: 'images/videos/mama.jpg',
+  gastro: 'images/videos/gastro.jpg',
+  gineco: 'images/temas/ginecologicos.jpg',
+  hemato: 'images/banco/sangue.jpg',
+  gu: 'images/banco/hospital.jpg',
+  imuno: 'images/banco/celula.jpg',
+  precisao: 'images/temas/biomarcadores.jpg',
+  pele: 'images/banco/laboratorio.jpg',
+  outros: 'images/videos/panorama.jpg',
+};
+
 // Rota da Síntese final; também é o "tema" na URL dos dois vídeos de encerramento
 export const SYNTHESIS = 'sintese-final';
 
@@ -167,6 +181,7 @@ export function buildContent(lang) {
     return {
       id,
       label: topicLabel(id),
+      cover: topicCovers[id],
       items,
       videos,
       news,

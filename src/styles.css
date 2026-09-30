@@ -277,44 +277,40 @@ button { font: inherit; color: inherit; }
 .synthesis-caption-title { font-family: var(--font-heading); font-size: clamp(17px, 1.6vw, 22px); font-weight: 700; line-height: 1.25; color: #fff; }
 
 /* ---------- Explore por área terapêutica ---------- */
-/* Cada área tem um ícone anatômico (atlas médico, traço fino). No hover o card se enche de baixo para cima
-   com o mesmo azul do banner e tudo fica branco. */
-.areas { padding-bottom: 0; /* Em repouso os cards são neutros; o azul fica para o hover */ --ar-icon: #5c6470; --ar-soft: #f5f6f8; }
+/* Cards fotográficos, na mesma língua do banner e dos cards de vídeo: foto da área escurecida por um
+   degradê azul embaixo, nome em branco. No hover a foto aproxima, o azul se aprofunda e os arcos do
+   banner se desenham sobre a foto. */
+.areas { padding-bottom: 0; }
 .areas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0 0; padding: 0; list-style: none; }
 .areas-grid li { display: flex; } /* cards da mesma linha com a mesma altura */
-.area-card { position: relative; isolation: isolate; flex: 1; display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto 1fr auto; column-gap: 12px; min-height: 164px; padding: 20px 20px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; text-decoration: none; overflow: hidden; transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease; }
-.area-card::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(160deg, var(--navy) 0%, #0a3a8c 55%, #0c5bb8 100%); transform: translateY(101%); transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
-.area-card:hover, .area-card:focus-visible { border-color: transparent; box-shadow: 0 16px 34px rgb(var(--navy-rgb) / .22); transform: translateY(-3px); }
-.area-card:hover::before, .area-card:focus-visible::before { transform: none; }
-/* Arcos no hover: mesmas curvas do banner, na metade direita do card, revelados de cima para baixo
-   logo depois que o azul sobe; somem na hora ao tirar o mouse */
-.area-arcs { position: absolute; top: 0; right: 0; bottom: 0; left: 42%; z-index: -1; width: auto; height: 100%; overflow: visible; pointer-events: none; clip-path: inset(0 0 100% 0); transition: clip-path .15s ease; }
-.area-arcs path { fill: none; stroke: var(--arc); stroke-width: 1.5; opacity: .75; vector-effect: non-scaling-stroke; }
-.area-card:hover .area-arcs, .area-card:focus-visible .area-arcs { clip-path: inset(-20%); transition: clip-path .9s .18s cubic-bezier(.55, 0, .2, 1); }
-.area-icon { grid-column: 1; grid-row: 1; display: grid; place-items: center; width: 52px; height: 52px; border-radius: var(--radius); background: var(--ar-soft); color: var(--ar-icon); transition: background .3s ease, color .3s ease; }
-.area-icon svg { width: 34px; height: 34px; }
-.area-arrow { grid-column: 2; grid-row: 1; justify-self: end; align-self: start; width: 18px; height: 18px; color: var(--accent-light); opacity: 0; transform: translate(-6px, 0); transition: opacity .3s ease, transform .3s ease, color .3s ease; }
-.area-name { grid-column: 1 / -1; grid-row: 2; align-self: end; margin-top: 18px; font-family: var(--font-heading); font-size: 17px; font-weight: 700; line-height: 1.25; color: var(--ink); transition: color .3s ease; }
-.area-meta { grid-column: 1 / -1; grid-row: 3; display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; }
-.area-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--muted); transition: color .3s ease; }
-.area-tag svg { width: 12px; height: 12px; color: var(--ar-icon); opacity: .7; }
-/* Estado cheio (hover/foco) */
-.area-card:hover .area-icon, .area-card:focus-visible .area-icon { background: rgb(255 255 255 / .12); color: #fff; }
-.area-card:hover .area-arrow, .area-card:focus-visible .area-arrow { opacity: 1; transform: none; color: #fff; }
-.area-card:hover .area-name, .area-card:focus-visible .area-name { color: #fff; }
-.area-card:hover .area-tag, .area-card:focus-visible .area-tag { color: rgb(255 255 255 / .9); }
-.area-card:hover .area-tag svg, .area-card:focus-visible .area-tag svg { color: #fff; opacity: 1; }
+.area-card { position: relative; isolation: isolate; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; min-height: 210px; padding: 16px 18px 16px; border-radius: var(--radius); overflow: hidden; background: var(--navy); color: #fff; text-decoration: none; transition: transform .3s ease, box-shadow .3s ease; }
+/* Camadas, de trás para a frente: foto, degradê, arcos, texto */
+.area-media { position: absolute; inset: 0; z-index: -3; }
+.area-media img { transition: transform .7s var(--ease-out, ease); }
+.area-media .media-placeholder span { display: none; }
+.area-card::before { content: ''; position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, rgb(3 22 60 / 0) 30%, rgb(var(--navy-rgb) / .55) 58%, rgb(3 22 60 / .92) 100%); }
+.area-card::after { content: ''; position: absolute; inset: 0; z-index: -2; background: linear-gradient(180deg, rgb(var(--navy-rgb) / .45) 0%, rgb(3 22 60 / .94) 100%); opacity: 0; transition: opacity .4s ease; }
+.area-arcs { position: absolute; top: 0; right: 0; bottom: 0; left: 38%; z-index: -1; width: auto; height: 100%; overflow: visible; pointer-events: none; clip-path: inset(0 0 100% 0); transition: clip-path .15s ease; }
+.area-arcs path { fill: none; stroke: var(--arc); stroke-width: 1.5; opacity: .85; vector-effect: non-scaling-stroke; }
+.area-name { font-family: var(--font-heading); font-size: 17px; font-weight: 700; line-height: 1.25; color: #fff; text-shadow: 0 1px 10px rgb(3 22 60 / .45); }
+.area-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; }
+.area-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: rgb(255 255 255 / .82); }
+.area-tag svg { width: 11px; height: 11px; color: #fff; opacity: .8; }
+.area-arrow { position: absolute; top: 14px; right: 14px; width: 18px; height: 18px; color: #fff; opacity: 0; transform: translateX(-6px); transition: opacity .3s ease, transform .3s ease; }
+/* Hover e foco pelo teclado */
+.area-card:hover, .area-card:focus-visible { transform: translateY(-3px); box-shadow: 0 16px 34px rgb(var(--navy-rgb) / .24); }
+.area-card:hover .area-media img, .area-card:focus-visible .area-media img { transform: scale(1.06); }
+.area-card:hover::after, .area-card:focus-visible::after { opacity: 1; }
+.area-card:hover .area-arcs, .area-card:focus-visible .area-arcs { clip-path: inset(-20%); transition: clip-path .9s .15s cubic-bezier(.55, 0, .2, 1); }
+.area-card:hover .area-arrow, .area-card:focus-visible .area-arrow { opacity: 1; transform: none; }
 .area-card:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 3px; }
 @media (min-width: 1101px) { .areas-grid { grid-template-columns: repeat(5, 1fr); } } /* 10 áreas em 2 fileiras cheias */
 @media (max-width: 900px) { .areas-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
 @media (max-width: 640px) {
-  .area-card { min-height: 148px; padding: 16px 14px 14px; }
-  .area-icon { width: 44px; height: 44px; }
-  .area-icon svg { width: 29px; height: 29px; }
-  .area-arrow { opacity: 1; transform: none; width: 16px; height: 16px; color: var(--ar-icon); }
-  .area-name { align-self: start; margin-top: 14px; font-size: 15.5px; }
-  .area-meta { align-self: end; }
-  .area-tag { font-size: 12px; }
+  .area-card { min-height: 150px; padding: 12px 14px; }
+  .area-name { font-size: 15.5px; }
+  .area-tag { font-size: 11.5px; }
+  .area-arrow { opacity: 1; transform: none; top: 10px; right: 10px; width: 16px; height: 16px; }
 }
 
 /* ---------- Textos: layout editorial (listas de notícias do Medscape) na identidade do site ---------- */
