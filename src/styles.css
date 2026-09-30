@@ -494,21 +494,12 @@ button { font: inherit; color: inherit; }
 .cp-disclosure-label { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--kind); }
 .cp-disclosure-logo { display: block; height: var(--logo-h); width: auto; max-width: 118px; object-fit: contain; }
 .cp-byline { margin: 10px 0 18px; font-size: 13.5px; color: var(--muted); }
-/* Faixa de retorno: fecha a página devolvendo à área, com o peso de navegação e não de ação principal */
-.rb { border-top: 1px solid var(--blue-line); background: var(--blue-soft); }
-.rb-link { display: flex; align-items: center; gap: 18px; padding-block: 22px; text-decoration: none; }
-.rb-icon { flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; background: #fff; color: var(--navy); transition: transform .25s var(--ease-out, ease); }
-.rb-icon svg { width: 30px; height: 30px; }
-.rb-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-.rb-kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--kind); }
-.rb-kicker svg { width: 14px; height: 14px; transition: transform .25s ease; }
-.rb-title { font-family: var(--font-heading); font-size: clamp(18px, 2vw, 23px); font-weight: 700; line-height: 1.2; color: var(--ink); text-decoration: underline transparent; text-decoration-thickness: 2px; text-underline-offset: 4px; transition: text-decoration-color .25s ease; }
-.rb-line { display: flex; align-items: baseline; flex-wrap: wrap; }
-.rb-count { font-size: 13px; color: var(--muted); }
-.rb-count::before { content: '·'; margin-inline: 10px; opacity: .55; }
-.rb-link:hover .rb-kicker svg, .rb-link:focus-visible .rb-kicker svg { transform: translateX(-4px); }
-.rb-link:hover .rb-icon, .rb-link:focus-visible .rb-icon { transform: translateX(-3px); }
-.rb-link:hover .rb-title, .rb-link:focus-visible .rb-title { text-decoration-color: var(--accent-light); }
+/* Botão de volta à área: contorno em vez de preenchido, para não competir com as ações principais */
+.cp-return { padding-block: 8px clamp(40px, 5vw, 64px); }
+.btn--outline { border: 1.5px solid var(--blue); background: #fff; color: var(--blue); }
+.btn--outline:hover { background: var(--blue); color: #fff; }
+.btn--outline svg { transition: transform .2s ease; }
+.btn--outline:hover svg { transform: translateX(-3px); }
 .cp-summary { max-width: 62ch; margin: 0; font-size: clamp(15.5px, 1.25vw, 17.5px); line-height: 1.75; color: var(--text); }
 
 /* Arte da cidade (formas de cápsula já na imagem): avança até a borda direita da tela, como na referência */
@@ -633,10 +624,6 @@ button { font: inherit; color: inherit; }
   .sy-row { flex-wrap: wrap; }
   .sy-cta { width: 100%; justify-content: center; }
   .cp-disclosure { width: 100%; }
-  .rb-link { gap: 14px; padding-block: 18px; }
-  .rb-icon { width: 44px; height: 44px; border-radius: 12px; }
-  .rb-icon svg { width: 26px; height: 26px; }
-  .rb-count { font-size: 12.5px; }
   html { scroll-padding-top: 70px; }
   /* Sem faixa do topo no celular: o aviso vai para o alto da primeira seção (selo) e o idioma para o menu */
   .topbar { display: none; }

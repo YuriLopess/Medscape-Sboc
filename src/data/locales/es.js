@@ -151,7 +151,6 @@ export default {
     newsHeading: 'Noticias',
     videosHeading: 'Videos',
     topicEmpty: 'Todavía no hay contenidos publicados en esta área.',
-    backTo: 'Volver a',
     backToTopic: (t) => `Volver a ${t}`,
     seeAllNews: 'Ver todas las noticias',
     seeAllVideos: 'Ver todos los videos',
