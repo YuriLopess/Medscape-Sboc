@@ -21,7 +21,9 @@ const eventBase = {
 /*
   Áreas terapêuticas (handoff "Mapa funcional", pág. 3): a descoberta principal do site.
   São as seis áreas do handoff; cada uma tem página própria em #/<id>. "outros" ("Outros temas") recebe
-  o que não pertence a uma delas: onco-hematologia, geniturinários, imunoterapia, precisão, suporte etc.
+  o que não pertence a uma delas: panorama do congresso, cabeça e pescoço e onco-hematologia.
+  Os conteúdos ficam distribuídos de forma equilibrada (3 a 4 por área). O id de cada item é interno e não
+  precisa bater com a área: o que aparece no site é o título (locales) e a URL (topic + slug).
 */
 const topicIds = ['pulmao', 'mama', 'gastro', 'gineco', 'pele', 'outros'];
 
@@ -61,16 +63,16 @@ const featuredBase = [
   { id: 'toracicos', topic: 'pulmao', slug: 'tumores-toracicos', date: '2026-10-24', duration: '05:05', image: 'images/videos/toracicos.jpg', focus: 'center 15%' },
   { id: 'gastro', topic: 'gastro', sponsor: 'Merck', slug: 'tumores-gastrointestinais', date: '2026-10-24', duration: '04:50', image: 'images/videos/gastro.jpg' },
   { id: 'gineco', topic: 'gineco', slug: 'tumores-ginecologicos', date: '2026-10-24', duration: '04:48', image: 'images/temas/ginecologicos.jpg' },
-  { id: 'gu', topic: 'outros', slug: 'tumores-geniturinarios', date: '2026-10-25', duration: '05:10', image: 'images/banco/hospital.jpg' },
-  { id: 'imuno', topic: 'outros', sponsor: 'GSK', slug: 'imunoterapia', date: '2026-10-25', duration: '06:02', image: 'images/banco/celula.jpg' },
-  { id: 'precisao', topic: 'outros', slug: 'oncologia-de-precisao', date: '2026-10-25', duration: '04:44', image: 'images/banco/laboratorio.jpg' },
-  { id: 'linfomas', topic: 'outros', sponsor: 'AbbVie', slug: 'linfomas-e-leucemias', date: '2026-10-26', duration: '05:15', image: 'images/banco/sangue.jpg' },
+  { id: 'gu', topic: 'gastro', slug: 'cancer-colorretal', date: '2026-10-25', duration: '05:10', image: 'images/banco/hospital.jpg' },
+  { id: 'imuno', topic: 'pele', sponsor: 'GSK', slug: 'imunoterapia-no-melanoma', date: '2026-10-25', duration: '06:02', image: 'images/banco/celula.jpg' },
+  { id: 'precisao', topic: 'pulmao', slug: 'oncologia-de-precisao-pulmao', date: '2026-10-25', duration: '04:44', image: 'images/banco/laboratorio.jpg' },
+  { id: 'linfomas', topic: 'pele', sponsor: 'AbbVie', slug: 'linfomas-cutaneos', date: '2026-10-26', duration: '05:15', image: 'images/banco/sangue.jpg' },
   { id: 'melanoma', topic: 'pele', slug: 'melanoma-e-pele', date: '2026-10-26', duration: '03:57', image: 'images/temas/digestivos.jpg' },
   { id: 'cabeca-pescoco', topic: 'outros', slug: 'cabeca-e-pescoco', date: '2026-10-26', duration: '04:21', image: 'images/sintese.jpg' },
   { id: 'pulmao-avancado', topic: 'pulmao', sponsor: 'Merck', slug: 'pulmao-avancado', date: '2026-10-27', duration: '05:40', image: 'images/banco/tomografia-pulmao.jpg' },
-  { id: 'suporte', topic: 'outros', slug: 'cuidados-de-suporte', date: '2026-10-27', duration: '04:05', image: 'images/banco/comprimidos.jpg' },
+  { id: 'suporte', topic: 'mama', slug: 'cuidados-de-suporte-mama', date: '2026-10-27', duration: '04:05', image: 'images/banco/comprimidos.jpg' },
   { id: 'mieloma', topic: 'outros', sponsor: 'AbbVie', slug: 'mieloma-multiplo', date: '2026-10-27', duration: '05:02', image: 'images/temas/biomarcadores.jpg' },
-  { id: 'sarcomas', topic: 'outros', slug: 'sarcomas-e-tumores-raros', date: '2026-10-27', duration: '04:30', image: 'images/videos/panorama.jpg' },
+  { id: 'sarcomas', topic: 'gastro', slug: 'sarcomas-e-gist', date: '2026-10-27', duration: '04:30', image: 'images/videos/panorama.jpg' },
 ];
 
 // 2 vídeos finais (SBOC). O "tema" na URL é a própria Síntese final.
@@ -83,13 +85,13 @@ const finalBase = [
 // readTime: tempo estimado de leitura (provisório)
 const textsBase = [
   { id: 'texto-digestivos', topic: 'gastro', slug: 'panorama-dos-tumores-digestivos', date: '2026-10-24', readTime: '6 min', image: 'images/temas/digestivos.jpg' },
-  { id: 'texto-biomarcadores', topic: 'outros', sponsor: 'AbbVie', slug: 'biomarcadores-em-foco', date: '2026-10-25', readTime: '5 min', image: 'images/temas/biomarcadores.jpg' },
+  { id: 'texto-biomarcadores', topic: 'mama', sponsor: 'AbbVie', slug: 'biomarcadores-cancer-de-mama', date: '2026-10-25', readTime: '5 min', image: 'images/temas/biomarcadores.jpg' },
   { id: 'texto-mama', topic: 'mama', slug: 'mama-o-que-muda-apos-o-esmo', date: '2026-10-23', readTime: '7 min', image: 'images/videos/mama.jpg' },
   { id: 'texto-pulmao', topic: 'pulmao', sponsor: 'Merck', slug: 'da-adjuvancia-a-doenca-avancada', date: '2026-10-26', readTime: '6 min', image: 'images/banco/tomografia-pulmao.jpg' },
   { id: 'texto-gineco', topic: 'gineco', slug: 'novas-abordagens-em-ginecologicos', date: '2026-10-24', readTime: '5 min', image: 'images/temas/ginecologicos.jpg' },
   { id: 'texto-hemato', topic: 'outros', sponsor: 'AbbVie', slug: 'combinacoes-em-debate', date: '2026-10-26', readTime: '6 min', image: 'images/banco/sangue.jpg' },
-  { id: 'texto-prostata', topic: 'outros', slug: 'prostata-em-debate', date: '2026-10-25', readTime: '4 min', image: 'images/banco/hospital.jpg' },
-  { id: 'texto-suporte', topic: 'outros', slug: 'qualidade-de-vida-no-cuidado', date: '2026-10-27', readTime: '5 min', image: 'images/banco/comprimidos.jpg' },
+  { id: 'texto-prostata', topic: 'gineco', slug: 'cancer-de-colo-do-utero', date: '2026-10-25', readTime: '4 min', image: 'images/banco/hospital.jpg' },
+  { id: 'texto-suporte', topic: 'gineco', slug: 'qualidade-de-vida-ginecologicos', date: '2026-10-27', readTime: '5 min', image: 'images/banco/comprimidos.jpg' },
 ];
 
 export const supporters = [
