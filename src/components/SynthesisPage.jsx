@@ -16,6 +16,7 @@ export default function SynthesisPage() {
 
       <section className="section container sy-areas" aria-labelledby="sy-areas-title">
         <h2 id="sy-areas-title" className="section-title">{ui.synthesisSub}</h2>
+        <p className="section-sub">{ui.synthesisAreasSub}</p>
 
         <ul className="sy-grid" data-reveal>
           {topics.map((t) => (

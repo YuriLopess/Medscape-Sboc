@@ -198,6 +198,7 @@ export default {
     // Final synthesis
     synthesisTitle: (name) => `${name} final synthesis`,
     synthesisSub: 'Key messages by therapeutic area',
+    synthesisAreasSub: 'What each area took from the congress, in a few lines, with the way to its videos and news.',
     explore: 'Explore',
 
     // Search

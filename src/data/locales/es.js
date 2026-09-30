@@ -194,6 +194,7 @@ export default {
     // Síntesis final
     synthesisTitle: (name) => `Síntesis final ${name}`,
     synthesisSub: 'Principales mensajes por área terapéutica',
+    synthesisAreasSub: 'Lo que cada área se llevó del congreso, en pocas líneas, con el camino a los videos y las noticias.',
     explore: 'Explorar',
 
     // Búsqueda
