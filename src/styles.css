@@ -631,10 +631,15 @@ button { font: inherit; color: inherit; }
   /* Síntese no celular: vídeos um embaixo do outro, título sem quebra forçada, áreas numa coluna */
   .synthesis-arcs { display: none; }
   .synthesis-title br { display: none; }
-  .sy-videos { grid-template-columns: 1fr; gap: 28px; }
-  .sy-video-media .play-badge--large { width: 48px; height: 48px; left: 14px; bottom: 14px; }
-  .sy-video-media .play-badge--large svg { width: 20px; height: 20px; }
-  .sy-video-kicker { margin-top: 14px; }
+  /* As duas conversas continuam lado a lado, como no computador: aparecem juntas na primeira tela */
+  .sy-videos { grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+  .sy-video-media { box-shadow: 0 12px 28px rgb(2 20 60 / .4), 0 0 0 1px rgb(255 255 255 / .1); }
+  .sy-video-media .play-badge--large { width: 36px; height: 36px; left: 8px; bottom: 8px; border-width: 1.5px; }
+  .sy-video-media .play-badge--large svg { width: 15px; height: 15px; }
+  .sy-video-media .duration { right: 6px; bottom: 6px; padding: 1px 6px; font-size: 11px; }
+  .sy-video-kicker { margin-top: 10px; font-size: 10px; }
+  .sy-video-title { margin-top: 4px; font-size: 15px; line-height: 1.3; }
+  .sy-video-dek { display: none; } /* o texto de apoio logo acima já resume as duas conversas */
   .sy-grid { grid-template-columns: 1fr; }
   /* Listagem de vídeos no celular: linhas compactas (miniatura à esquerda) em vez de 15 cards de tela cheia */
   .lp .cards-grid { gap: 0; margin-top: 4px; }
