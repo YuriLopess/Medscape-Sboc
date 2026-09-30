@@ -62,7 +62,8 @@ export default function App() {
     <>
       <a className="skip" href="#conteudo">{ui.skip}</a>
       <SiteHeader />
-      <main id="conteudo">{currentPage()}</main>
+      {/* key: cada rota remonta a página, então a animação de entrada roda a cada navegação */}
+      <main id="conteudo" key={routeKey}>{currentPage()}</main>
       <SiteFooter />
     </>
   );

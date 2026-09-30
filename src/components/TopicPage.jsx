@@ -77,7 +77,7 @@ export default function TopicPage({ topic }) {
       </header>
 
       <div className="container tp-main">
-        {topic.highlight && <Highlight item={topic.highlight} />}
+        {topic.highlight && <div data-reveal><Highlight item={topic.highlight} /></div>}
 
         {news.length > 0 && (
           <section data-reveal className="tp-block" aria-labelledby="tp-news-title">
@@ -95,7 +95,7 @@ export default function TopicPage({ topic }) {
               <h2 id="tp-videos-title" className="section-title">{ui.videosHeading}</h2>
               <a className="tx-all" href={listingHref('videos', topic.id)}>{ui.seeAllVideos} <ArrowRight /></a>
             </div>
-            <div className="cards-grid">
+            <div className="cards-grid" data-stagger>
               {videos.map((item, i) => (
                 <ContentCard key={item.id} item={item} index={i} origin={`area-${topic.id}`} />
               ))}

@@ -23,7 +23,7 @@ export default function FinalSynthesis() {
         </h1>
         <p className="synthesis-lead">{s.description}</p>
 
-        <ol className="sy-videos" data-reveal>
+        <ol className="sy-videos" data-stagger>
           {finalVideos.map((v, i) => (
             <li key={v.id}>
               <a className="sy-video" href={v.href} onClick={() => trackCard(v, i, 'sintese')}>

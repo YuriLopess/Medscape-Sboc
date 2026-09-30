@@ -45,7 +45,7 @@ export default function SearchPage({ q }) {
         {results.length > 0 && (
           <>
             <p className="lp-count" aria-live="polite">{ui.searchResults(results.length)}</p>
-            <ul className="se-results">
+            <ul className="se-results" data-stagger>
               {results.map((item, i) => (
                 <li key={item.id}>
                   <a className="se-result" href={item.href} onClick={() => trackCard(item, i, 'busca')}>

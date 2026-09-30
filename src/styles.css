@@ -782,16 +782,32 @@ button { font: inherit; color: inherit; }
   .hero-disclosure { animation: enter-fade .8s .9s ease-out both; }
 
   /* Página interna: texto em cascata, arte assenta em seguida */
-  .cp-hero-text > * { animation: enter-rise .75s var(--ease-out) both; }
-  .cp-hero-text > :nth-child(2) { animation-delay: .08s; }
-  .cp-hero-text > :nth-child(3) { animation-delay: .16s; }
-  .cp-hero-text > :nth-child(4) { animation-delay: .24s; }
-  .cp-hero-text > :nth-child(5) { animation-delay: .32s; }
+  /* Topo de todas as páginas internas (conteúdo, área, listagens, busca, Síntese, não encontrado):
+     trilha, título, texto e o restante entram em cascata, como no banner da Home */
+  .cp-hero-text > *, .tp-hero-text > *, .lp-hero .container > *, .synthesis > .container > :not([data-stagger]),
+  .se > .container > :not([data-stagger]), .cp-missing > * { animation: enter-rise .75s var(--ease-out) both; }
+  :is(.cp-hero-text, .tp-hero-text, .lp-hero .container, .synthesis > .container, .se > .container, .cp-missing) > :nth-child(2) { animation-delay: .08s; }
+  :is(.cp-hero-text, .tp-hero-text, .lp-hero .container, .synthesis > .container, .se > .container, .cp-missing) > :nth-child(3) { animation-delay: .16s; }
+  :is(.cp-hero-text, .tp-hero-text, .lp-hero .container, .synthesis > .container, .se > .container, .cp-missing) > :nth-child(4) { animation-delay: .24s; }
+  :is(.cp-hero-text, .tp-hero-text, .lp-hero .container, .synthesis > .container, .se > .container, .cp-missing) > :nth-child(5) { animation-delay: .32s; }
+  :is(.cp-hero-text, .tp-hero-text, .lp-hero .container, .synthesis > .container, .se > .container, .cp-missing) > :nth-child(n+6) { animation-delay: .4s; }
+  /* Quadro "Em foco" da área e filtros das listagens chegam logo depois do título */
+  .tp-focus { animation: enter-rise .8s .3s var(--ease-out) both; }
+  .lp-filters, .lp-count { animation: enter-rise .7s .22s var(--ease-out) both; }
   .cp-hero-art { animation: enter-settle 1.2s .2s var(--ease-out) both; }
 
   /* Seções: sobem ao entrar na tela (classe colocada por useReveal) */
   [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); }
   [data-reveal].is-revealed { opacity: 1; transform: none; }
+  /* Listas (cards, notícias, resultados, áreas da Síntese): os itens sobem um depois do outro */
+  [data-stagger] > * { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
+  [data-stagger].is-revealed > * { opacity: 1; transform: none; }
+  [data-stagger].is-revealed > :nth-child(2) { transition-delay: .07s; }
+  [data-stagger].is-revealed > :nth-child(3) { transition-delay: .14s; }
+  [data-stagger].is-revealed > :nth-child(4) { transition-delay: .21s; }
+  [data-stagger].is-revealed > :nth-child(5) { transition-delay: .28s; }
+  [data-stagger].is-revealed > :nth-child(6) { transition-delay: .35s; }
+  [data-stagger].is-revealed > :nth-child(n+7) { transition-delay: .42s; }
   /* Áreas terapêuticas: os cards sobem um depois do outro quando a seção aparece */
   .areas-grid li { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); transition-delay: calc(var(--i) * 60ms + 150ms); }
   .areas.is-revealed .areas-grid li { opacity: 1; transform: none; }

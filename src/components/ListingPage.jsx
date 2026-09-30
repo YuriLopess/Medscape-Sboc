@@ -42,7 +42,7 @@ export default function ListingPage({ format, topic }) {
         {items.length === 0 && <p className="empty-state">{ui.listingEmpty}</p>}
 
         {isVideos ? (
-          <div className="cards-grid">
+          <div className="cards-grid" data-stagger>
             {items.map((item, i) => (
               <ContentCard key={item.id} item={item} index={i} origin="listagem-videos" />
             ))}

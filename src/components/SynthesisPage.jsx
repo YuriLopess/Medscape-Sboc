@@ -18,7 +18,7 @@ export default function SynthesisPage() {
         <h2 id="sy-areas-title" className="section-title">{ui.synthesisSub}</h2>
         <p className="section-sub">{ui.synthesisAreasSub}</p>
 
-        <ul className="sy-grid" data-reveal>
+        <ul className="sy-grid" data-stagger>
           {topics.map((t) => (
             <li key={t.id}>
               <a className="sy-area" href={topicHref(t.id)}>

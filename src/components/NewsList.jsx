@@ -58,7 +58,7 @@ export default function NewsList({ items, origin = 'noticias' }) {
 
   if (items.length < 4) {
     return (
-      <ul className="tx-list tx-list--plain">
+      <ul className="tx-list tx-list--plain" data-stagger>
         {items.map((item, i) => <Row key={item.id} item={item} index={i} origin={origin} />)}
       </ul>
     );
@@ -82,12 +82,12 @@ export default function NewsList({ items, origin = 'noticias' }) {
           </span>
         </a>
 
-        <ul className="tx-side">
+        <ul className="tx-side" data-stagger>
           {side.map((item, i) => <Row key={item.id} item={item} index={i + 1} origin={origin} />)}
         </ul>
       </div>
 
-      <ul className="tx-list">
+      <ul className="tx-list" data-stagger>
         {list.map((item, i) => <Row key={item.id} item={item} index={i + 3} origin={origin} />)}
       </ul>
     </>
