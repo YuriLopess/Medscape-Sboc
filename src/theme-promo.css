@@ -30,7 +30,6 @@
 :root .hero-title,
 :root .section-title,
 :root .synthesis-title { letter-spacing: -.01em; }
-:root .synthesis-title { font-size: clamp(28px, 7.4cqi, 50px); line-height: 1.12; }
 :root .section-title { font-size: clamp(26px, 3vw, 34px); }
 :root .card-title { font-size: 17px; font-weight: 700; }
 :root .video-strip-count { font-weight: 700; font-size: 15px; }

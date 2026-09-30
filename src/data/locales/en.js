@@ -152,7 +152,6 @@ export default {
     previous: 'previous',
     next: 'next',
 
-    watchSynthesis: 'Watch the synthesis',
     part: (n) => `Part ${n}`,
     duration: 'Duration',
 
@@ -199,7 +198,6 @@ export default {
     // Final synthesis
     synthesisTitle: (name) => `${name} final synthesis`,
     synthesisSub: 'Key messages by therapeutic area',
-    synthesisAreaSub: 'Summary, related news and videos',
     explore: 'Explore',
 
     // Search

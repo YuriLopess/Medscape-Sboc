@@ -148,7 +148,6 @@ export default {
     previous: 'anterior',
     next: 'siguiente',
 
-    watchSynthesis: 'Ver la síntesis',
     part: (n) => `Parte ${n}`,
     duration: 'Duración',
 
@@ -195,7 +194,6 @@ export default {
     // Síntesis final
     synthesisTitle: (name) => `Síntesis final ${name}`,
     synthesisSub: 'Principales mensajes por área terapéutica',
-    synthesisAreaSub: 'Resumen, noticias y videos relacionados',
     explore: 'Explorar',
 
     // Búsqueda

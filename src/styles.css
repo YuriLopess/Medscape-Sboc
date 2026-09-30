@@ -237,46 +237,34 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Síntese final ---------- */
 /* Faixa azul como o banner e o rodapé, com a mesma luz suave do banner no lado do texto */
-.synthesis { position: relative; isolation: isolate; overflow: hidden; background: var(--navy); color: #fff; padding-block: clamp(48px, 7vw, 96px); }
+.synthesis { position: relative; isolation: isolate; overflow: hidden; background: var(--navy); color: #fff; padding-block: clamp(26px, 3vw, 34px) clamp(44px, 6vw, 72px); }
 .synthesis::before { content: ''; position: absolute; inset: -10% auto -10% -10%; width: 75%; z-index: -1; pointer-events: none; filter: blur(50px);
   background:
     radial-gradient(ellipse 60% 50% at 30% 22%, rgb(15 158 213 / .55), transparent 72%),
     radial-gradient(ellipse 55% 45% at 22% 88%, rgb(2 28 90 / .6), transparent 72%); }
-/* Mesmas margens laterais do resto do site; texto e vídeo dividem a largura */
-.synthesis-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(28px, 5vw, 72px); }
-.synthesis .eyebrow { font-size: 13px; color: rgb(255 255 255 / .85); }
-/* O título mede a própria coluna (container query): cabe sempre em 2 linhas, em qualquer largura ou zoom */
-.synthesis-text { container-type: inline-size; }
-.synthesis-title { margin: 14px 0 18px; font-family: var(--font-heading); font-size: clamp(30px, 8.4cqi, 56px); font-weight: 700; line-height: 1.06; letter-spacing: -.02em; color: #fff; }
-.synthesis-lead { text-wrap: balance; max-width: 48ch; margin: 0 0 32px; font-size: clamp(16px, 1.4vw, 19px); line-height: 1.55; color: rgb(255 255 255 / .85); }
-.synthesis .btn { padding: 16px 30px; font-size: 16.5px; }
-/* Arcos do banner atrás do vídeo */
-.synthesis-arcs { position: absolute; top: 0; right: 0; bottom: 0; left: 46%; width: auto; height: 100%; overflow: visible; z-index: -1; pointer-events: none; }
+/* Arcos do banner no canto superior direito, no espaço livre ao lado do título (os vídeos ficam por cima) */
+.synthesis-arcs { position: absolute; top: 0; right: 0; width: 46%; height: 62%; z-index: -1; pointer-events: none; overflow: visible; }
 .synthesis-arcs path { fill: none; stroke: var(--arc); stroke-width: 2; opacity: .7; vector-effect: non-scaling-stroke; }
+.synthesis .crumbs a { color: rgb(255 255 255 / .85); }
+.synthesis .crumbs > span:last-child a { color: rgb(255 255 255 / .6); }
+.synthesis .crumbs-sep { color: rgb(255 255 255 / .35); }
+.synthesis-title { max-width: 22ch; margin: 6px 0 12px; font-family: var(--font-heading); font-size: clamp(28px, 3.2vw, 44px); font-weight: 700; line-height: 1.12; letter-spacing: -.01em; color: #fff; }
+.synthesis-lead { max-width: 56ch; margin: 0; font-size: clamp(15.5px, 1.25vw, 17.5px); line-height: 1.6; color: rgb(255 255 255 / .85); }
 
-/* As duas conversas, numeradas, entre fios finos */
-.synthesis-parts { margin: 0 0 32px; padding: 0; list-style: none; border-top: 1px solid rgb(255 255 255 / .18); }
-.synthesis-parts li { border-bottom: 1px solid rgb(255 255 255 / .18); }
-.synthesis-part { display: flex; align-items: baseline; gap: 18px; padding: 14px 4px; color: #fff; text-decoration: none; transition: padding .25s ease, background .25s ease; }
-.synthesis-part:hover { padding-left: 12px; background: rgb(255 255 255 / .06); }
-.synthesis-part-num { flex: none; min-width: 2ch; font-family: var(--font-heading); font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent-light); }
-.synthesis-part-title { flex: 1; font-family: var(--font-heading); font-size: 16.5px; font-weight: 600; line-height: 1.35; }
-.synthesis-part-duration { flex: none; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; color: rgb(255 255 255 / .7); }
-
-/* Vídeo da Parte 1, com brilho azul-claro atrás e o título sobre a imagem */
-.synthesis-video { position: relative; display: block; border-radius: 12px; text-decoration: none; transition: transform .25s ease; }
-.synthesis-video::before { content: ''; position: absolute; inset: 8% -6% -8% 8%; z-index: -1; border-radius: 50%; background: rgb(15 158 213 / .45); filter: blur(60px); pointer-events: none; }
-.synthesis-video:hover { transform: translateY(-3px); }
-.synthesis-video:hover .play-badge { background: var(--blue); border-color: var(--blue); }
-.synthesis-media { aspect-ratio: 16 / 10; border-radius: 12px; box-shadow: 0 24px 56px rgb(2 20 60 / .5), 0 0 0 1px rgb(255 255 255 / .12); }
-.synthesis-media .duration { top: 18px; right: 18px; bottom: auto; padding: 4px 10px; font-size: 14px; }
-.synthesis-caption { position: absolute; inset: auto 0 0; display: flex; align-items: center; gap: 16px; padding: 60px 24px 22px; background: linear-gradient(180deg, transparent, rgb(3 22 60 / .85)); }
-.synthesis-caption .play-badge { position: static; flex: none; }
-.synthesis-media .play-badge--large { width: 60px; height: 60px; }
-.synthesis-media .play-badge--large svg { width: 26px; height: 26px; }
-.synthesis-caption-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.synthesis-caption-kicker { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgb(255 255 255 / .8); }
-.synthesis-caption-title { font-family: var(--font-heading); font-size: clamp(17px, 1.6vw, 22px); font-weight: 700; line-height: 1.25; color: #fff; }
+/* As duas conversas, lado a lado e do mesmo tamanho */
+.sy-videos { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 36px); margin: clamp(28px, 3.5vw, 40px) 0 0; padding: 0; list-style: none; }
+.sy-video { display: flex; flex-direction: column; color: #fff; text-decoration: none; }
+.sy-video-media { aspect-ratio: 16 / 9; border-radius: var(--radius); box-shadow: 0 22px 50px rgb(2 20 60 / .45), 0 0 0 1px rgb(255 255 255 / .1); }
+.sy-video-media img { transition: transform .5s var(--ease-out, ease); }
+.sy-video-media .play-badge--large { width: 60px; height: 60px; left: 20px; bottom: 20px; }
+.sy-video-media .play-badge--large svg { width: 26px; height: 26px; }
+.sy-video-media .duration { right: 16px; bottom: 16px; padding: 4px 10px; font-size: 13.5px; }
+.sy-video-kicker { margin-top: 18px; font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgb(255 255 255 / .7); }
+.sy-video-title { margin-top: 6px; font-family: var(--font-heading); font-size: clamp(19px, 1.7vw, 23px); font-weight: 700; line-height: 1.25; text-decoration: underline transparent; text-decoration-thickness: 2px; text-underline-offset: 5px; transition: text-decoration-color .2s ease; }
+.sy-video-dek { margin-top: 6px; font-size: 15px; line-height: 1.55; color: rgb(255 255 255 / .78); }
+.sy-video:hover .sy-video-media img, .sy-video:focus-visible .sy-video-media img { transform: scale(1.04); }
+.sy-video:hover .play-badge, .sy-video:focus-visible .play-badge { background: var(--blue); border-color: var(--blue); }
+.sy-video:hover .sy-video-title, .sy-video:focus-visible .sy-video-title { text-decoration-color: var(--accent-light); }
 
 /* ---------- Explore por área terapêutica ---------- */
 /* Cards fotográficos, na mesma língua do banner e dos cards de vídeo: foto da área escurecida por um
@@ -499,19 +487,18 @@ button { font: inherit; color: inherit; }
 .se-dek { display: block; max-width: 70ch; margin-top: 6px; font-size: 14px; line-height: 1.55; color: var(--text); }
 
 /* ---------- Síntese final: blocos por área ---------- */
-.sy-areas { padding-top: clamp(36px, 5vw, 56px); }
-.sy-list { display: grid; gap: 10px; margin: 24px 0 0; padding: 0; list-style: none; }
-.sy-row { display: flex; align-items: center; gap: 16px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 10px; background: #fff; text-decoration: none; transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
-.sy-row:hover { border-color: var(--blue-line); box-shadow: 0 12px 26px rgb(var(--navy-rgb) / .1); transform: translateY(-2px); }
-.sy-icon { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: var(--blue-soft); color: var(--navy); }
-.sy-icon svg { width: 28px; height: 28px; }
-.sy-row-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-.sy-row-title { font-family: var(--font-heading); font-size: 17px; font-weight: 700; line-height: 1.25; color: var(--ink); }
-.sy-row-sub { font-size: 13px; color: var(--muted); }
-.sy-row-count { font-size: 12px; font-weight: 600; color: var(--kind); }
-.sy-cta { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 4px; background: var(--navy); color: #fff; font-size: 13.5px; font-weight: 600; transition: background .2s ease; }
-.sy-row:hover .sy-cta { background: var(--navy-deep); }
-.sy-cta svg { width: 14px; height: 14px; }
+/* Principais mensagens por área: grade compacta com o resumo real de cada área */
+.sy-areas { padding-top: clamp(40px, 5vw, 60px); }
+.sy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 clamp(24px, 3vw, 44px); margin: 18px 0 0; padding: 0; list-style: none; }
+.sy-grid li { display: flex; border-top: 1px solid var(--line); }
+.sy-area { flex: 1; display: flex; flex-direction: column; padding: 20px 0 24px; text-decoration: none; }
+.sy-area-name { font-family: var(--font-heading); font-size: 18px; font-weight: 700; line-height: 1.25; color: var(--ink); }
+.sy-area-intro { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-top: 8px; font-size: 14.5px; line-height: 1.6; color: var(--text); }
+.sy-area-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 14px; font-size: 12.5px; color: var(--muted); }
+.sy-area-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; color: var(--blue); }
+.sy-area-cta svg { width: 14px; height: 14px; transition: transform .2s ease; }
+.sy-area:hover .sy-area-name, .sy-area:focus-visible .sy-area-name { color: var(--blue); }
+.sy-area:hover .sy-area-cta svg, .sy-area:focus-visible .sy-area-cta svg { transform: translateX(3px); }
 
 /* ---------- Página interna de conteúdo ---------- */
 .cp-hero { position: relative; overflow: hidden; background: var(--soft-gradient); border-bottom: 1px solid var(--line); }
@@ -627,17 +614,13 @@ button { font: inherit; color: inherit; }
   .chips::-webkit-scrollbar { display: none; }
   .chips { padding-right: 40px; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 40px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 40px), transparent); }
   .chip { flex: none; min-width: 0; min-height: 40px; padding-inline: 16px; }
-  .synthesis-inner { grid-template-columns: 1fr; }
-  .synthesis-video { order: -1; }
-  .synthesis-arcs { display: none; }
-  .synthesis-title br { display: none; }
-
 
 }
 
 @media (max-width: 900px) {
   .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .tp-highlight { grid-template-columns: 1fr; }
+  .sy-grid { grid-template-columns: repeat(2, 1fr); }
   .tp-hero-inner { grid-template-columns: 1fr; gap: 24px; }
   .tp-highlight-media { min-height: 0; aspect-ratio: 16 / 9; }
 }
@@ -645,6 +628,14 @@ button { font: inherit; color: inherit; }
 /* Celular */
 @media (max-width: 640px) {
   .cards-grid { grid-template-columns: 1fr; }
+  /* Síntese no celular: vídeos um embaixo do outro, título sem quebra forçada, áreas numa coluna */
+  .synthesis-arcs { display: none; }
+  .synthesis-title br { display: none; }
+  .sy-videos { grid-template-columns: 1fr; gap: 28px; }
+  .sy-video-media .play-badge--large { width: 48px; height: 48px; left: 14px; bottom: 14px; }
+  .sy-video-media .play-badge--large svg { width: 20px; height: 20px; }
+  .sy-video-kicker { margin-top: 14px; }
+  .sy-grid { grid-template-columns: 1fr; }
   /* Listagem de vídeos no celular: linhas compactas (miniatura à esquerda) em vez de 15 cards de tela cheia */
   .lp .cards-grid { gap: 0; margin-top: 4px; }
   .lp .cards-grid .card-link { display: grid; grid-template-columns: 136px minmax(0, 1fr); column-gap: 14px; padding: 14px 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: none; box-shadow: none; transform: none; }
@@ -665,10 +656,7 @@ button { font: inherit; color: inherit; }
   .se-form { flex-direction: column; }
   .se-form .btn { justify-content: center; min-height: 48px; }
   .se-thumb { width: 92px; }
-  .se-dek { display: none; }
-  .sy-row { flex-wrap: wrap; }
-  .sy-cta { width: 100%; justify-content: center; }
-  .cp-disclosure { width: 100%; }
+  .se-dek { display: none; }  .cp-disclosure { width: 100%; }
   html { scroll-padding-top: 70px; }
   /* Sem faixa do topo no celular: o aviso vai para o alto da primeira seção (selo) e o idioma para o menu */
   .topbar { display: none; }
@@ -737,14 +725,6 @@ button { font: inherit; color: inherit; }
   .section-sub { font-size: 14.5px; }
   /* Filtros das listagens: a fileira rola até a borda da tela e o primeiro filtro fica alinhado ao texto */
   .lp-filters { margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter) 40px; }
-
-  .synthesis .btn { width: 100%; justify-content: center; min-height: 48px; }
-  .synthesis-media .play-badge--large { width: 48px; height: 48px; }
-  .synthesis-media .play-badge--large svg { width: 20px; height: 20px; }
-  .synthesis-caption { gap: 12px; padding: 48px 16px 16px; }
-  .synthesis-media .duration { top: 12px; right: 12px; }
-  .synthesis-part { gap: 14px; }
-  .synthesis-part-title { font-size: 15.5px; }
 
 
 }

@@ -155,7 +155,6 @@ export default {
     previous: 'anterior',
     next: 'próximo',
 
-    watchSynthesis: 'Assistir à síntese',
     part: (n) => `Parte ${n}`,
     duration: 'Duração',
 
@@ -202,7 +201,6 @@ export default {
     // Síntese final
     synthesisTitle: (name) => `Síntese final ${name}`,
     synthesisSub: 'Principais mensagens por área terapêutica',
-    synthesisAreaSub: 'Resumo, notícias e vídeos relacionados',
     explore: 'Explorar',
 
     // Busca
