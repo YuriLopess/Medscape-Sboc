@@ -10,10 +10,10 @@ export default function FinalSynthesis() {
 
   return (
     <section id="sintese" className="synthesis" aria-labelledby="sintese-title">
-      {/* Mesmos arcos do banner, passando por trás do vídeo */}
-      <svg className="synthesis-arcs" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M430 -10 C 520 180, 640 300, 1010 330" />
-        <path d="M470 610 C 560 420, 720 330, 1010 300" />
+      {/* Os mesmos arcos do banner, só na metade do vídeo: descem pela esquerda dele e saem por baixo */}
+      <svg className="synthesis-arcs" viewBox="0 0 846 558" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M110 0 C 50 150, 60 330, 260 440 C 380 505, 500 540, 610 560" />
+        <path d="M160 0 C 90 160, 100 320, 280 420 C 450 510, 700 545, 846 575" />
       </svg>
 
       <div className="container synthesis-inner" data-reveal>
