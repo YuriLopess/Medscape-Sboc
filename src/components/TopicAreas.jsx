@@ -23,6 +23,11 @@ export default function TopicAreas() {
                 href={topicHref(t.id)}
                 aria-label={`${ui.areaCta(t.label)}: ${ui.areaCount(t.videos.length, t.news.length)}`}
               >
+                {/* Arcos do banner: aparecem se desenhando junto com o preenchimento azul do hover */}
+                <svg className="area-arcs" viewBox="0 0 846 558" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M110 0 C 50 150, 60 330, 260 440 C 380 505, 500 540, 610 560" />
+                  <path d="M160 0 C 90 160, 100 320, 280 420 C 450 510, 700 545, 846 575" />
+                </svg>
                 <span className="area-icon"><TopicIcon topic={t.id} /></span>
                 <ArrowRight className="area-arrow" />
                 <span className="area-name">{t.label}</span>

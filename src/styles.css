@@ -283,9 +283,14 @@ button { font: inherit; color: inherit; }
 .areas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0 0; padding: 0; list-style: none; }
 .areas-grid li { display: flex; } /* cards da mesma linha com a mesma altura */
 .area-card { position: relative; isolation: isolate; flex: 1; display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto 1fr auto; column-gap: 12px; min-height: 164px; padding: 20px 20px 18px; border: 1px solid var(--line); border-radius: 12px; background: #fff; text-decoration: none; overflow: hidden; transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease; }
-.area-card::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(160deg, var(--navy) 0%, #0a3a8c 55%, #0c5bb8 100%); transform: translateY(101%); transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+.area-card::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(160deg, var(--navy) 0%, #0a3a8c 55%, #0c5bb8 100%); transform: translateY(101%); transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
 .area-card:hover, .area-card:focus-visible { border-color: transparent; box-shadow: 0 16px 34px rgb(var(--navy-rgb) / .22); transform: translateY(-3px); }
-.area-card:hover::after, .area-card:focus-visible::after { transform: none; }
+.area-card:hover::before, .area-card:focus-visible::before { transform: none; }
+/* Arcos no hover: mesmas curvas do banner, na metade direita do card, revelados de cima para baixo
+   logo depois que o azul sobe; somem na hora ao tirar o mouse */
+.area-arcs { position: absolute; top: 0; right: 0; bottom: 0; left: 42%; z-index: -1; width: auto; height: 100%; overflow: visible; pointer-events: none; clip-path: inset(0 0 100% 0); transition: clip-path .15s ease; }
+.area-arcs path { fill: none; stroke: var(--arc); stroke-width: 1.5; opacity: .75; vector-effect: non-scaling-stroke; }
+.area-card:hover .area-arcs, .area-card:focus-visible .area-arcs { clip-path: inset(-20%); transition: clip-path .9s .18s cubic-bezier(.55, 0, .2, 1); }
 .area-icon { grid-column: 1; grid-row: 1; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; background: var(--blue-soft); color: var(--navy); transition: background .3s ease, color .3s ease; }
 .area-icon svg { width: 34px; height: 34px; }
 .area-arrow { grid-column: 2; grid-row: 1; justify-self: end; align-self: start; width: 18px; height: 18px; color: var(--accent-light); opacity: 0; transform: translate(-6px, 0); transition: opacity .3s ease, transform .3s ease, color .3s ease; }
