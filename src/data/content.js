@@ -27,8 +27,8 @@ const topicIds = ['pulmao', 'mama', 'gastro', 'gineco', 'hemato', 'gu', 'imuno',
 
 // Foto de capa de cada área no "Explore por área terapêutica" (as dez são diferentes entre si)
 const topicCovers = {
-  pulmao: 'images/banco/tomografia-pulmao.jpg',
-  mama: 'images/videos/mama.jpg',
+  pulmao: 'images/banco/pulmao.jpg',
+  mama: 'images/banco/mama.jpg',
   gastro: 'images/videos/gastro.jpg',
   gineco: 'images/temas/ginecologicos.jpg',
   hemato: 'images/banco/sangue.jpg',
