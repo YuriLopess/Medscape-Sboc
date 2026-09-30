@@ -22,8 +22,8 @@ export default function FeaturedCarousel() {
       </div>
 
       <div className="carousel-track" ref={carousel.trackRef}>
-        {featuredVideos.map((video) => (
-          <ContentCard key={video.id} item={{ ...video, type: 'video' }} size="lg" />
+        {featuredVideos.map((video, i) => (
+          <ContentCard key={video.id} item={video} size="lg" index={i} origin="destaques" />
         ))}
       </div>
 

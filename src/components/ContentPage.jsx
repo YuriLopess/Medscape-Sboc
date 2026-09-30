@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import ContentCard from './ContentCard.jsx';
+import Breadcrumb from './Breadcrumb.jsx';
 import Disclosure from './Disclosure.jsx';
 import { ArrowLeft, User } from './Icons.jsx';
 import { Duration, Media, PlayBadge } from './Media.jsx';
 import { useContent } from '../i18n.jsx';
+import { topicHref } from '../hooks/useRoute.js';
 
 // Selo com a logo da empresa patrocinadora, sobre o canto do vídeo (só em conteúdo com apoio)
 function SponsorBadge({ sponsor }) {
@@ -160,18 +162,27 @@ export default function ContentPage({ item }) {
           {/* Só no celular: aviso obrigatório no topo da página */}
           <Disclosure />
           <div className="cp-hero-text">
-            <a className="cp-back" href="#/"><ArrowLeft /> {page.back}</a>
-            <p className="cp-kicker">
-              <span className="cp-kicker-event">{event.name}</span>
-              <span aria-hidden="true"> • </span>
-              {item.kicker}
-              {item.topicLabel && <span className="cp-kicker-topic">{item.topicLabel}</span>}
-            </p>
-            <h1 className="cp-title">{item.title}</h1>
-            {/* Identificação exigida pelas diretrizes Medscape para conteúdo com apoio de empresa */}
-            {item.sponsor && (
-              <p className="cp-sponsor">{sponsorLine([item.sponsor])}</p>
+            <Breadcrumb topic={item.topic} format={item.isVideo ? 'videos' : 'noticias'} />
+            {/* Conteúdo patrocinado: aviso com a logo da empresa acima do título (handoff, pág. 10) */}
+            {item.sponsorInfo && (
+              <div className="cp-disclosure">
+                <span className="cp-disclosure-label">{page.sponsoredBy}</span>
+                {item.sponsorInfo.logo ? (
+                  <img
+                    className="cp-disclosure-logo"
+                    src={item.sponsorInfo.logo}
+                    alt={item.sponsorInfo.name}
+                    style={{ '--logo-h': `${Math.round((item.sponsorInfo.logoHeight ?? 48) * 0.6)}px` }}
+                  />
+                ) : (
+                  <strong>{item.sponsorInfo.name}</strong>
+                )}
+              </div>
             )}
+            <h1 className="cp-title">{item.title}</h1>
+            <p className="cp-byline">{page.byline(event.name, item.dateLabel)}</p>
+            {/* Frase exigida pelas diretrizes Medscape para conteúdo com apoio de empresa */}
+            {item.sponsor && <p className="cp-sponsor">{sponsorLine([item.sponsor])}</p>}
             <p className="cp-summary">{item.summary}</p>
           </div>
           {/* Arte da cidade do evento, igual em todas as páginas internas (as formas já vêm na imagem) */}
@@ -201,9 +212,18 @@ export default function ContentPage({ item }) {
             <p className="section-sub">{page.relatedSub(event.name)}</p>
           </div>
           <div className="carousel-track">
-            {related.map((r) => <ContentCard key={r.id} item={r} />)}
+            {related.map((r, i) => <ContentCard key={r.id} item={r} index={i} origin="relacionados" />)}
           </div>
         </section>
+      )}
+
+      {/* Retorno explícito à área, sem depender do Voltar do navegador */}
+      {item.topicLabel && (
+        <div className="container cp-return">
+          <a className="btn btn--dark" href={topicHref(item.topic)}>
+            <ArrowLeft /> {ui.backToTopic(item.topicLabel)}
+          </a>
+        </div>
       )}
     </article>
   );

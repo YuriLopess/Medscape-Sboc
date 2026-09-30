@@ -23,7 +23,7 @@ export default {
     heroAlt: 'ESMO 2026 plenary session with the audience facing the stage',
   },
 
-  nav: { textos: 'Articles', videos: 'Videos', sintese: 'Final synthesis', apoiadores: 'Supporters' },
+  nav: { cobertura: 'Coverage', noticias: 'News', videos: 'Videos', sintese: 'Final synthesis', busca: 'Search' },
 
   topics: {
     mama: 'Breast',
@@ -34,6 +34,8 @@ export default {
     gineco: 'Gynecologic',
     gu: 'Genitourinary',
     precisao: 'Precision oncology',
+    pele: 'Skin and melanoma',
+    outros: 'Other topics',
   },
 
   content: {
@@ -102,8 +104,18 @@ export default {
     atYourPace: 'Explore at your own pace.',
     seeAll: 'See all',
 
-    textsTitle: 'Coverage articles',
-    textsSub: 'Written analysis of the studies and debates at the congress.',
+    textsTitle: 'Coverage news',
+    textsSub: 'The studies and debates of the congress, with expert insight.',
+
+    areasTitle: 'Explore by therapeutic area',
+    areasSub: 'Pick the topic of your practice and see what the coverage has on it.',
+    areaVideos: (n) => `${n} ${n === 1 ? 'video' : 'videos'}`,
+    areaNews: (n) => `${n} ${n === 1 ? 'news story' : 'news stories'}`,
+    // Contagem completa para leitores de tela: "2 vídeos · 1 notícia"
+    areaCount(videos, news) {
+      return [videos && this.areaVideos(videos), news && this.areaNews(news)].filter(Boolean).join(' · ');
+    },
+    areaCta: (topic) => `See ${topic} content`,
     coverageOf: (name) => `${name} coverage`,
     readTime: (t) => `${t} read`,
     exploreByTopic: 'Explore by topic',
@@ -131,22 +143,66 @@ export default {
     supportersTitle: 'Supporters',
     supportersSub: 'Supporting the spread of knowledge and scientific debate.',
 
+    // Content nature (handoff): every card shows one of the two before the click
+    editorial: 'Editorial',
+    sponsoredBadge: 'Sponsored content',
+    coverage: 'Coverage',
+
+    // Therapeutic area
+    topicKicker: 'Oncology',
+    topicSub: 'Selected news, videos and analysis',
+    topicHighlight: 'Highlight',
+    newsHeading: 'News',
+    videosHeading: 'Videos',
+    topicEmpty: 'No content has been published in this area yet.',
+    backToTopic: (t) => `Back to ${t}`,
+    seeAllNews: 'See all news',
+    seeAllVideos: 'See all videos',
+
+    // Format listings
+    newsListTitle: 'News',
+    newsListSub: 'Editorial and sponsored updates from the coverage',
+    videoListTitle: 'Videos',
+    videoListSub: 'Highlights, interviews and commentary',
+    filterByArea: 'Filter by therapeutic area',
+    resultsCount: (n) => `${n} ${n === 1 ? 'item' : 'items'}`,
+    listingEmpty: 'No content in this area yet.',
+
+    // Final synthesis
+    synthesisTitle: (name) => `${name} final synthesis`,
+    synthesisSub: 'Key messages by therapeutic area',
+    synthesisAreaSub: 'Summary, related news and videos',
+    explore: 'Explore',
+
+    // Search
+    searchTitle: 'Search the coverage',
+    searchPlaceholder: 'Topic, study or expert',
+    searchButton: 'Search',
+    searchResults: (n) => `${n} ${n === 1 ? 'result' : 'results'}`,
+    searchEmpty: (q) => `Nothing found for “${q}”. Try another term or explore by therapeutic area.`,
+    searchPrompt: 'Search by topic, study or expert across the coverage videos and news.',
+
     video: 'Video',
-    text: 'Article',
+    text: 'News',
   },
 
   page: {
     back: 'Back to coverage',
     videoKicker: 'Coverage video',
-    textKicker: 'Coverage article',
+    textKicker: 'Coverage news',
     synthesisKicker: 'Final synthesis',
     watch: (title) => `Watch: ${title}`,
     videoSoon: 'The video will be published here as soon as the final recording is approved.',
     supportedBy: 'Supported by',
+    // Sponsored content page: disclosure at the top, above the title (handoff, p. 10)
+    sponsoredBy: 'Sponsored content by',
+    sponsoredNote: 'Material developed for healthcare professionals',
+    byline: (name, date) => `${name} coverage • ${date}`,
+
     expert: 'Expert',
     experts: 'Experts',
     aboutVideo: 'About this video',
-    aboutText: 'About this article',
+    aboutText: 'About this story',
     format: 'Format',
     topic: 'Topic',
     event: 'Event',
@@ -157,11 +213,11 @@ export default {
     notFoundBack: 'Back to coverage',
     placeholderSpeaker: { name: 'Expert name', role: 'Title and institution to be confirmed' },
     summary: (description, eventName, isVideo) =>
-      `${description} As part of the ${eventName} coverage, ${isVideo ? 'this video brings together' : 'this analysis brings together'} expert insight into the data presented at the congress and what it may mean for clinical practice in Brazil.`,
+      `${description} As part of the ${eventName} coverage, ${isVideo ? 'this video brings together' : 'this story brings together'} expert insight into the data presented at the congress and what it may mean for clinical practice in Brazil.`,
     body: (eventName) => [
-      `This analysis follows the main ${eventName} presentations on the topic and organizes the points that stood out most to the experts during the congress.`,
+      `This story follows the main ${eventName} presentations on the topic and organizes the points that stood out most to the experts during the congress.`,
       'It highlights study design, the results presented, and the questions that remain open, with a focus on what may be incorporated into clinical practice.',
-      'Full text of the analysis to be added once the final content is approved.',
+      'Full text of the story to be added once the final content is approved.',
     ],
   },
 };

@@ -2,7 +2,7 @@
 // Imagens: coloque os arquivos em /public/images com os nomes abaixo; enquanto não existirem,
 // o site mostra um placeholder no lugar.
 //
-// Este arquivo guarda só a estrutura (ids, temas, patrocinadores, durações, imagens).
+// Este arquivo guarda só a estrutura (ids, temas, patrocinadores, datas, durações, imagens).
 // Os textos de cada idioma ficam em ./locales (pt.js, es.js, en.js), todos com a mesma estrutura.
 import pt from './locales/pt.js';
 import es from './locales/es.js';
@@ -18,70 +18,69 @@ const eventBase = {
   contentArt: 'images/cobertura-arte.webp',
 };
 
-// Itens com "children" viram um submenu
-const navBase = [
-  { key: 'textos', href: '#textos' },
-  { key: 'videos', href: '#destaques' },
-  { key: 'sintese', href: '#sintese' },
-  { key: 'apoiadores', href: '#apoiadores' },
-];
+/*
+  Áreas terapêuticas (handoff "Mapa funcional", pág. 3): a descoberta principal do site.
+  Cada uma tem página própria em #/<id>. "outros" é o balde do handoff ("Outros temas"):
+  recebe o que não pertence a uma área específica (panorama, suporte, sarcomas...).
+*/
+const topicIds = ['pulmao', 'mama', 'gastro', 'gineco', 'hemato', 'gu', 'imuno', 'precisao', 'pele', 'outros'];
+
+// Rota da Síntese final; também é o "tema" na URL dos dois vídeos de encerramento
+export const SYNTHESIS = 'sintese-final';
 
 /*
   Entregáveis combinados:
-  - 15 vídeos curtos (highlights) → carrossel "Em destaque"
-  - 2 vídeos finais               → seção "Síntese final"
-  - 8 textos                      → seção "Textos"
-  Por empresa:  AbbVie 3 vídeos + 2 textos · Merck 2 + 1 · GSK 1 + 0 · SBOC 11 + 5 (sem patrocínio)
+  - 15 vídeos curtos (highlights) → "Destaques da cobertura" e listagem de vídeos
+  - 2 vídeos finais               → página "Síntese final"
+  - 8 notícias                    → listagem de notícias
+  Por empresa:  AbbVie 3 vídeos + 2 notícias · Merck 2 + 1 · GSK 1 + 0 · SBOC 11 + 5 (sem patrocínio)
 
-  sponsor: nome da empresa patrocinadora (deve existir em "supporters", com logo). Sem sponsor = conteúdo SBOC.
-  Os patrocinados ficam intercalados, sem dois seguidos e sem agrupar por empresa.
+  sponsor: nome da empresa patrocinadora (deve existir em "supporters", com logo). Sem sponsor = editorial.
+  slug:    parte final da URL (#/<tema>/<slug>). Fica em português nos três idiomas, para o link não quebrar
+           quando a pessoa troca de idioma.
+  date:    data de publicação (ISO). Ordena as listagens e aparece na página do conteúdo.
   focus (opcional): parte da imagem que deve ficar visível quando o card recorta a foto, ex.: 'center 15%'
   Título e descrição de cada item ficam em locales/<idioma>.js → content[id].
-  image: todo conteúdo tem foto. Fotos repetidas ficam em conteúdos distantes entre si; na seção de textos, as 8 são diferentes.
+  image: todo conteúdo tem foto. Fotos repetidas ficam em conteúdos distantes entre si.
 */
 
 // 15 vídeos curtos: 9 SBOC · 3 AbbVie · 2 Merck · 1 GSK
 const featuredBase = [
-  { id: 'panorama', duration: '04:36', image: 'images/videos/panorama.jpg' },
-  { id: 'mama', topic: 'mama', sponsor: 'AbbVie', duration: '05:22', image: 'images/videos/mama.jpg' },
-  { id: 'toracicos', topic: 'pulmao', duration: '05:05', image: 'images/videos/toracicos.jpg', focus: 'center 15%' },
-  { id: 'gastro', topic: 'gastro', sponsor: 'Merck', duration: '04:50', image: 'images/videos/gastro.jpg' },
-  { id: 'gineco', topic: 'gineco', duration: '04:48', image: 'images/temas/ginecologicos.jpg' },
-  { id: 'gu', topic: 'gu', duration: '05:10', image: 'images/banco/hospital.jpg' },
-  { id: 'imuno', topic: 'imuno', sponsor: 'GSK', duration: '06:02', image: 'images/banco/celula.jpg' },
-  { id: 'precisao', topic: 'precisao', duration: '04:44', image: 'images/banco/laboratorio.jpg' },
-  { id: 'linfomas', topic: 'hemato', sponsor: 'AbbVie', duration: '05:15', image: 'images/banco/sangue.jpg' },
-  { id: 'melanoma', topic: 'imuno', duration: '03:57', image: 'images/temas/digestivos.jpg' },
-  { id: 'cabeca-pescoco', duration: '04:21', image: 'images/sintese.jpg' },
-  { id: 'pulmao-avancado', topic: 'pulmao', sponsor: 'Merck', duration: '05:40', image: 'images/banco/tomografia-pulmao.jpg' },
-  { id: 'suporte', duration: '04:05', image: 'images/banco/comprimidos.jpg' },
-  { id: 'mieloma', topic: 'hemato', sponsor: 'AbbVie', duration: '05:02', image: 'images/temas/biomarcadores.jpg' },
-  { id: 'sarcomas', duration: '04:30', image: 'images/videos/panorama.jpg' },
+  { id: 'panorama', topic: 'outros', slug: 'panorama-do-congresso', date: '2026-10-23', duration: '04:36', image: 'images/videos/panorama.jpg' },
+  { id: 'mama', topic: 'mama', sponsor: 'AbbVie', slug: 'destaques-cancer-de-mama', date: '2026-10-23', duration: '05:22', image: 'images/videos/mama.jpg' },
+  { id: 'toracicos', topic: 'pulmao', slug: 'tumores-toracicos', date: '2026-10-24', duration: '05:05', image: 'images/videos/toracicos.jpg', focus: 'center 15%' },
+  { id: 'gastro', topic: 'gastro', sponsor: 'Merck', slug: 'tumores-gastrointestinais', date: '2026-10-24', duration: '04:50', image: 'images/videos/gastro.jpg' },
+  { id: 'gineco', topic: 'gineco', slug: 'tumores-ginecologicos', date: '2026-10-24', duration: '04:48', image: 'images/temas/ginecologicos.jpg' },
+  { id: 'gu', topic: 'gu', slug: 'tumores-geniturinarios', date: '2026-10-25', duration: '05:10', image: 'images/banco/hospital.jpg' },
+  { id: 'imuno', topic: 'imuno', sponsor: 'GSK', slug: 'imunoterapia', date: '2026-10-25', duration: '06:02', image: 'images/banco/celula.jpg' },
+  { id: 'precisao', topic: 'precisao', slug: 'oncologia-de-precisao', date: '2026-10-25', duration: '04:44', image: 'images/banco/laboratorio.jpg' },
+  { id: 'linfomas', topic: 'hemato', sponsor: 'AbbVie', slug: 'linfomas-e-leucemias', date: '2026-10-26', duration: '05:15', image: 'images/banco/sangue.jpg' },
+  { id: 'melanoma', topic: 'pele', slug: 'melanoma-e-pele', date: '2026-10-26', duration: '03:57', image: 'images/temas/digestivos.jpg' },
+  { id: 'cabeca-pescoco', topic: 'outros', slug: 'cabeca-e-pescoco', date: '2026-10-26', duration: '04:21', image: 'images/sintese.jpg' },
+  { id: 'pulmao-avancado', topic: 'pulmao', sponsor: 'Merck', slug: 'pulmao-avancado', date: '2026-10-27', duration: '05:40', image: 'images/banco/tomografia-pulmao.jpg' },
+  { id: 'suporte', topic: 'outros', slug: 'cuidados-de-suporte', date: '2026-10-27', duration: '04:05', image: 'images/banco/comprimidos.jpg' },
+  { id: 'mieloma', topic: 'hemato', sponsor: 'AbbVie', slug: 'mieloma-multiplo', date: '2026-10-27', duration: '05:02', image: 'images/temas/biomarcadores.jpg' },
+  { id: 'sarcomas', topic: 'outros', slug: 'sarcomas-e-tumores-raros', date: '2026-10-27', duration: '04:30', image: 'images/videos/panorama.jpg' },
 ];
 
-// 2 vídeos finais (SBOC)
+// 2 vídeos finais (SBOC). O "tema" na URL é a própria Síntese final.
 const finalBase = [
-  { id: 'sintese', duration: '18:40', image: 'images/sintese.jpg' },
-  { id: 'sintese-pratica', duration: '16:15', image: 'images/banco/hospital.jpg' },
+  { id: 'sintese', topic: SYNTHESIS, slug: 'principais-destaques', date: '2026-10-28', duration: '18:40', image: 'images/sintese.jpg' },
+  { id: 'sintese-pratica', topic: SYNTHESIS, slug: 'o-que-muda-na-pratica', date: '2026-10-28', duration: '16:15', image: 'images/banco/hospital.jpg' },
 ];
 
-// 8 textos: 5 SBOC · 2 AbbVie · 1 Merck. O primeiro é o destaque da seção (use um com imagem).
+// 8 notícias: 5 SBOC · 2 AbbVie · 1 Merck
 // readTime: tempo estimado de leitura (provisório)
 const textsBase = [
-  { id: 'texto-digestivos', topic: 'gastro', readTime: '6 min', image: 'images/temas/digestivos.jpg' },
-  { id: 'texto-biomarcadores', topic: 'precisao', sponsor: 'AbbVie', readTime: '5 min', image: 'images/temas/biomarcadores.jpg' },
-  { id: 'texto-mama', topic: 'mama', readTime: '7 min', image: 'images/videos/mama.jpg' },
-  { id: 'texto-pulmao', topic: 'pulmao', sponsor: 'Merck', readTime: '6 min', image: 'images/banco/tomografia-pulmao.jpg' },
-  { id: 'texto-gineco', topic: 'gineco', readTime: '5 min', image: 'images/temas/ginecologicos.jpg' },
-  { id: 'texto-hemato', topic: 'hemato', sponsor: 'AbbVie', readTime: '6 min', image: 'images/banco/sangue.jpg' },
-  { id: 'texto-prostata', topic: 'gu', readTime: '4 min', image: 'images/banco/hospital.jpg' },
-  { id: 'texto-suporte', readTime: '5 min', image: 'images/banco/comprimidos.jpg' },
+  { id: 'texto-digestivos', topic: 'gastro', slug: 'panorama-dos-tumores-digestivos', date: '2026-10-24', readTime: '6 min', image: 'images/temas/digestivos.jpg' },
+  { id: 'texto-biomarcadores', topic: 'precisao', sponsor: 'AbbVie', slug: 'biomarcadores-em-foco', date: '2026-10-25', readTime: '5 min', image: 'images/temas/biomarcadores.jpg' },
+  { id: 'texto-mama', topic: 'mama', slug: 'mama-o-que-muda-apos-o-esmo', date: '2026-10-23', readTime: '7 min', image: 'images/videos/mama.jpg' },
+  { id: 'texto-pulmao', topic: 'pulmao', sponsor: 'Merck', slug: 'da-adjuvancia-a-doenca-avancada', date: '2026-10-26', readTime: '6 min', image: 'images/banco/tomografia-pulmao.jpg' },
+  { id: 'texto-gineco', topic: 'gineco', slug: 'novas-abordagens-em-ginecologicos', date: '2026-10-24', readTime: '5 min', image: 'images/temas/ginecologicos.jpg' },
+  { id: 'texto-hemato', topic: 'hemato', sponsor: 'AbbVie', slug: 'combinacoes-em-debate', date: '2026-10-26', readTime: '6 min', image: 'images/banco/sangue.jpg' },
+  { id: 'texto-prostata', topic: 'gu', slug: 'prostata-em-debate', date: '2026-10-25', readTime: '4 min', image: 'images/banco/hospital.jpg' },
+  { id: 'texto-suporte', topic: 'outros', slug: 'qualidade-de-vida-no-cuidado', date: '2026-10-27', readTime: '5 min', image: 'images/banco/comprimidos.jpg' },
 ];
-
-const topicIds = ['mama', 'pulmao', 'gastro', 'hemato', 'imuno', 'gineco', 'gu', 'precisao'];
-
-// Quantos temas aparecem como botão; o restante vai para "Mais temas"
-export const visibleTopicCount = 3;
 
 export const supporters = [
   // pharma: true → empresa patrocinadora; só essas entram nos avisos obrigatórios (topo, rodapé, cards)
@@ -106,7 +105,14 @@ const sponsorNames = supporters.filter((s) => s.pharma).map((s) => s.name);
 // Logo da empresa patrocinadora (vem da lista de apoiadores)
 export const sponsorOf = (name) => supporters.find((s) => s.name === name);
 
-/* ---------- Página interna de conteúdo ----------
+/*
+  Módulo de conteúdo especial dentro de uma área (handoff, pág. 13 — AstraZeneca em Pulmão).
+  A arquitetura fica pronta, mas o módulo só aparece quando um item for adicionado aqui,
+  depois da aprovação comercial. Formato: { topic, title, sponsor, href, cta }.
+*/
+export const specialModules = [];
+
+/* ---------- Página de conteúdo ----------
   Campos opcionais por conteúdo (nas listas acima):
   - speakers: [{ name, role, photo? }] — especialistas do conteúdo
   - videoSrc: arquivo de vídeo hospedado no próprio site (ex.: 'videos/panorama.mp4').
@@ -123,25 +129,63 @@ export function buildContent(lang) {
   const L = locales[lang] ?? locales[defaultLang];
 
   const event = { ...eventBase, ...L.event };
-  const withText = (item) => {
-    const [title, description] = L.content[item.id] ?? [item.id, ''];
-    return { ...item, title, description };
-  };
-
-  const featuredVideos = featuredBase.map(withText);
-  const finalVideos = finalBase.map(withText);
-  const texts = textsBase.map((t) => ({ ...withText(t), type: 'analise' }));
-  const topics = topicIds.map((id) => ({ id, label: L.topics[id] }));
   const topicLabel = (id) => L.topics[id];
 
-  const allContent = [
-    ...featuredVideos.map((v) => ({ ...v, type: 'video' })),
-    ...finalVideos.map((v) => ({ ...v, type: 'video', final: true, kicker: L.page.synthesisKicker })),
-    ...texts,
-  ];
+  // Data por extenso no idioma atual. UTC fixo: sem isso, o fuso do navegador pode puxar um dia a menos.
+  const dateFormat = new Intl.DateTimeFormat(L.htmlLang, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  const formatDate = (iso) => dateFormat.format(new Date(`${iso}T00:00:00Z`)).replace('.', '');
 
-  function getContent(id) {
-    const item = allContent.find((c) => c.id === id);
+  // Campos que todo conteúdo tem, em qualquer listagem: rota, natureza (editorial/patrocinado) e data
+  const prepare = (item, type) => {
+    const [title, description] = L.content[item.id] ?? [item.id, ''];
+    return {
+      ...item,
+      type,
+      title,
+      description,
+      href: `#/${item.topic}/${item.slug}`,
+      sponsored: Boolean(item.sponsor),
+      dateLabel: formatDate(item.date),
+    };
+  };
+
+  const featuredVideos = featuredBase.map((v) => prepare(v, 'video'));
+  const finalVideos = finalBase.map((v) => ({ ...prepare(v, 'video'), final: true, kicker: L.page.synthesisKicker }));
+  const texts = textsBase.map((t) => prepare(t, 'analise'));
+  const allContent = [...featuredVideos, ...finalVideos, ...texts];
+
+  // Catálogo navegável: tudo menos os dois vídeos de encerramento, que vivem na Síntese final
+  const catalog = allContent.filter((c) => !c.final);
+  const byDate = (a, b) => b.date.localeCompare(a.date);
+
+  // Uma área terapêutica com seus conteúdos já separados por formato
+  function getTopic(id) {
+    if (!topicIds.includes(id)) return null;
+    const items = catalog.filter((c) => c.topic === id).sort(byDate);
+    const videos = items.filter((c) => c.type === 'video');
+    const news = items.filter((c) => c.type === 'analise');
+    return {
+      id,
+      label: topicLabel(id),
+      items,
+      videos,
+      news,
+      // Destaque da área: o conteúdo mais recente (o handoff pede um card principal no topo)
+      highlight: items[0] ?? null,
+      special: specialModules.find((m) => m.topic === id) ?? null,
+    };
+  }
+
+  const topics = topicIds.map((id) => getTopic(id)).filter((t) => t.items.length > 0);
+
+  // Listagem por formato, opcionalmente filtrada por área
+  function listing(format, topic) {
+    const type = format === 'videos' ? 'video' : 'analise';
+    return catalog.filter((c) => c.type === type && (!topic || c.topic === topic)).sort(byDate);
+  }
+
+  function getContent(topic, slug) {
+    const item = allContent.find((c) => c.topic === topic && c.slug === slug);
     if (!item) return null;
     const isVideo = item.type !== 'analise';
     return {
@@ -156,31 +200,50 @@ export function buildContent(lang) {
     };
   }
 
-  // Outros conteúdos para continuar a navegação: primeiro os do mesmo tema, depois os demais.
-  // Mistura vídeos e análises, com e sem apoio, sem agrupar por empresa.
+  // Outros conteúdos para continuar a navegação: primeiro os da mesma área, depois os demais.
+  // Mistura vídeos e notícias, com e sem apoio, sem agrupar por empresa.
   function relatedContent(item, count = 3) {
-    const others = allContent.filter((c) => c.id !== item.id && !c.final);
-    const sameTopic = others.filter((c) => item.topic && c.topic === item.topic);
+    const others = catalog.filter((c) => c.id !== item.id);
+    const sameTopic = others.filter((c) => c.topic === item.topic);
     const rest = others.filter((c) => !sameTopic.includes(c));
     return [...sameTopic, ...rest].slice(0, count);
+  }
+
+  // Busca restrita à cobertura: título, descrição e área.
+  // Ignora acentos dos dois lados, para "pulmao" encontrar "Pulmão".
+  const fold = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  function search(term) {
+    const q = fold(term.trim());
+    if (!q) return [];
+    const has = (c) => fold(`${c.title} ${c.description} ${topicLabel(c.topic) ?? ''}`).includes(q);
+    return allContent.filter(has).sort(byDate);
   }
 
   cache[lang] = {
     lang: L.code,
     htmlLang: L.htmlLang,
     event,
-    navLinks: navBase.map((n) => ({ ...n, label: L.nav[n.key] })),
+    // Menu global do handoff: Cobertura ▾ | Notícias | Vídeos | Síntese final | Busca
+    navLinks: [
+      { key: 'cobertura', label: L.nav.cobertura, children: topics.map((t) => ({ label: t.label, href: `#/${t.id}` })) },
+      { key: 'noticias', label: L.nav.noticias, href: '#/noticias' },
+      { key: 'videos', label: L.nav.videos, href: '#/videos' },
+      { key: 'sintese', label: L.nav.sintese, href: `#/${SYNTHESIS}` },
+      { key: 'busca', label: L.nav.busca, href: '#/busca' },
+    ],
     featuredVideos,
     finalVideos,
     finalSynthesis: L.finalSynthesis,
     texts,
     topics,
     topicLabel,
-    // "Explore por tema": todo o catálogo (vídeos e textos), exceto os vídeos finais
-    exploreItems: allContent.filter((c) => !c.final),
+    catalog,
     allContent,
+    getTopic,
+    listing,
     getContent,
     relatedContent,
+    search,
     // Frase de apoio de um conteúdo: "Desenvolvido pela Medscape com o apoio da [Pharma]"
     sponsorLine: (names) => L.sponsorLine(names),
     disclosure: {

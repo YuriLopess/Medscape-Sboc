@@ -1,8 +1,9 @@
 import { ArrowRight } from './Icons.jsx';
 import { Duration, Media, PlayBadge } from './Media.jsx';
 import { useContent } from '../i18n.jsx';
-import { contentHref } from '../hooks/useRoute.js';
+import { trackCard } from '../analytics.js';
 
+// Faixa de abertura da Síntese final: as duas conversas de encerramento da cobertura
 export default function FinalSynthesis() {
   const { finalSynthesis: s, finalVideos, ui } = useContent();
   const [first] = finalVideos;
@@ -27,7 +28,7 @@ export default function FinalSynthesis() {
           <ol className="synthesis-parts">
             {finalVideos.map((v, i) => (
               <li key={v.id}>
-                <a className="synthesis-part" href={contentHref(v.id)}>
+                <a className="synthesis-part" href={v.href} onClick={() => trackCard(v, i, 'sintese')}>
                   <span className="synthesis-part-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                   <span className="synthesis-part-title">{v.title}</span>
                   <span className="synthesis-part-duration"><span className="sr-only">{ui.duration} </span>{v.duration}</span>
@@ -36,13 +37,13 @@ export default function FinalSynthesis() {
             ))}
           </ol>
 
-          <a className="btn btn--light" href={contentHref(first.id)}>
+          <a className="btn btn--light" href={first.href} onClick={() => trackCard(first, 0, 'sintese')}>
             {ui.watchSynthesis} <ArrowRight />
           </a>
         </div>
 
         {/* Parte 1 em destaque, com o título sobre a imagem */}
-        <a className="synthesis-video" href={contentHref(first.id)}>
+        <a className="synthesis-video" href={first.href} onClick={() => trackCard(first, 0, 'sintese')}>
           <Media src={first.image} className="synthesis-media">
             <Duration>{first.duration}</Duration>
             <span className="synthesis-caption">
