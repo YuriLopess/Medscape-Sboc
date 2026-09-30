@@ -1,5 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { buildContent, defaultLang, locales } from './data/content.js';
+import { LangContext } from './langContext.js';
 
 const STORAGE_KEY = 'esmo-lang';
 
@@ -16,8 +17,6 @@ function initialLang() {
   }
   return defaultLang;
 }
-
-const LangContext = createContext(null);
 
 export function LanguageProvider({ children }) {
   const [lang, setLangState] = useState(initialLang);
