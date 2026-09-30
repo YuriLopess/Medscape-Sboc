@@ -84,7 +84,7 @@ button { font: inherit; color: inherit; }
 /* Medscape sozinho, com um fio à esquerda marcando que é independente das outras marcas */
 .hb--right { justify-self: end; padding-left: 20px; border-left: 1px solid var(--line); }
 .hb-label { font-size: 11px; font-weight: 600; letter-spacing: .02em; line-height: 1; color: var(--text); }
-.hb-sboc { height: 46px; width: auto; border-radius: 4px; }
+.hb-sboc { width: 56px; height: 56px; border-radius: 4px; } /* logo quadrada */
 .hb-medscape { height: 34px; width: auto; }
 .header-inner .main-nav { justify-self: center; }
 
@@ -391,7 +391,7 @@ button { font: inherit; color: inherit; }
 .footer-medscape { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 .footer-label { font-size: 13px; font-weight: 600; color: var(--ink); }
 .footer-medscape img { height: 36px; width: auto; }
-.footer-sboc img { height: 40px; width: auto; border-radius: 4px; }
+.footer-sboc img { width: 52px; height: 52px; border-radius: 4px; }
 .footer-center { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 28px; text-align: center; }
 .footer-audience { margin: 0; font-size: 14px; font-weight: 500; color: var(--ink); }
 /* D, no espírito do exemplo do PDF: bloco claro com fio azul em cima */
@@ -400,7 +400,7 @@ button { font: inherit; color: inherit; }
 .footer-privacy:hover { text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 640px) {
   .footer-medscape img { height: 28px; }
-  .footer-sboc img { height: 32px; }
+  .footer-sboc img { width: 42px; height: 42px; }
   .footer-label { font-size: 12px; }
   /* Celular: tudo alinhado à esquerda (texto longo centralizado fica com as bordas irregulares e cansa a leitura) */
   .footer-brands { padding-bottom: 22px; border-bottom: 1px solid var(--line); }
@@ -671,7 +671,7 @@ button { font: inherit; color: inherit; }
   .header-inner { min-height: 64px; gap: 14px; padding-block: 8px; }
   .hb { gap: 5px; }
   .hb-label { font-size: 10px; letter-spacing: .01em; }
-  .hb-sboc { height: 30px; }
+  .hb-sboc { width: 40px; height: 40px; }
   .hb-medscape { height: 24px; }
   .hb--right { padding-left: 14px; }
   .main-nav { max-height: calc(100dvh - 64px); }

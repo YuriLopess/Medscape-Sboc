@@ -15,7 +15,7 @@ export default function SiteFooter() {
             <img src="images/logos/medscape.png" alt="" width="698" height="160" />
           </a>
           <a href="#/" className="footer-sboc" aria-label={ui.homeSboc}>
-            <img src="images/logos/sboc-horizontal.png" alt="" width="342" height="120" />
+            <img src="images/logos/sboc.png" alt="" width="384" height="384" />
           </a>
         </div>
 

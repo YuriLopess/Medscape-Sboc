@@ -137,7 +137,7 @@ export default function SiteHeader() {
           {/* A: marca que chancela o programa (como "Avalado por la" no exemplo de referência) */}
           <a href="#/" className="hb hb--left" aria-label={ui.homeSboc}>
             <span className="hb-label">{ui.participation}</span>
-            <img className="hb-sboc" src="images/logos/sboc-horizontal.png" alt="" width="342" height="120" />
+            <img className="hb-sboc" src="images/logos/sboc.png" alt="" width="384" height="384" />
           </a>
           <button
             type="button"

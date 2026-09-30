@@ -99,7 +99,7 @@ export const supporters = [
   // logoHeight (opcional, px): logos quadradas precisam de mais altura para ter o mesmo peso das horizontais
   { name: 'AbbVie', logo: 'images/logos/abbvie.png', pharma: true },
   { name: 'GSK', logo: 'images/logos/gsk.png', logoHeight: 68, pharma: true },
-  { name: 'SBOC', logo: 'images/logos/sboc-horizontal.png' },
+  { name: 'SBOC', logo: 'images/logos/sboc.png', logoHeight: 64 },
   { name: 'Merck', logo: 'images/logos/merck.png', logoHeight: 60, pharma: true },
   // Não incluir a Medscape aqui: pelas diretrizes, o logo dela só aparece no cabeçalho/rodapé, nunca ao lado de farmacêutica
 ];
