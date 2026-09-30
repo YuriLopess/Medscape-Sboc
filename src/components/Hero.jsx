@@ -24,7 +24,9 @@ export default function Hero() {
         <p className="hero-event">{event.name}</p>
         <p className="hero-dates">{event.dates} • {event.city}</p>
         <h1 id="hero-title" className="hero-title">
-          {event.title[0]}<br />{event.title[1]}
+          {/* Uma linha por bloco: na abertura as linhas entram uma depois da outra */}
+          <span className="hero-title-line">{event.title[0]}</span>{' '}
+          <span className="hero-title-line">{event.title[1]}</span>
         </h1>
         <p className="hero-lead">{event.lead}</p>
         <a className="btn btn--light" href="#destaques">

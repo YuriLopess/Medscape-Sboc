@@ -11,6 +11,7 @@ import SiteFooter from './components/SiteFooter.jsx';
 import ContentPage from './components/ContentPage.jsx';
 import { useContent } from './i18n.jsx';
 import { useRoute } from './hooks/useRoute.js';
+import { useReveal } from './hooks/useReveal.js';
 
 const SITE_TITLE = 'ESMO 2026 · Medscape + SBOC';
 
@@ -18,6 +19,7 @@ export default function App() {
   const route = useRoute();
   const { getContent, ui } = useContent();
   const item = route.page === 'content' ? getContent(route.id) : null;
+  useReveal(route.page === 'content' ? route.id : 'home');
 
   useEffect(() => {
     document.title = item ? `${item.title} · ${SITE_TITLE}` : SITE_TITLE;

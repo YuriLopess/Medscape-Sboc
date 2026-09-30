@@ -15,7 +15,7 @@ export default function FinalSynthesis() {
         <path d="M470 610 C 560 420, 720 330, 1010 300" />
       </svg>
 
-      <div className="container synthesis-inner">
+      <div className="container synthesis-inner" data-reveal>
         <div className="synthesis-text">
           <p className="eyebrow">{s.eyebrow}</p>
           <h2 id="sintese-title" className="synthesis-title">

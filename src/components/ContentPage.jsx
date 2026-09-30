@@ -181,7 +181,7 @@ export default function ContentPage({ item }) {
         </div>
       </header>
 
-      <section className="container cp-main" aria-label={item.isVideo ? ui.video : ui.text}>
+      <section data-reveal className="container cp-main" aria-label={item.isVideo ? ui.video : ui.text}>
         <div className="cp-primary">
           {item.isVideo ? (
             <VideoPlayer item={item} />
@@ -195,7 +195,7 @@ export default function ContentPage({ item }) {
       </section>
 
       {related.length > 0 && (
-        <section className="section cp-related" aria-labelledby="cp-related-title">
+        <section data-reveal className="section cp-related" aria-labelledby="cp-related-title">
           <div className="container">
             <h2 id="cp-related-title" className="section-title">{page.related}</h2>
             <p className="section-sub">{page.relatedSub(event.name)}</p>

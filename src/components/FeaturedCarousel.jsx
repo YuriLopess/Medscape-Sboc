@@ -12,7 +12,7 @@ export default function FeaturedCarousel() {
   const total = featuredVideos.length;
 
   return (
-    <section id="destaques" className="section" aria-labelledby="destaques-title">
+    <section id="destaques" data-reveal className="section" aria-labelledby="destaques-title">
       <div className="container section-head">
         <div>
           <h2 id="destaques-title" className="section-title">{ui.featuredTitle}</h2>

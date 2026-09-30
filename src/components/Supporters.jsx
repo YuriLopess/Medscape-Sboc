@@ -8,7 +8,7 @@ const brands = supporters.map((s) => ({ name: s.name, logo: s.logo, logoHeight: 
 export default function Supporters() {
   const { ui } = useContent();
   return (
-    <section id="apoiadores" className="section supporters" aria-labelledby="apoiadores-title">
+    <section id="apoiadores" data-reveal className="section supporters" aria-labelledby="apoiadores-title">
       <div className="container">
         <h2 id="apoiadores-title" className="section-title">{ui.supportersTitle}</h2>
         <p className="section-sub">{ui.supportersSub}</p>

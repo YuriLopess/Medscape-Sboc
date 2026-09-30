@@ -49,7 +49,7 @@ export default function TextsSection() {
   const list = others.slice(2);
 
   return (
-    <section id="textos" className="section texts" aria-labelledby="textos-title">
+    <section id="textos" data-reveal className="section texts" aria-labelledby="textos-title">
       <div className="container">
         <div className="section-head">
           <div>

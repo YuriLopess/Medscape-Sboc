@@ -56,7 +56,7 @@ export default function ThemeExplorer() {
   const chips = [{ id: 'todos', label: ui.all }, ...topics].map((t, i) => ({ ...t, extra: i > visibleTopicCount }));
 
   return (
-    <section id="explorar" className="section" aria-labelledby="explorar-title">
+    <section id="explorar" data-reveal className="section" aria-labelledby="explorar-title">
       <div className="container">
         <h2 id="explorar-title" className="section-title">{ui.exploreTitle}</h2>
         <p className="section-sub">{ui.exploreSub}</p>
