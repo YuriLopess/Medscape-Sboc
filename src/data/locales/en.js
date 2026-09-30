@@ -155,6 +155,7 @@ export default {
     newsHeading: 'News',
     videosHeading: 'Videos',
     topicEmpty: 'No content has been published in this area yet.',
+    backTo: 'Back to',
     backToTopic: (t) => `Back to ${t}`,
     seeAllNews: 'See all news',
     seeAllVideos: 'See all videos',

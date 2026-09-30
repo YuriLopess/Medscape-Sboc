@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import ContentCard from './ContentCard.jsx';
 import Breadcrumb from './Breadcrumb.jsx';
+import ReturnBand from './ReturnBand.jsx';
 import Disclosure from './Disclosure.jsx';
-import { ArrowLeft, User } from './Icons.jsx';
+import { User } from './Icons.jsx';
 import { Duration, Media, PlayBadge } from './Media.jsx';
 import { useContent } from '../i18n.jsx';
-import { topicHref } from '../hooks/useRoute.js';
 
 // Selo com a logo da empresa patrocinadora, sobre o canto do vídeo (só em conteúdo com apoio)
 function SponsorBadge({ sponsor }) {
@@ -218,13 +218,7 @@ export default function ContentPage({ item }) {
       )}
 
       {/* Retorno explícito à área, sem depender do Voltar do navegador */}
-      {item.topicLabel && (
-        <div className="container cp-return">
-          <a className="btn btn--dark" href={topicHref(item.topic)}>
-            <ArrowLeft /> {ui.backToTopic(item.topicLabel)}
-          </a>
-        </div>
-      )}
+      <ReturnBand topic={item.topic} />
     </article>
   );
 }
