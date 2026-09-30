@@ -38,6 +38,50 @@ export default {
     outros: 'Outros temas',
   },
 
+  // Apresentação de cada área (página da área): texto de abertura e três temas em foco. Provisório.
+  areas: {
+    pulmao: {
+      intro: 'Do rastreamento à doença metastática, o câncer de pulmão concentrou algumas das apresentações mais aguardadas do congresso, com foco em terapias-alvo, imunoterapia perioperatória e seleção de pacientes por biomarcadores.',
+      points: ['Tratamento perioperatório e o papel da imunoterapia antes e depois da cirurgia', 'Terapias-alvo em primeira linha e o manejo da resistência', 'Biomarcadores para escolher quem se beneficia de cada estratégia'],
+    },
+    mama: {
+      intro: 'O câncer de mama segue entre os temas mais discutidos, com novos dados sobre conjugados anticorpo-fármaco, terapia endócrina e a desescalada de tratamento na doença inicial.',
+      points: ['Conjugados anticorpo-fármaco em diferentes subtipos', 'Terapia endócrina e inibidores de CDK4/6', 'Quando é possível reduzir o tratamento sem perder eficácia'],
+    },
+    gastro: {
+      intro: 'Tumores de esôfago, estômago, colorretal e fígado trouxeram atualizações em imunoterapia, tratamento perioperatório e na definição de subgrupos moleculares.',
+      points: ['Imunoterapia em tumores gastroesofágicos', 'Estratégias perioperatórias no câncer colorretal', 'Subgrupos moleculares que mudam a conduta'],
+    },
+    gineco: {
+      intro: 'Em ovário, endométrio e colo do útero, o congresso reforçou o peso da classificação molecular e das combinações com imunoterapia na escolha do tratamento.',
+      points: ['Classificação molecular no câncer de endométrio', 'Manutenção no câncer de ovário', 'Imunoterapia no câncer de colo do útero avançado'],
+    },
+    hemato: {
+      intro: 'Linfomas, leucemias e mieloma múltiplo tiveram novos dados sobre anticorpos biespecíficos, terapias celulares e o sequenciamento das linhas de tratamento.',
+      points: ['Anticorpos biespecíficos e terapias celulares', 'Indução e manutenção no mieloma múltiplo', 'Sequenciamento de tratamentos em linfomas'],
+    },
+    gu: {
+      intro: 'Próstata, bexiga e rim foram discutidos à luz da intensificação de tratamento na doença sensível à castração, dos conjugados no urotélio e das combinações no rim.',
+      points: ['Intensificação do tratamento no câncer de próstata', 'Conjugados anticorpo-fármaco no câncer urotelial', 'Combinações com imunoterapia no carcinoma renal'],
+    },
+    imuno: {
+      intro: 'A imunoterapia atravessa todas as áreas do congresso: combinações, uso antes da cirurgia e a busca por marcadores que indiquem quem responde.',
+      points: ['Imunoterapia neoadjuvante e perioperatória', 'Combinações e manejo de toxicidades', 'Marcadores de resposta'],
+    },
+    precisao: {
+      intro: 'Sequenciamento genômico, biópsia líquida e terapias-alvo para alterações raras mostram como a oncologia de precisão chega à prática.',
+      points: ['Biópsia líquida no diagnóstico e no acompanhamento', 'Terapias-alvo para alterações moleculares raras', 'Acesso ao teste genômico na rotina'],
+    },
+    pele: {
+      intro: 'Melanoma e outros tumores de pele reuniram resultados de longo prazo da imunoterapia e novas estratégias para a doença de alto risco.',
+      points: ['Resultados de longo prazo da imunoterapia no melanoma', 'Tratamento adjuvante e neoadjuvante na doença de alto risco', 'Carcinomas cutâneos avançados'],
+    },
+    outros: {
+      intro: 'Temas que atravessam as especialidades: cuidados de suporte, tumores raros, cabeça e pescoço e o panorama geral do congresso.',
+      points: ['Cuidados de suporte e qualidade de vida', 'Sarcomas e tumores raros', 'Tumores de cabeça e pescoço'],
+    },
+  },
+
   // [título, descrição] de cada conteúdo, pelo id
   content: {
     panorama: ['Panorama do congresso', 'Uma visão geral dos principais temas e discussões desta edição do ESMO.'],
@@ -158,6 +202,9 @@ export default {
     // Área terapêutica
     topicKicker: 'Oncologia',
     topicSub: 'Notícias, vídeos e análises selecionadas',
+    topicFocus: 'Em foco nesta área',
+    topicUpdated: (d) => `Atualizado em ${d}`,
+    topicRelatedSub: 'Vídeos e notícias de outras áreas da cobertura.',
     topicHighlight: 'Destaque',
     newsHeading: 'Notícias',
     videosHeading: 'Vídeos',

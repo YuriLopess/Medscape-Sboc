@@ -4,7 +4,7 @@ import NewsList from './NewsList.jsx';
 import { ArrowRight } from './Icons.jsx';
 import { Duration, Media, PlayBadge } from './Media.jsx';
 import { useContent } from '../i18n.jsx';
-import { listingHref, topicHref } from '../hooks/useRoute.js';
+import { listingHref } from '../hooks/useRoute.js';
 import { trackCard } from '../analytics.js';
 
 // Card principal da área: imagem à esquerda, texto à direita
@@ -42,7 +42,7 @@ function SpecialModule({ module }) {
 }
 
 export default function TopicPage({ topic }) {
-  const { topics, ui } = useContent();
+  const { page, ui } = useContent();
   // O destaque já abre a página; as listas abaixo mostram o restante
   const rest = (list) => list.filter((i) => i.id !== topic.highlight?.id);
   const news = rest(topic.news);
@@ -51,11 +51,27 @@ export default function TopicPage({ topic }) {
   return (
     <article className="tp">
       <header className="tp-hero">
-        <div className="container">
-          <Breadcrumb topic={topic.id} />
-          <p className="tp-kicker">{ui.topicKicker}</p>
-          <h1 className="tp-title">{topic.label}</h1>
-          <p className="tp-sub">{ui.topicSub}</p>
+        <div className="container tp-hero-inner">
+          <div className="tp-hero-text">
+            <Breadcrumb topic={topic.id} />
+            <p className="tp-kicker">{ui.topicKicker}</p>
+            <h1 className="tp-title">{topic.label}</h1>
+            <p className="tp-intro">{topic.intro || ui.topicSub}</p>
+            <p className="tp-stats">
+              <span>{ui.areaCount(topic.videos.length, topic.news.length)}</span>
+              {topic.updated && <span>{ui.topicUpdated(topic.updated)}</span>}
+            </p>
+          </div>
+
+          {/* Os três temas que a área concentrou no congresso */}
+          {topic.points.length > 0 && (
+            <aside className="tp-focus" aria-labelledby="tp-focus-title">
+              <h2 id="tp-focus-title" className="tp-focus-title">{ui.topicFocus}</h2>
+              <ul className="tp-focus-list">
+                {topic.points.map((point) => <li key={point}>{point}</li>)}
+              </ul>
+            </aside>
+          )}
         </div>
       </header>
 
@@ -90,16 +106,22 @@ export default function TopicPage({ topic }) {
 
         {topic.items.length === 0 && <p className="empty-state">{ui.topicEmpty}</p>}
 
-        {/* Retorno e descoberta: as outras áreas ficam a um clique, sem usar o Voltar do navegador */}
-        <section data-reveal className="tp-others" aria-labelledby="tp-others-title">
-          <h2 id="tp-others-title" className="tp-others-title">{ui.areasTitle}</h2>
-          <ul className="tp-others-list">
-            {topics.filter((t) => t.id !== topic.id).map((t) => (
-              <li key={t.id}><a className="chip" href={topicHref(t.id)}>{t.label}</a></li>
-            ))}
-          </ul>
-        </section>
       </div>
+
+      {/* Continue explorando: conteúdos de outras áreas, no mesmo formato da página de conteúdo */}
+      {topic.related.length > 0 && (
+        <section data-reveal className="section cp-related" aria-labelledby="tp-related-title">
+          <div className="container">
+            <h2 id="tp-related-title" className="section-title">{page.related}</h2>
+            <p className="section-sub">{ui.topicRelatedSub}</p>
+          </div>
+          <div className="carousel-track">
+            {topic.related.map((item, i) => (
+              <ContentCard key={item.id} item={item} index={i} origin={`relacionados-${topic.id}`} />
+            ))}
+          </div>
+        </section>
+      )}
     </article>
   );
 }

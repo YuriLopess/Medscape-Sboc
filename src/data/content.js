@@ -187,6 +187,12 @@ export function buildContent(lang) {
       news,
       // Destaque da área: o conteúdo mais recente (o handoff pede um card principal no topo)
       highlight: items[0] ?? null,
+      // Apresentação da área e temas em foco (textos provisórios em locales/<idioma>.js → areas)
+      intro: L.areas?.[id]?.intro ?? '',
+      points: L.areas?.[id]?.points ?? [],
+      updated: items[0]?.dateLabel ?? null,
+      // Continue explorando: conteúdos mais recentes de outras áreas
+      related: catalog.filter((c) => c.topic !== id).sort(byDate).slice(0, 6),
       special: specialModules.find((m) => m.topic === id) ?? null,
     };
   }

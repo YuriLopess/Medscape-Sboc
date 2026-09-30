@@ -34,6 +34,50 @@ export default {
     outros: 'Otros temas',
   },
 
+  // Apresentação de cada área (página da área): texto de abertura e três temas em foco. Provisório.
+  areas: {
+    pulmao: {
+      intro: 'Del cribado a la enfermedad metastásica, el cáncer de pulmón concentró algunas de las presentaciones más esperadas del congreso, con foco en terapias dirigidas, inmunoterapia perioperatoria y selección de pacientes por biomarcadores.',
+      points: ['Tratamiento perioperatorio y el papel de la inmunoterapia antes y después de la cirugía', 'Terapias dirigidas en primera línea y manejo de la resistencia', 'Biomarcadores para elegir quién se beneficia de cada estrategia'],
+    },
+    mama: {
+      intro: 'El cáncer de mama sigue entre los temas más discutidos, con nuevos datos sobre conjugados anticuerpo-fármaco, terapia endocrina y desescalada del tratamiento en la enfermedad inicial.',
+      points: ['Conjugados anticuerpo-fármaco en distintos subtipos', 'Terapia endocrina e inhibidores de CDK4/6', 'Cuándo es posible reducir el tratamiento sin perder eficacia'],
+    },
+    gastro: {
+      intro: 'Los tumores de esófago, estómago, colorrectal e hígado trajeron actualizaciones en inmunoterapia, tratamiento perioperatorio y definición de subgrupos moleculares.',
+      points: ['Inmunoterapia en tumores gastroesofágicos', 'Estrategias perioperatorias en cáncer colorrectal', 'Subgrupos moleculares que cambian la conducta'],
+    },
+    gineco: {
+      intro: 'En ovario, endometrio y cuello uterino, el congreso reforzó el peso de la clasificación molecular y de las combinaciones con inmunoterapia en la elección del tratamiento.',
+      points: ['Clasificación molecular en cáncer de endometrio', 'Mantenimiento en cáncer de ovario', 'Inmunoterapia en cáncer de cuello uterino avanzado'],
+    },
+    hemato: {
+      intro: 'Linfomas, leucemias y mieloma múltiple presentaron nuevos datos sobre anticuerpos biespecíficos, terapias celulares y la secuencia de las líneas de tratamiento.',
+      points: ['Anticuerpos biespecíficos y terapias celulares', 'Inducción y mantenimiento en mieloma múltiple', 'Secuencia de tratamientos en linfomas'],
+    },
+    gu: {
+      intro: 'Próstata, vejiga y riñón se discutieron a la luz de la intensificación del tratamiento en la enfermedad sensible a la castración, los conjugados en urotelio y las combinaciones en riñón.',
+      points: ['Intensificación del tratamiento en cáncer de próstata', 'Conjugados anticuerpo-fármaco en cáncer urotelial', 'Combinaciones con inmunoterapia en carcinoma renal'],
+    },
+    imuno: {
+      intro: 'La inmunoterapia atraviesa todas las áreas del congreso: combinaciones, uso antes de la cirugía y la búsqueda de marcadores que indiquen quién responde.',
+      points: ['Inmunoterapia neoadyuvante y perioperatoria', 'Combinaciones y manejo de toxicidades', 'Marcadores de respuesta'],
+    },
+    precisao: {
+      intro: 'Secuenciación genómica, biopsia líquida y terapias dirigidas para alteraciones raras muestran cómo la oncología de precisión llega a la práctica.',
+      points: ['Biopsia líquida en el diagnóstico y el seguimiento', 'Terapias dirigidas para alteraciones moleculares raras', 'Acceso a pruebas genómicas en la rutina'],
+    },
+    pele: {
+      intro: 'El melanoma y otros tumores de piel reunieron resultados a largo plazo de la inmunoterapia y nuevas estrategias para la enfermedad de alto riesgo.',
+      points: ['Resultados a largo plazo de la inmunoterapia en melanoma', 'Tratamiento adyuvante y neoadyuvante en enfermedad de alto riesgo', 'Carcinomas cutáneos avanzados'],
+    },
+    outros: {
+      intro: 'Temas que atraviesan las especialidades: cuidados de soporte, tumores raros, cabeza y cuello y el panorama general del congreso.',
+      points: ['Cuidados de soporte y calidad de vida', 'Sarcomas y tumores raros', 'Tumores de cabeza y cuello'],
+    },
+  },
+
   content: {
     panorama: ['Panorama del congreso', 'Una visión general de los principales temas y debates de esta edición del ESMO.'],
     mama: ['Lo más destacado en cáncer de mama', 'Avances, desafíos y perspectivas para la práctica clínica.'],
@@ -147,6 +191,9 @@ export default {
     // Área terapéutica
     topicKicker: 'Oncología',
     topicSub: 'Noticias, videos y análisis seleccionados',
+    topicFocus: 'En foco en esta área',
+    topicUpdated: (d) => `Actualizado el ${d}`,
+    topicRelatedSub: 'Videos y noticias de otras áreas de la cobertura.',
     topicHighlight: 'Destacado',
     newsHeading: 'Noticias',
     videosHeading: 'Videos',
