@@ -66,7 +66,8 @@ export default function TopicPage({ topic }) {
           {/* Os três temas que a área concentrou no congresso */}
           {topic.points.length > 0 && (
             <aside className="tp-focus" aria-labelledby="tp-focus-title">
-              <h2 id="tp-focus-title" className="tp-focus-title">{ui.topicFocus}</h2>
+              {/* Título só para leitores de tela: visualmente o quadro se explica pela posição ao lado da apresentação */}
+              <h2 id="tp-focus-title" className="sr-only">{ui.topicFocus}</h2>
               <ul className="tp-focus-list">
                 {topic.points.map((point) => <li key={point}>{point}</li>)}
               </ul>
