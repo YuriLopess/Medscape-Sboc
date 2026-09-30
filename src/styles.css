@@ -369,7 +369,7 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Apoiadores ---------- */
 /* Faixa contínua de logos: cartões em loop, bordas esfumadas, cor ao passar o mouse */
-.supporters { overflow: hidden; background: linear-gradient(180deg, #fff 0%, var(--blue-soft) 100%); }
+.supporters { overflow: hidden; background: #fff; }
 
 .sp-rows { display: grid; gap: 6px; margin-top: 32px; padding-bottom: 8px; }
 
