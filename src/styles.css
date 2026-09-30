@@ -210,6 +210,8 @@ button { font: inherit; color: inherit; }
 .card-body { padding: 14px 16px 18px; }
 .card-kind { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--kind); }
 .card-kind--sponsored, .tx-kicker--sponsored { display: inline-block; width: fit-content; /* pílula do tamanho do texto, mesmo quando .tx-kicker vira bloco */ padding: 2px 9px; border-radius: 999px; background: var(--blue-soft); color: var(--navy); }
+/* No card patrocinado o fundo já é azul-claro: a pílula fica branca para continuar visível */
+.card--sponsored .card-kind--sponsored { background: #fff; }
 .card-meta { display: flex; flex-wrap: wrap; margin: 10px 0 0; font-size: 12px; color: var(--muted); }
 .card-meta span + span::before { content: '·'; margin-inline: 7px; color: var(--line); }
 .card-title { margin: 4px 0 6px; font-family: var(--font-heading); font-size: 19px; font-weight: 700; line-height: 1.25; color: var(--ink); }
@@ -643,6 +645,21 @@ button { font: inherit; color: inherit; }
 /* Celular */
 @media (max-width: 640px) {
   .cards-grid { grid-template-columns: 1fr; }
+  /* Listagem de vídeos no celular: linhas compactas (miniatura à esquerda) em vez de 15 cards de tela cheia */
+  .lp .cards-grid { gap: 0; margin-top: 4px; }
+  .lp .cards-grid .card-link { display: grid; grid-template-columns: 136px minmax(0, 1fr); column-gap: 14px; padding: 14px 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: none; box-shadow: none; transform: none; }
+  .lp .cards-grid .card-media { grid-row: 1; align-self: start; aspect-ratio: 16 / 9; border-radius: var(--radius); }
+  .lp .cards-grid .play-badge { width: 30px; height: 30px; left: 8px; bottom: 8px; border-width: 1.5px; }
+  .lp .cards-grid .play-badge svg { width: 13px; height: 13px; }
+  .lp .cards-grid .duration { right: 6px; bottom: 6px; padding: 1px 6px; font-size: 11px; }
+  .lp .cards-grid .card-body { padding: 0; }
+  .lp .cards-grid .card-kind { font-size: 10px; }
+  .lp .cards-grid .card-title { margin: 3px 0 0; font-size: 15px; line-height: 1.3; }
+  .lp .cards-grid .card-text { display: none; }
+  .lp .cards-grid .card-meta { flex-direction: column; gap: 1px; margin-top: 6px; font-size: 11.5px; } /* área e data em linhas próprias: nada de separador sobrando */
+  .lp .cards-grid .card-meta span + span::before { content: none; }
+  .lp .cards-grid .card--sponsored .card-kind--sponsored { background: var(--blue-soft); } /* a linha não tem fundo azul, então a pílula volta ao azul-claro */
+  .lp .cards-grid .card-sponsor { grid-column: 1 / -1; margin-top: 10px; padding: 0; border: 0; background: none; font-size: 11px; }
   .crumbs { font-size: 12px; margin-bottom: 14px; }
   .tp-block-head { flex-direction: column; align-items: flex-start; gap: 6px; }
   .se-form { flex-direction: column; }

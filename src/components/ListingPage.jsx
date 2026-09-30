@@ -37,7 +37,7 @@ export default function ListingPage({ format, topic }) {
           ))}
         </div>
 
-        <p className="lp-count" aria-live="polite">{ui.resultsCount(items.length)}</p>
+        <p className="lp-count" aria-live="polite">{isVideos ? ui.areaVideos(items.length) : ui.areaNews(items.length)}</p>
 
         {items.length === 0 && <p className="empty-state">{ui.listingEmpty}</p>}
 
