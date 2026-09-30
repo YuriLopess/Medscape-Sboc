@@ -37,6 +37,7 @@ const navBase = [
   Os patrocinados ficam intercalados, sem dois seguidos e sem agrupar por empresa.
   focus (opcional): parte da imagem que deve ficar visível quando o card recorta a foto, ex.: 'center 15%'
   Título e descrição de cada item ficam em locales/<idioma>.js → content[id].
+  image: todo conteúdo tem foto. Fotos repetidas ficam em conteúdos distantes entre si; na seção de textos, as 8 são diferentes.
 */
 
 // 15 vídeos curtos: 9 SBOC · 3 AbbVie · 2 Merck · 1 GSK
@@ -45,23 +46,23 @@ const featuredBase = [
   { id: 'mama', topic: 'mama', sponsor: 'AbbVie', duration: '05:22', image: 'images/videos/mama.jpg' },
   { id: 'toracicos', topic: 'pulmao', duration: '05:05', image: 'images/videos/toracicos.jpg', focus: 'center 15%' },
   { id: 'gastro', topic: 'gastro', sponsor: 'Merck', duration: '04:50', image: 'images/videos/gastro.jpg' },
-  { id: 'gineco', topic: 'gineco', duration: '04:48' },
-  { id: 'gu', topic: 'gu', duration: '05:10' },
-  { id: 'imuno', topic: 'imuno', sponsor: 'GSK', duration: '06:02' },
-  { id: 'precisao', topic: 'precisao', duration: '04:44' },
-  { id: 'linfomas', topic: 'hemato', sponsor: 'AbbVie', duration: '05:15' },
-  { id: 'melanoma', topic: 'imuno', duration: '03:57' },
-  { id: 'cabeca-pescoco', duration: '04:21' },
-  { id: 'pulmao-avancado', topic: 'pulmao', sponsor: 'Merck', duration: '05:40' },
-  { id: 'suporte', duration: '04:05' },
-  { id: 'mieloma', topic: 'hemato', sponsor: 'AbbVie', duration: '05:02' },
-  { id: 'sarcomas', duration: '04:30' },
+  { id: 'gineco', topic: 'gineco', duration: '04:48', image: 'images/temas/ginecologicos.jpg' },
+  { id: 'gu', topic: 'gu', duration: '05:10', image: 'images/banco/hospital.jpg' },
+  { id: 'imuno', topic: 'imuno', sponsor: 'GSK', duration: '06:02', image: 'images/banco/celula.jpg' },
+  { id: 'precisao', topic: 'precisao', duration: '04:44', image: 'images/banco/laboratorio.jpg' },
+  { id: 'linfomas', topic: 'hemato', sponsor: 'AbbVie', duration: '05:15', image: 'images/banco/sangue.jpg' },
+  { id: 'melanoma', topic: 'imuno', duration: '03:57', image: 'images/temas/digestivos.jpg' },
+  { id: 'cabeca-pescoco', duration: '04:21', image: 'images/sintese.jpg' },
+  { id: 'pulmao-avancado', topic: 'pulmao', sponsor: 'Merck', duration: '05:40', image: 'images/banco/tomografia-pulmao.jpg' },
+  { id: 'suporte', duration: '04:05', image: 'images/banco/comprimidos.jpg' },
+  { id: 'mieloma', topic: 'hemato', sponsor: 'AbbVie', duration: '05:02', image: 'images/temas/biomarcadores.jpg' },
+  { id: 'sarcomas', duration: '04:30', image: 'images/videos/panorama.jpg' },
 ];
 
 // 2 vídeos finais (SBOC)
 const finalBase = [
   { id: 'sintese', duration: '18:40', image: 'images/sintese.jpg' },
-  { id: 'sintese-pratica', duration: '16:15' },
+  { id: 'sintese-pratica', duration: '16:15', image: 'images/banco/hospital.jpg' },
 ];
 
 // 8 textos: 5 SBOC · 2 AbbVie · 1 Merck. O primeiro é o destaque da seção (use um com imagem).
@@ -69,12 +70,12 @@ const finalBase = [
 const textsBase = [
   { id: 'texto-digestivos', topic: 'gastro', readTime: '6 min', image: 'images/temas/digestivos.jpg' },
   { id: 'texto-biomarcadores', topic: 'precisao', sponsor: 'AbbVie', readTime: '5 min', image: 'images/temas/biomarcadores.jpg' },
-  { id: 'texto-mama', topic: 'mama', readTime: '7 min' },
-  { id: 'texto-pulmao', topic: 'pulmao', sponsor: 'Merck', readTime: '6 min' },
+  { id: 'texto-mama', topic: 'mama', readTime: '7 min', image: 'images/videos/mama.jpg' },
+  { id: 'texto-pulmao', topic: 'pulmao', sponsor: 'Merck', readTime: '6 min', image: 'images/banco/tomografia-pulmao.jpg' },
   { id: 'texto-gineco', topic: 'gineco', readTime: '5 min', image: 'images/temas/ginecologicos.jpg' },
-  { id: 'texto-hemato', topic: 'hemato', sponsor: 'AbbVie', readTime: '6 min' },
-  { id: 'texto-prostata', topic: 'gu', readTime: '4 min' },
-  { id: 'texto-suporte', readTime: '5 min' },
+  { id: 'texto-hemato', topic: 'hemato', sponsor: 'AbbVie', readTime: '6 min', image: 'images/banco/sangue.jpg' },
+  { id: 'texto-prostata', topic: 'gu', readTime: '4 min', image: 'images/banco/hospital.jpg' },
+  { id: 'texto-suporte', readTime: '5 min', image: 'images/banco/comprimidos.jpg' },
 ];
 
 const topicIds = ['mama', 'pulmao', 'gastro', 'hemato', 'imuno', 'gineco', 'gu', 'precisao'];
