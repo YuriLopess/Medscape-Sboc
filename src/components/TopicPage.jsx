@@ -61,18 +61,20 @@ export default function TopicPage({ topic }) {
               <span>{ui.areaCount(topic.videos.length, topic.news.length)}</span>
               {topic.updated && <span>{ui.topicUpdated(topic.updated)}</span>}
             </p>
+
+            {/* Os três temas que a área concentrou no congresso, como lista simples entre fios */}
+            {topic.points.length > 0 && (
+              <>
+                <h2 id="tp-points-title" className="sr-only">{ui.topicFocus}</h2>
+                <ul className="tp-points" aria-labelledby="tp-points-title">
+                  {topic.points.map((point) => <li key={point}>{point}</li>)}
+                </ul>
+              </>
+            )}
           </div>
 
-          {/* Os três temas que a área concentrou no congresso */}
-          {topic.points.length > 0 && (
-            <aside className="tp-focus" aria-labelledby="tp-focus-title">
-              {/* Título só para leitores de tela: visualmente o quadro se explica pela posição ao lado da apresentação */}
-              <h2 id="tp-focus-title" className="sr-only">{ui.topicFocus}</h2>
-              <ul className="tp-focus-list">
-                {topic.points.map((point) => <li key={point}>{point}</li>)}
-              </ul>
-            </aside>
-          )}
+          {/* A mesma foto do card da área na Home: quem clica chega numa página que abre com ela */}
+          {topic.cover && <Media src={topic.cover} className="tp-hero-media" />}
         </div>
       </header>
 
