@@ -1,0 +1,97 @@
+{
+  "images/banco/celula.jpg": [
+    480,
+    960,
+    1600
+  ],
+  "images/banco/comprimidos.jpg": [
+    480,
+    960,
+    1600
+  ],
+  "images/banco/gastro.jpg": [
+    480,
+    960,
+    1448
+  ],
+  "images/banco/gineco.jpg": [
+    480,
+    960,
+    1600
+  ],
+  "images/banco/hospital.jpg": [
+    480,
+    960,
+    1600
+  ],
+  "images/banco/laboratorio.jpg": [
+    480,
+    960,
+    1600
+  ],
+  "images/banco/mama.jpg": [
+    480,
+    960,
+    1600
+  ],
+  "images/banco/pulmao.jpg": [
+    480,
+    960,
+    1600
+  ],
+  "images/banco/sangue.jpg": [
+    480,
+    960,
+    1600
+  ],
+  "images/banco/tomografia-pulmao.jpg": [
+    480,
+    960,
+    1600
+  ],
+  "images/hero-esmo.jpg": [
+    480,
+    960,
+    1672
+  ],
+  "images/sintese.jpg": [
+    480,
+    960,
+    1877
+  ],
+  "images/temas/biomarcadores.jpg": [
+    480,
+    960,
+    1280
+  ],
+  "images/temas/digestivos.jpg": [
+    480,
+    960,
+    1280
+  ],
+  "images/temas/ginecologicos.jpg": [
+    480,
+    960,
+    1280
+  ],
+  "images/videos/gastro.jpg": [
+    480,
+    960,
+    1844
+  ],
+  "images/videos/mama.jpg": [
+    480,
+    960,
+    1280
+  ],
+  "images/videos/panorama.jpg": [
+    480,
+    960,
+    1280
+  ],
+  "images/videos/toracicos.jpg": [
+    480,
+    960,
+    1280
+  ]
+}

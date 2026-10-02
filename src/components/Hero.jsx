@@ -11,6 +11,7 @@ export default function Hero() {
         src={event.heroImage}
         alt={event.heroAlt}
         className="hero-media"
+        priority
       />
       <svg className="hero-arcs" viewBox="0 0 846 558" preserveAspectRatio="none" aria-hidden="true">
         <path d="M110 0 C 50 150, 60 330, 260 440 C 380 505, 500 540, 610 560" />
