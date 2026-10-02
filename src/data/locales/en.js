@@ -219,7 +219,7 @@ export default {
     synthesisKicker: 'Final synthesis',
     watch: (title) => `Watch: ${title}`,
     videoSoon: 'The video will be published here as soon as the final recording is approved.',
-    supportedBy: 'Supported by',
+    supportedBy: 'Sponsored content',
     // Sponsored content page: disclosure at the top, above the title (handoff, p. 10)
     sponsoredBy: 'Sponsored content by',
     sponsoredNote: 'Material developed for healthcare professionals',

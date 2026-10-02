@@ -215,7 +215,7 @@ export default {
     synthesisKicker: 'Síntesis final',
     watch: (title) => `Ver: ${title}`,
     videoSoon: 'El video se publicará aquí en cuanto se apruebe la grabación final.',
-    supportedBy: 'Con el apoyo de',
+    supportedBy: 'Contenido patrocinado',
     // Página de contenido patrocinado: aviso arriba, sobre el título (handoff, pág. 10)
     sponsoredBy: 'Contenido patrocinado por',
     sponsoredNote: 'Material desarrollado para profesionales de la salud',
