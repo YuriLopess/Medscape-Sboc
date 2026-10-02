@@ -16,8 +16,8 @@ export default {
   event: {
     dates: '23 – 27 out 2026',
     city: 'Madri, Espanha',
-    tagline: 'Conhecimento global • Perspectiva brasileira • Prática oncológica',
-    title: ['O ESMO 2026 sob o olhar', 'da oncologia brasileira.'],
+    tagline: 'Conhecimento global • Perspectiva brasileira',
+    title: ['ESMO 2026 sob o olhar', 'da oncologia brasileira.'],
     lead: 'Medscape e SBOC reúnem especialistas brasileiros para analisar os estudos, debates e avanços que merecem atenção.',
     heroCaption: ['Madri', 'conecta', 'ideias para', 'mais vidas'],
     heroAlt: 'Plenária do congresso ESMO 2026 com o público diante do palco',

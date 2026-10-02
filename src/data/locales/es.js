@@ -12,8 +12,8 @@ export default {
   event: {
     dates: '23 – 27 oct 2026',
     city: 'Madrid, España',
-    tagline: 'Conocimiento global • Perspectiva brasileña • Práctica oncológica',
-    title: ['El ESMO 2026 visto por', 'la oncología brasileña.'],
+    tagline: 'Conocimiento global • Perspectiva brasileña',
+    title: ['ESMO 2026 visto por', 'la oncología brasileña.'],
     lead: 'Medscape y la SBOC reúnen a especialistas brasileños para analizar los estudios, debates y avances que merecen atención.',
     heroCaption: ['Madrid', 'conecta', 'ideas para', 'más vidas'],
     heroAlt: 'Sesión plenaria del congreso ESMO 2026 con el público frente al escenario',

@@ -16,7 +16,7 @@ export default {
   event: {
     dates: 'Oct 23 – 27, 2026',
     city: 'Madrid, Spain',
-    tagline: 'Global knowledge • Brazilian perspective • Oncology practice',
+    tagline: 'Global knowledge • Brazilian perspective',
     title: ['ESMO 2026 as seen by', 'Brazilian oncology.'],
     lead: 'Medscape and SBOC bring together Brazilian experts to analyze the studies, debates and advances that deserve attention.',
     heroCaption: ['Madrid', 'connects', 'ideas for', 'more lives'],
