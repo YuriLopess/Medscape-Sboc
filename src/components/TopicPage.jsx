@@ -9,7 +9,7 @@ import { trackCard } from '../analytics.js';
 
 // Card principal da área: imagem à esquerda, texto à direita
 function Highlight({ item }) {
-  const { ui } = useContent();
+  const { sponsorLine, ui } = useContent();
   const isVideo = item.type !== 'analise';
   return (
     <a className="tp-highlight" href={item.href} onClick={() => trackCard(item, 0, 'destaque-area')}>
@@ -22,7 +22,7 @@ function Highlight({ item }) {
         <span className="tp-highlight-title">{item.title}</span>
         <span className="tp-highlight-dek">{item.description}</span>
         <span className={`tp-highlight-kind${item.sponsored ? ' tp-highlight-kind--sponsored' : ''}`}>
-          {`${item.sponsored ? ui.sponsoredBadge : ui.editorial} · ${item.dateLabel}`}
+          {item.sponsored ? sponsorLine([item.sponsor]) : `${ui.editorial} · ${item.dateLabel}`}
         </span>
       </span>
     </a>

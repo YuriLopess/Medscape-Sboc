@@ -99,6 +99,7 @@ export default {
   // Required disclaimers (Medscape guidelines, English version from the PDF)
   // Aviso do topo da página, em duas partes [começo da frase, instituição] para o celular quebrar a linha no ponto certo
   topDisclosure: ['Developed by Medscape with support from the', 'Brazilian Society of Clinical Oncology'],
+  sponsorLine: (names) => `Developed by Medscape with support from ${join(names)}`,
   footerDisclaimer: (names) =>
     `Conference coverage has been developed by Medscape with support from ${join(names)}. ` +
     `${join(names)} carried out full medical approval to ensure compliance with regulations. ` +

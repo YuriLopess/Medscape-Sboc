@@ -105,12 +105,12 @@ export const supporters = [
 ];
 
 /*
-  Avisos de apoio (base: diretrizes Saned/Medscape Branding and Content Guidelines, ajustadas pelo cliente):
-  - Topo da página: apoio da SBOC (locales → topDisclosure)
-  - Rodapé de todas as páginas: aviso de "Cobertura de Conferência" com as farmacêuticas (locales → footerDisclaimer)
-  - Conteúdo patrocinado: selo "Conteúdo patrocinado" no card e logo da empresa na página do conteúdo
+  Avisos de apoio exigidos pelas diretrizes Medscape (Saned/Medscape Branding and Content Guidelines):
+  - Topo da página: "Desenvolvido pela Medscape com o apoio da [Pharma]"
+  - Rodapé de todas as páginas: aviso de "Cobertura de Conferência"
   - Nunca usar "parceria" para a relação Medscape + empresa farmacêutica
-  Os nomes vêm das empresas marcadas com "pharma: true" na lista de apoiadores acima.
+  Os textos de cada idioma (sponsorLine, footerDisclaimer) estão em locales/; os nomes vêm das
+  empresas marcadas com "pharma: true" na lista de apoiadores acima.
 */
 const sponsorNames = supporters.filter((s) => s.pharma).map((s) => s.name);
 
@@ -263,6 +263,8 @@ export function buildContent(lang) {
     getContent,
     relatedContent,
     search,
+    // Frase de apoio de um conteúdo: "Desenvolvido pela Medscape com o apoio da [Pharma]"
+    sponsorLine: (names) => L.sponsorLine(names),
     disclosure: {
       // Topo da página: apoio da SBOC (as farmacêuticas aparecem nos cards, nas páginas de conteúdo e no rodapé)
       top: L.topDisclosure.join(' '),

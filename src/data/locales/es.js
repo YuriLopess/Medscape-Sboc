@@ -95,6 +95,7 @@ export default {
   // Avisos obligatorios (directrices Medscape, versión en español del PDF)
   // Aviso do topo da página, em duas partes [começo da frase, instituição] para o celular quebrar a linha no ponto certo
   topDisclosure: ['Desarrollado por Medscape con el apoyo de la', 'Sociedad Brasileña de Oncología Clínica'],
+  sponsorLine: (names) => `Desarrollado por Medscape con el apoyo de ${join(names)}`,
   footerDisclaimer: (names) =>
     `La cobertura de la conferencia ha sido desarrollada por Medscape con el apoyo de ${join(names)}. ` +
     `${join(names)} ${names.length === 1 ? 'llevó' : 'llevaron'} a cabo una aprobación médica completa para garantizar el cumplimiento de las regulaciones. ` +
