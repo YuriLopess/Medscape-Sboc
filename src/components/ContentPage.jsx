@@ -79,7 +79,7 @@ function Avatar({ speaker }) {
 
 // Coluna lateral: quem fala + ficha do conteúdo
 function Sidebar({ item }) {
-  const { event, page, ui } = useContent();
+  const { event, page, sponsorLine, ui } = useContent();
   const { speakers } = item;
   const facts = [
     [page.format, item.isVideo ? ui.video : ui.text],
@@ -101,6 +101,8 @@ function Sidebar({ item }) {
               <span>{item.sponsorInfo.name}</span>
             )}
           </div>
+          {/* Frase de apoio: só aqui, numa linha (a fonte acompanha a largura do quadro) */}
+          <p className="cp-sponsor-note">{sponsorLine([item.sponsorInfo.name])}</p>
         </section>
       )}
       <section className="cp-side-block" aria-labelledby="cp-speakers-title">
@@ -138,7 +140,7 @@ function Sidebar({ item }) {
 }
 
 export default function ContentPage({ item }) {
-  const { event, page, relatedContent, sponsorLine, ui } = useContent();
+  const { event, page, relatedContent, ui } = useContent();
   if (!item) {
     return (
       <section className="container cp-missing">
@@ -178,8 +180,6 @@ export default function ContentPage({ item }) {
             )}
             <h1 className="cp-title">{item.title}</h1>
             <p className="cp-byline">{page.byline(event.name, item.dateLabel)}</p>
-            {/* Frase exigida pelas diretrizes Medscape para conteúdo com apoio de empresa */}
-            {item.sponsor && <p className="cp-sponsor">{sponsorLine([item.sponsor])}</p>}
             <p className="cp-summary">{item.summary}</p>
           </div>
           {/* Arte da cidade do evento, igual em todas as páginas internas (as formas já vêm na imagem) */}

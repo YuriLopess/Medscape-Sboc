@@ -6,7 +6,7 @@ import { trackCard } from '../analytics.js';
 // Card de vídeo ou notícia. Abre a página do conteúdo (#/<tema>/<slug>).
 // O selo de natureza (Editorial / Conteúdo patrocinado) aparece antes do clique, como pede o handoff.
 export default function ContentCard({ item, size = 'md', index = 0, origin = 'card' }) {
-  const { sponsorLine, topicLabel, ui } = useContent();
+  const { topicLabel, ui } = useContent();
   const isVideo = item.type !== 'analise';
   const sponsored = Boolean(item.sponsor);
   const topic = topicLabel(item.topic);
@@ -29,9 +29,6 @@ export default function ContentCard({ item, size = 'md', index = 0, origin = 'ca
             <span>{item.dateLabel}</span>
           </p>
         </div>
-        {/* Identificação exigida pelas diretrizes Medscape para conteúdo com apoio de empresa.
-            Fica no pé do card para as imagens de todos os cards ficarem alinhadas. */}
-        {sponsored && <div className="card-sponsor">{sponsorLine([item.sponsor])}</div>}
       </a>
     </article>
   );

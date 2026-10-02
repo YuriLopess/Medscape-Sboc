@@ -205,9 +205,8 @@ button { font: inherit; color: inherit; }
 .card-link:hover .play-badge { background: var(--blue); border-color: var(--blue); }
 .card--sponsored .card-link { background: var(--blue-soft); border-color: var(--blue-line); }
 /* Frase de apoio sempre numa linha só: a fonte diminui o necessário para caber na largura do card ou bloco */
-.card-link, .tx-row-link, .tx-lead-body, .tp-highlight-body, .cp-hero-text { container-type: inline-size; }
-.card-sponsor, .tx-sponsor, .cp-sponsor, .tp-highlight-kind--sponsored { white-space: nowrap; }
-.card-sponsor { margin-top: auto; padding: 10px 16px; border-top: 1px solid var(--blue-line); font-size: min(11.5px, calc((100cqi - 32px) / var(--sponsor-em, 28))); font-weight: 600; line-height: 1.4; color: var(--navy); }
+.cp-sponsor-block { container-type: inline-size; }
+.cp-sponsor-note { white-space: nowrap; }
 .card-media { aspect-ratio: 16 / 7.5; }
 .card--lg .card-media { aspect-ratio: 16 / 7.4; }
 .card-body { padding: 14px 16px 18px; }
@@ -326,7 +325,6 @@ button { font: inherit; color: inherit; }
 .tx-meta { display: flex; flex-wrap: wrap; align-items: center; margin: 6px 0 0; font-size: 12.5px; line-height: 1.4; color: var(--muted); }
 /* Separador preso ao item seguinte: quando a linha quebra, ele desce junto e não sobra no fim da linha */
 .tx-meta > span + span::before { content: '|'; margin-inline: 8px; color: var(--line); }
-.tx-sponsor { flex-basis: 100%; margin: 6px 0 0; font-size: min(11.5px, calc(100cqi / var(--sponsor-em, 28))); font-weight: 600; line-height: 1.4; color: var(--navy); }
 .tx-title, .tx-lead-title { font-family: var(--font-heading); font-weight: 700; color: var(--ink); text-decoration: underline transparent; text-decoration-thickness: 2px; text-underline-offset: 4px; transition: text-decoration-color .2s ease; }
 .tx-title { display: block; font-size: 17px; line-height: 1.3; }
 .tx-lead:hover .tx-lead-title, .tx-row-link:hover .tx-title { text-decoration-color: var(--accent-light); }
@@ -345,7 +343,7 @@ button { font: inherit; color: inherit; }
 .tx-side .tx-row:last-child .tx-row-link { border-bottom: 0; }
 
 /* Linha de lista: texto à esquerda, miniatura à direita */
-.tx-row-link { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0 18px; /* sem vão vertical: a frase de apoio fica logo abaixo */ padding-block: 16px; border-bottom: 1px solid var(--line); text-decoration: none; }
+.tx-row-link { display: flex; align-items: flex-start; gap: 18px; padding-block: 16px; border-bottom: 1px solid var(--line); text-decoration: none; }
 .tx-row-body { flex: 1; min-width: 0; }
 .tx-thumb { flex: none; width: 88px; aspect-ratio: 16 / 9; margin-top: 4px; border-radius: var(--radius); }
 .tx-thumb .media-placeholder span { display: none; }
@@ -453,7 +451,7 @@ button { font: inherit; color: inherit; }
 .tp-highlight-title { margin-top: 12px; font-family: var(--font-heading); font-size: clamp(21px, 2.1vw, 29px); font-weight: 700; line-height: 1.2; color: var(--ink); }
 .tp-highlight-dek { margin-top: 10px; font-size: 15.5px; line-height: 1.55; color: var(--text); }
 .tp-highlight-kind { margin-top: 16px; font-size: 12.5px; font-weight: 600; color: var(--muted); }
-.tp-highlight-kind--sponsored { color: var(--navy); font-size: min(12.5px, calc(100cqi / var(--sponsor-em, 28))); }
+.tp-highlight-kind--sponsored { color: var(--navy); }
 
 .tp-block { margin-top: clamp(34px, 4.5vw, 56px); }
 .tp-block-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
@@ -507,7 +505,6 @@ button { font: inherit; color: inherit; }
 .cp-hero { position: relative; overflow: hidden; background: var(--soft-gradient); border-bottom: 1px solid var(--line); }
 .cp-hero-inner { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: clamp(32px, 5vw, 72px); min-height: 460px; padding-block: 36px 48px; }
 .cp-title { max-width: 22ch; margin: 16px 0 20px; font-family: var(--font-heading); font-size: clamp(30px, 3.6vw, 48px); font-weight: 700; line-height: 1.12; letter-spacing: -.015em; color: var(--ink); text-wrap: balance; }
-.cp-sponsor { display: inline-block; margin: 0 0 20px; padding: 7px 12px; border: 1px solid var(--blue-line); border-radius: 4px; background: #fff; font-size: min(13px, calc((100cqi - 26px) / var(--sponsor-em, 28))); font-weight: 600; color: var(--navy); }
 /* Conteúdo patrocinado: aviso com a logo acima do título (handoff, pág. 10) */
 .cp-disclosure { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 18px; padding: 9px 16px; border: 1px solid var(--blue-line); border-radius: 8px; background: #fff; }
 .cp-disclosure-label { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--kind); }
@@ -526,6 +523,8 @@ button { font: inherit; color: inherit; }
 .cp-hero-art img { display: block; width: 100%; height: auto; }
 
 .cp-main { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); align-items: start; gap: clamp(24px, 3vw, 40px); padding-block: clamp(36px, 5vw, 64px); }
+/* Telas médias: lateral um pouco mais larga, para a frase de apoio caber numa linha com letra legível */
+@media (max-width: 1180px) { .cp-main { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); } }
 .cp-player-poster { display: block; width: 100%; padding: 0; border: 0; border-radius: 10px; overflow: hidden; background: none; cursor: pointer; box-shadow: 0 18px 44px rgb(var(--navy-rgb) / .16); }
 .cp-player-poster:hover .play-badge { background: var(--blue); border-color: var(--blue); }
 .cp-player-media { aspect-ratio: 16 / 9; }
@@ -553,6 +552,8 @@ button { font: inherit; color: inherit; }
 /* Bloco do patrocinador na página interna */
 .cp-sponsor-block { padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
 .cp-sponsor-block .cp-side-title { margin-bottom: 14px; }
+/* Frase de apoio numa linha só: a fonte diminui o necessário para caber no quadro (~28em é a frase mais longa) */
+.cp-sponsor-note { margin: 12px 0 0; font-size: min(12.5px, calc(100cqi / 28)); font-weight: 500; line-height: 1.5; color: var(--muted); }
 .cp-sponsor-logo { display: flex; align-items: center; min-height: 64px; }
 .cp-sponsor-logo img { width: auto; max-width: 100%; object-fit: contain; }
 .cp-side-title { margin: 0 0 16px; font-family: var(--font-body); font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
@@ -661,7 +662,6 @@ button { font: inherit; color: inherit; }
   .lp .cards-grid .card-meta { flex-direction: column; gap: 1px; margin-top: 6px; font-size: 11.5px; } /* área e data em linhas próprias: nada de separador sobrando */
   .lp .cards-grid .card-meta span + span::before { content: none; }
   .lp .cards-grid .card--sponsored .card-kind--sponsored { background: var(--blue-soft); } /* a linha não tem fundo azul, então a pílula volta ao azul-claro */
-  .lp .cards-grid .card-sponsor { grid-column: 1 / -1; margin-top: 10px; padding: 0; border: 0; background: none; font-size: min(11px, calc(100cqi / var(--sponsor-em, 28))); }
   .crumbs { font-size: 12px; margin-bottom: 14px; }
   .tp-block-head { flex-direction: column; align-items: flex-start; gap: 6px; }
   .se-form { flex-direction: column; }
@@ -729,8 +729,6 @@ button { font: inherit; color: inherit; }
   .card-media, .card--lg .card-media { aspect-ratio: 16 / 9; }
   .card-title { font-size: 18px; }
   .card-kind { font-size: 11px; }
-  /* Celular: rodapé do card com menos margem lateral, para a frase de apoio caber maior */
-  .card-sponsor { padding-inline: 12px; font-size: min(11px, calc((100cqi - 24px) / var(--sponsor-em, 28))); }
   .progress-dots { display: none; }
   .progress-compact { display: flex; }
   .carousel-progress { margin-top: 16px; }
