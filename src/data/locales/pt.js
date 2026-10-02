@@ -101,7 +101,6 @@ export default {
      Nunca usar "parceria" para a relação Medscape + empresa farmacêutica. */
   // Aviso do topo da página, em duas partes [começo da frase, instituição] para o celular quebrar a linha no ponto certo
   topDisclosure: ['Desenvolvido pelo Medscape com o apoio da', 'Sociedade Brasileira de Oncologia Clínica'],
-  sponsorLine: (names) => `Desenvolvido pela Medscape com o apoio ${supportedBy(names)}`,
   footerDisclaimer: (names) =>
     `A cobertura da conferência foi desenvolvida pela Medscape com o apoio ${supportedBy(names)}. ` +
     (names.length === 1 ? `A ${names[0]} realizou` : `As empresas ${join(names)} realizaram`) +

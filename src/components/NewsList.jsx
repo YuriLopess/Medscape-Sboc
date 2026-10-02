@@ -30,13 +30,6 @@ function Meta({ item }) {
   );
 }
 
-// Identificação exigida pelas diretrizes Medscape para conteúdo com apoio de empresa
-function Sponsor({ item }) {
-  const { sponsorLine } = useContent();
-  if (!item.sponsored) return null;
-  return <p className="tx-sponsor">{sponsorLine([item.sponsor])}</p>;
-}
-
 function Row({ item, index, origin }) {
   return (
     <li className="tx-row">
@@ -45,7 +38,6 @@ function Row({ item, index, origin }) {
           <Kind item={item} />
           <span className="tx-title">{item.title}</span>
           <Meta item={item} />
-          <Sponsor item={item} />
         </span>
         <Media src={item.image} className="tx-thumb" />
       </a>
@@ -78,7 +70,6 @@ export default function NewsList({ items, origin = 'noticias' }) {
             <span className="tx-lead-title">{lead.title}</span>
             <Meta item={lead} />
             <span className="tx-lead-dek">{lead.description}</span>
-            <Sponsor item={lead} />
           </span>
         </a>
 
