@@ -74,7 +74,8 @@ export default {
   /* Avisos obrigatórios (diretrizes Medscape, versão em português do PDF).
      Nunca usar "parceria" para a relação Medscape + empresa farmacêutica. */
   // Aviso do topo da página, em duas partes [começo da frase, instituição] para o celular quebrar a linha no ponto certo
-  topDisclosure: ['Desenvolvido pelo Medscape com o apoio da', 'Sociedade Brasileira de Oncologia Clínica'],
+  // "pela Medscape" (feminino), como nas diretrizes Medscape em português e no aviso do rodapé
+  topDisclosure: ['Desenvolvido pela Medscape com o apoio da', 'Sociedade Brasileira de Oncologia Clínica'],
   sponsorLine: (names) => `Desenvolvido pela Medscape com o apoio ${supportedBy(names)}`,
   footerDisclaimer: (names) =>
     `A cobertura da conferência foi desenvolvida pela Medscape com o apoio ${supportedBy(names)}. ` +
