@@ -24,7 +24,7 @@ export default function TopicAreas() {
                 href={topicHref(t.id)}
                 aria-label={`${ui.areaCta(t.label)}: ${ui.areaCount(t.videos.length, t.news.length)}`}
               >
-                <Media src={t.cover} className="area-media" sizes={i < 2 ? '(max-width: 640px) 66vw, (max-width: 900px) 100vw, 600px' : undefined} />
+                <Media src={t.cover} className="area-media" sizes={i < 2 ? '(max-width: 900px) 100vw, 640px' : undefined} />
                 <ArrowRight className="area-arrow" />
                 <span className="area-name">{t.label}</span>
                 <span className="area-meta" aria-hidden="true">

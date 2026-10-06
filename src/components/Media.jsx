@@ -4,22 +4,23 @@ import { useContent } from '../i18n.jsx';
 import variants from '../data/image-variants.json';
 
 /*
-  Tamanho em que cada tipo de imagem aparece na tela. Com isso o navegador escolhe, entre as versões
-  geradas por scripts/gerar-variantes.py (480, 960 px e o original), a menor que fica nítida —
+  Largura em que cada tipo de imagem aparece na tela. Com isso o navegador escolhe, entre as versões
+  geradas por scripts/gerar-variantes.py (480, 720, 960, 1280 px e o original), a menor que fica nítida —
   inclusive em telas de alta resolução.
-  No celular os valores são cerca de 2/3 da largura real: a foto baixa com ~2,5x de densidade em vez de 3x,
-  diferença que não se vê, com metade do peso.
+  Atenção ao recorte: quando o quadro é mais alto que a proporção da foto (banner no celular, cards de área),
+  o object-fit: cover amplia a foto além da largura do quadro. O valor aqui é a largura da foto ampliada,
+  senão ela chega pequena e fica borrada.
 */
 const SIZES = {
-  'hero-media': '(max-width: 640px) 66vw, 60vw',
-  'area-media': '(max-width: 640px) 33vw, (max-width: 900px) 50vw, 300px',
-  'card-media': '(max-width: 640px) 60vw, 440px',
-  'tx-lead-media': '(max-width: 640px) 66vw, (max-width: 720px) 100vw, 420px',
+  'hero-media': '(max-width: 640px) 135vw, (max-width: 900px) 100vw, 60vw',
+  'area-media': '(max-width: 640px) 90vw, (max-width: 900px) 60vw, 520px',
+  'card-media': '(max-width: 640px) 90vw, 440px',
+  'tx-lead-media': '(max-width: 720px) 100vw, 420px',
   'tx-thumb': '90px',
   'se-thumb': '124px',
   'sy-video-media': '(max-width: 640px) 136px, 600px',
-  'tp-highlight-media': '(max-width: 640px) 66vw, (max-width: 900px) 100vw, 620px',
-  'cp-player-media': '(max-width: 640px) 66vw, (max-width: 900px) 100vw, 760px',
+  'tp-highlight-media': '(max-width: 900px) 100vw, 620px',
+  'cp-player-media': '(max-width: 900px) 100vw, 760px',
 };
 
 function srcSet(src) {

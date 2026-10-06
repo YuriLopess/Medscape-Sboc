@@ -1,5 +1,5 @@
 """
-Gera versões menores das fotos de public/images (480 e 960 px de largura) e a lista em
+Gera versões menores das fotos de public/images (480, 720, 960 e 1280 px de largura) e a lista em
 src/data/image-variants.json, que o componente Media usa para montar o srcset.
 
 O navegador passa a baixar a versão do tamanho em que a foto aparece (um card de 290 px não
@@ -19,7 +19,8 @@ ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / 'public'
 IMAGES = PUBLIC / 'images'
 MANIFEST = ROOT / 'src' / 'data' / 'image-variants.json'
-WIDTHS = (480, 960)
+WIDTHS = (480, 720, 960, 1280)
+QUALITY = 85  # abaixo disso o JPEG começa a mostrar perda nas fotos grandes
 SKIP_DIRS = {'logos'}  # logos são pequenas e aparecem em tamanho fixo
 
 
@@ -39,7 +40,7 @@ for src in sorted(IMAGES.rglob('*.jpg')):
                 continue
             out = src.with_name(f'{src.stem}-{w}{src.suffix}')
             h = round(im.height * w / im.width)
-            im.resize((w, h), Image.LANCZOS).save(out, quality=78, optimize=True, progressive=True)
+            im.resize((w, h), Image.LANCZOS).save(out, quality=QUALITY, optimize=True, progressive=True)
             widths.append(w)
         widths.append(im.width)  # o original entra como a maior opção
     key = src.relative_to(PUBLIC).as_posix()
