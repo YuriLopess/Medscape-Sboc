@@ -218,6 +218,8 @@ export default {
     notFound: 'Contenido no encontrado',
     notFoundText: 'Es posible que el enlace esté incompleto o que el contenido aún no se haya publicado.',
     notFoundBack: 'Volver a la cobertura',
+    notFoundSearch: 'Buscar en la cobertura',
+    notFoundAreas: 'O elija un área terapéutica',
     placeholderSpeaker: { name: 'Nombre del especialista', role: 'Cargo e institución por confirmar' },
     summary: (description, eventName, isVideo) =>
       `${description} En el contexto de la cobertura del ${eventName}, ${isVideo ? 'este video reúne' : 'esta noticia reúne'} la lectura de especialistas sobre los datos presentados en el congreso y lo que pueden significar para la práctica clínica en Brasil.`,

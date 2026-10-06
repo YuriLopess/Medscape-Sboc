@@ -222,6 +222,8 @@ export default {
     notFound: 'Content not found',
     notFoundText: 'The link may be incomplete, or the content has not been published yet.',
     notFoundBack: 'Back to coverage',
+    notFoundSearch: 'Search the coverage',
+    notFoundAreas: 'Or choose a therapeutic area',
     placeholderSpeaker: { name: 'Expert name', role: 'Title and institution to be confirmed' },
     summary: (description, eventName, isVideo) =>
       `${description} As part of the ${eventName} coverage, ${isVideo ? 'this video brings together' : 'this story brings together'} expert insight into the data presented at the congress and what it may mean for clinical practice in Brazil.`,

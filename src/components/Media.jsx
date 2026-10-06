@@ -17,6 +17,7 @@ const SIZES = {
   'card-media': '(max-width: 640px) 90vw, 440px',
   'tx-lead-media': '(max-width: 720px) 100vw, 420px',
   'tx-thumb': '90px',
+  'nf-area-media': '76px',
   'se-thumb': '124px',
   'sy-video-media': '(max-width: 640px) 136px, 600px',
   'tp-highlight-media': '(max-width: 900px) 100vw, 620px',

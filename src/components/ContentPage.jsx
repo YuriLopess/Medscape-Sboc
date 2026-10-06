@@ -3,6 +3,7 @@ import ContentCard from './ContentCard.jsx';
 import Breadcrumb from './Breadcrumb.jsx';
 import ReturnBand from './ReturnBand.jsx';
 import Disclosure from './Disclosure.jsx';
+import NotFound from './NotFound.jsx';
 import { User } from './Icons.jsx';
 import { Duration, Media, PlayBadge } from './Media.jsx';
 import { useContent } from '../i18n.jsx';
@@ -141,16 +142,7 @@ function Sidebar({ item }) {
 
 export default function ContentPage({ item }) {
   const { event, page, relatedContent, ui } = useContent();
-  if (!item) {
-    return (
-      <section className="container cp-missing">
-        <Disclosure />
-        <h1>{page.notFound}</h1>
-        <p>{page.notFoundText}</p>
-        <a className="btn btn--dark" href="#/">{page.notFoundBack}</a>
-      </section>
-    );
-  }
+  if (!item) return <NotFound />;
 
   const related = relatedContent(item);
 
