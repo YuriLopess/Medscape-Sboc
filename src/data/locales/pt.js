@@ -62,34 +62,8 @@ export default {
     },
   },
 
-  // [título, descrição] de cada conteúdo, pelo id
-  content: {
-    panorama: ['Panorama do congresso', 'Uma visão geral dos principais temas e discussões desta edição do ESMO.'],
-    mama: ['Destaques em câncer de mama', 'Avanços, desafios e perspectivas para a prática clínica.'],
-    toracicos: ['Tumores torácicos', 'O que foi apresentado e o que muda na prática.'],
-    gastro: ['Tumores gastrointestinais', 'Estudos que podem redefinir condutas no tratamento.'],
-    gineco: ['Tumores ginecológicos', 'Novas abordagens e o impacto nas pacientes.'],
-    gu: ['Câncer colorretal', 'Do rastreamento ao tratamento da doença metastática.'],
-    imuno: ['Imunoterapia no melanoma', 'Combinações, sequenciamento e seleção de pacientes.'],
-    precisao: ['Oncologia de precisão no câncer de pulmão', 'Biomarcadores e terapias-alvo em evolução na doença avançada.'],
-    linfomas: ['Linfomas cutâneos', 'Novas abordagens para linfomas com manifestação na pele.'],
-    melanoma: ['Melanoma e pele', 'Resultados de longo prazo e novas estratégias.'],
-    'cabeca-pescoco': ['Cabeça e pescoço', 'Perspectivas para o tratamento multidisciplinar.'],
-    'pulmao-avancado': ['Pulmão avançado', 'Primeira linha, sequenciamento e biomarcadores.'],
-    suporte: ['Cuidados de suporte no câncer de mama', 'Qualidade de vida e manejo de toxicidades durante o tratamento.'],
-    mieloma: ['Mieloma múltiplo', 'Estratégias de indução e manutenção em debate.'],
-    sarcomas: ['Sarcomas e GIST', 'Tumores estromais gastrointestinais e outros sarcomas: o que muda na prática.'],
-    sintese: ['Os principais destaques do congresso', 'Uma visão integrada dos temas que marcaram o ESMO 2026.'],
-    'sintese-pratica': ['O que muda na prática no Brasil', 'Os especialistas traduzem os resultados para a realidade brasileira.'],
-    'texto-digestivos': ['O panorama dos tumores digestivos', 'Discussões que podem impactar a prática clínica nos próximos anos.'],
-    'texto-biomarcadores': ['Biomarcadores no câncer de mama', 'O papel dos biomarcadores na escolha do tratamento.'],
-    'texto-mama': ['Mama: o que muda após o ESMO', 'Leitura crítica dos estudos com maior potencial de impacto.'],
-    'texto-pulmao': ['Pulmão: da adjuvância à doença avançada', 'Dados apresentados e questões ainda em aberto.'],
-    'texto-gineco': ['Novas abordagens em ginecológicos', 'O que o congresso trouxe como horizonte.'],
-    'texto-hemato': ['Onco-hematologia: combinações em debate', 'O que os novos dados indicam para linfomas e mieloma.'],
-    'texto-prostata': ['Câncer de colo do útero em debate', 'Prevenção, rastreamento e tratamento da doença avançada.'],
-    'texto-suporte': ['Qualidade de vida em tumores ginecológicos', 'Cuidados de suporte e desfechos relatados pelas pacientes.'],
-  },
+  // Título e descrição de cada conteúdo, pelo id: { id: ['Título', 'Descrição.'] }
+  content: {},
 
   finalSynthesis: {
     eyebrow: 'Síntese final',
@@ -211,6 +185,15 @@ export default {
     searchResults: (n) => `${n} ${n === 1 ? 'resultado' : 'resultados'}`,
     searchEmpty: (q) => `Nada encontrado para “${q}”. Tente outro termo ou explore por área terapêutica.`,
     searchPrompt: 'Busque por tema, estudo ou especialista nos vídeos e notícias da cobertura.',
+
+    // Antes da publicação dos conteúdos
+    soon: 'Em breve',
+    soonText: 'Os vídeos e as notícias da cobertura serão publicados durante o congresso.',
+    soonTopic: (topic) => `Os vídeos e as notícias de ${topic} serão publicados durante o congresso.`,
+    soonVideos: 'Os vídeos da cobertura serão publicados durante o congresso.',
+    soonNews: 'As notícias da cobertura serão publicadas durante o congresso.',
+    soonSynthesis: 'As duas conversas de encerramento serão publicadas ao fim do congresso.',
+    soonSearch: 'Os conteúdos da cobertura ainda não foram publicados. Volte durante o congresso para buscar.',
 
     video: 'Vídeo',
     text: 'Notícia',

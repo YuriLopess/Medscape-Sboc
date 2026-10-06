@@ -1,4 +1,5 @@
 import Breadcrumb from './Breadcrumb.jsx';
+import ComingSoon from './ComingSoon.jsx';
 import ContentCard from './ContentCard.jsx';
 import NewsList from './NewsList.jsx';
 import { ArrowRight } from './Icons.jsx';
@@ -57,10 +58,12 @@ export default function TopicPage({ topic }) {
             <p className="tp-kicker">{ui.topicKicker}</p>
             <h1 className="tp-title">{topic.label}</h1>
             <p className="tp-intro">{topic.intro || ui.topicSub}</p>
-            <p className="tp-stats">
-              <span>{ui.areaCount(topic.videos.length, topic.news.length)}</span>
-              {topic.updated && <span>{ui.topicUpdated(topic.updated)}</span>}
-            </p>
+            {topic.items.length > 0 && (
+              <p className="tp-stats">
+                <span>{ui.areaCount(topic.videos.length, topic.news.length)}</span>
+                {topic.updated && <span>{ui.topicUpdated(topic.updated)}</span>}
+              </p>
+            )}
           </div>
 
           {/* Os três temas que a área concentrou no congresso */}
@@ -105,7 +108,7 @@ export default function TopicPage({ topic }) {
 
         {topic.special && <SpecialModule module={topic.special} />}
 
-        {topic.items.length === 0 && <p className="empty-state">{ui.topicEmpty}</p>}
+        {topic.items.length === 0 && <ComingSoon text={ui.soonTopic(topic.label)} />}
 
       </div>
 

@@ -25,7 +25,7 @@ export default function SynthesisPage() {
                 <span className="sy-area-name">{t.label}</span>
                 <span className="sy-area-intro">{t.intro}</span>
                 <span className="sy-area-foot">
-                  <span>{ui.areaCount(t.videos.length, t.news.length)}</span>
+                  <span>{t.items.length > 0 ? ui.areaCount(t.videos.length, t.news.length) : ui.soon}</span>
                   <span className="sy-area-cta">{ui.explore} <ArrowRight /></span>
                 </span>
               </a>

@@ -237,6 +237,28 @@ button { font: inherit; color: inherit; }
 .chip[aria-expanded="true"] svg { transform: rotate(180deg); }
 .empty-state { margin-top: 22px; color: var(--muted); }
 
+/* "Em breve": no lugar de vídeos e notícias ainda não publicados */
+.soon { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px 20px; padding: clamp(20px, 2.4vw, 28px) clamp(20px, 2.6vw, 32px); border: 1px solid var(--blue-line); border-radius: var(--radius); background: var(--blue-soft); }
+.soon-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #fff; color: var(--blue); box-shadow: 0 0 0 1px var(--blue-line); }
+.soon-icon svg { width: 22px; height: 22px; }
+.soon-body > p { margin: 0; }
+.soon-title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; line-height: 1.2; color: var(--ink); }
+.soon-text { margin-top: 4px !important; font-size: 15px; line-height: 1.5; color: var(--text); max-width: 60ch; }
+.soon-date { margin: 0; padding: 7px 14px; border: 1px solid var(--blue-line); border-radius: 999px; background: #fff; font-size: 13px; font-weight: 600; color: var(--navy); white-space: nowrap; }
+/* Versão para a faixa azul da Síntese final */
+.soon--dark { margin-top: clamp(28px, 3.5vw, 40px); background: rgb(255 255 255 / .06); border-color: rgb(255 255 255 / .16); }
+.soon--dark .soon-icon { background: rgb(255 255 255 / .1); color: #fff; box-shadow: 0 0 0 1px rgb(255 255 255 / .2); }
+.soon--dark .soon-title { color: #fff; }
+.soon--dark .soon-text { color: rgb(255 255 255 / .8); }
+.soon--dark .soon-date { background: none; border-color: rgb(255 255 255 / .3); color: #fff; }
+@media (max-width: 640px) {
+  .soon { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+  .soon-icon { width: 40px; height: 40px; }
+  .soon-icon svg { width: 19px; height: 19px; }
+  .soon-title { font-size: 18px; margin-top: 8px !important; }
+  .soon-date { grid-column: 2; justify-self: start; }
+}
+
 /* ---------- Síntese final ---------- */
 /* Faixa azul como o banner e o rodapé, com a mesma luz suave do banner no lado do texto */
 .synthesis { position: relative; isolation: isolate; overflow: hidden; background: var(--navy); color: #fff; padding-block: clamp(26px, 3vw, 34px) clamp(44px, 6vw, 72px); }

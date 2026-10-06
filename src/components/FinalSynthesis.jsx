@@ -1,4 +1,5 @@
 import Breadcrumb from './Breadcrumb.jsx';
+import ComingSoon from './ComingSoon.jsx';
 import { Duration, Media, PlayBadge } from './Media.jsx';
 import { useContent } from '../i18n.jsx';
 import { SYNTHESIS } from '../data/content.js';
@@ -23,7 +24,9 @@ export default function FinalSynthesis() {
         </h1>
         <p className="synthesis-lead">{s.description}</p>
 
-        <ol className="sy-videos" data-stagger>
+        {finalVideos.length === 0 && <ComingSoon dark text={ui.soonSynthesis} />}
+
+        {finalVideos.length > 0 && <ol className="sy-videos" data-stagger>
           {finalVideos.map((v, i) => (
             <li key={v.id}>
               <a className="sy-video" href={v.href} onClick={() => trackCard(v, i, 'sintese')}>
@@ -37,7 +40,7 @@ export default function FinalSynthesis() {
               </a>
             </li>
           ))}
-        </ol>
+        </ol>}
       </div>
     </header>
   );

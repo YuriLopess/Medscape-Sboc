@@ -21,6 +21,9 @@ export const ChevronRight = (p) => (
 export const ChevronDown = (p) => (
   <svg viewBox="0 0 24 24" width="14" height="14" {...base} {...p}><path d="M6 9l6 6 6-6" /></svg>
 );
+export const Clock = (p) => (
+  <svg viewBox="0 0 24 24" width="16" height="16" {...base} {...p}><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+);
 export const Search = (p) => (
   <svg viewBox="0 0 24 24" width="22" height="22" {...base} {...p}><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>
 );

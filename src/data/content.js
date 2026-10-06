@@ -56,43 +56,30 @@ export const SYNTHESIS = 'sintese-final';
   image: todo conteúdo tem foto. Fotos repetidas ficam em conteúdos distantes entre si.
 */
 
-// 15 vídeos curtos: 9 SBOC · 3 AbbVie · 2 Merck · 1 GSK
-const featuredBase = [
-  { id: 'panorama', topic: 'outros', slug: 'panorama-do-congresso', date: '2026-10-23', duration: '04:36', image: 'images/videos/panorama.jpg' },
-  { id: 'mama', topic: 'mama', sponsor: 'AbbVie', slug: 'destaques-cancer-de-mama', date: '2026-10-23', duration: '05:22', image: 'images/videos/mama.jpg' },
-  { id: 'toracicos', topic: 'pulmao', slug: 'tumores-toracicos', date: '2026-10-24', duration: '05:05', image: 'images/videos/toracicos.jpg', focus: 'center 15%' },
-  { id: 'gastro', topic: 'gastro', sponsor: 'Merck', slug: 'tumores-gastrointestinais', date: '2026-10-24', duration: '04:50', image: 'images/videos/gastro.jpg' },
-  { id: 'gineco', topic: 'gineco', slug: 'tumores-ginecologicos', date: '2026-10-24', duration: '04:48', image: 'images/temas/ginecologicos.jpg' },
-  { id: 'gu', topic: 'gastro', slug: 'cancer-colorretal', date: '2026-10-25', duration: '05:10', image: 'images/banco/hospital.jpg' },
-  { id: 'imuno', topic: 'pele', sponsor: 'GSK', slug: 'imunoterapia-no-melanoma', date: '2026-10-25', duration: '06:02', image: 'images/banco/celula.jpg' },
-  { id: 'precisao', topic: 'pulmao', slug: 'oncologia-de-precisao-pulmao', date: '2026-10-25', duration: '04:44', image: 'images/banco/laboratorio.jpg' },
-  { id: 'linfomas', topic: 'pele', sponsor: 'AbbVie', slug: 'linfomas-cutaneos', date: '2026-10-26', duration: '05:15', image: 'images/banco/sangue.jpg' },
-  { id: 'melanoma', topic: 'pele', slug: 'melanoma-e-pele', date: '2026-10-26', duration: '03:57', image: 'images/temas/digestivos.jpg' },
-  { id: 'cabeca-pescoco', topic: 'outros', slug: 'cabeca-e-pescoco', date: '2026-10-26', duration: '04:21', image: 'images/sintese.jpg' },
-  { id: 'pulmao-avancado', topic: 'pulmao', sponsor: 'Merck', slug: 'pulmao-avancado', date: '2026-10-27', duration: '05:40', image: 'images/banco/tomografia-pulmao.jpg' },
-  { id: 'suporte', topic: 'mama', slug: 'cuidados-de-suporte-mama', date: '2026-10-27', duration: '04:05', image: 'images/banco/comprimidos.jpg' },
-  { id: 'mieloma', topic: 'outros', sponsor: 'AbbVie', slug: 'mieloma-multiplo', date: '2026-10-27', duration: '05:02', image: 'images/temas/biomarcadores.jpg' },
-  { id: 'sarcomas', topic: 'gastro', slug: 'sarcomas-e-gist', date: '2026-10-27', duration: '04:30', image: 'images/videos/panorama.jpg' },
-];
+/*
+  Os conteúdos ainda não foram publicados: enquanto as listas abaixo estiverem vazias, o site mostra
+  "Em breve" nas áreas, listagens, destaques, Síntese final e busca. Para publicar um conteúdo, inclua
+  um item na lista certa e o título/descrição em locales/<idioma>.js → content[id]. Exemplos:
+
+  Vídeo:   { id: 'pulmao-1', topic: 'pulmao', sponsor: 'Merck', slug: 'tratamento-perioperatorio',
+             date: '2026-10-24', duration: '05:40', image: 'images/videos/pulmao-1.jpg' }
+  Final:   { id: 'sintese-1', topic: SYNTHESIS, slug: 'principais-destaques', date: '2026-10-28',
+             duration: '18:40', image: 'images/sintese.jpg' }
+  Notícia: { id: 'noticia-1', topic: 'mama', slug: 'o-que-muda-apos-o-esmo', date: '2026-10-23',
+             readTime: '6 min', image: 'images/noticias/mama-1.jpg' }
+  Locale:  content: { 'pulmao-1': ['Título do vídeo', 'Descrição curta.'], ... }
+  Depois de adicionar fotos novas, rode: python scripts/gerar-variantes.py
+*/
+
+// Vídeos curtos (highlights) → "Em destaque na cobertura", listagem de vídeos e páginas de área
+const featuredBase = [];
 
 // 2 vídeos finais (SBOC). O "tema" na URL é a própria Síntese final.
-const finalBase = [
-  { id: 'sintese', topic: SYNTHESIS, slug: 'principais-destaques', date: '2026-10-28', duration: '18:40', image: 'images/sintese.jpg' },
-  { id: 'sintese-pratica', topic: SYNTHESIS, slug: 'o-que-muda-na-pratica', date: '2026-10-28', duration: '16:15', image: 'images/banco/hospital.jpg' },
-];
+const finalBase = [];
 
-// 8 notícias: 5 SBOC · 2 AbbVie · 1 Merck
-// readTime: tempo estimado de leitura (provisório)
-const textsBase = [
-  { id: 'texto-digestivos', topic: 'gastro', slug: 'panorama-dos-tumores-digestivos', date: '2026-10-24', readTime: '6 min', image: 'images/temas/digestivos.jpg' },
-  { id: 'texto-biomarcadores', topic: 'mama', sponsor: 'AbbVie', slug: 'biomarcadores-cancer-de-mama', date: '2026-10-25', readTime: '5 min', image: 'images/temas/biomarcadores.jpg' },
-  { id: 'texto-mama', topic: 'mama', slug: 'mama-o-que-muda-apos-o-esmo', date: '2026-10-23', readTime: '7 min', image: 'images/videos/mama.jpg' },
-  { id: 'texto-pulmao', topic: 'pulmao', sponsor: 'Merck', slug: 'da-adjuvancia-a-doenca-avancada', date: '2026-10-26', readTime: '6 min', image: 'images/banco/tomografia-pulmao.jpg' },
-  { id: 'texto-gineco', topic: 'gineco', slug: 'novas-abordagens-em-ginecologicos', date: '2026-10-24', readTime: '5 min', image: 'images/temas/ginecologicos.jpg' },
-  { id: 'texto-hemato', topic: 'outros', sponsor: 'AbbVie', slug: 'combinacoes-em-debate', date: '2026-10-26', readTime: '6 min', image: 'images/banco/sangue.jpg' },
-  { id: 'texto-prostata', topic: 'gineco', slug: 'cancer-de-colo-do-utero', date: '2026-10-25', readTime: '4 min', image: 'images/banco/hospital.jpg' },
-  { id: 'texto-suporte', topic: 'gineco', slug: 'qualidade-de-vida-ginecologicos', date: '2026-10-27', readTime: '5 min', image: 'images/banco/comprimidos.jpg' },
-];
+// Notícias → listagem de notícias e páginas de área
+// readTime: tempo estimado de leitura
+const textsBase = [];
 
 export const supporters = [
   // pharma: true → empresa patrocinadora; só essas entram nos avisos obrigatórios (topo, rodapé, cards)
@@ -195,7 +182,8 @@ export function buildContent(lang) {
     };
   }
 
-  const topics = topicIds.map((id) => getTopic(id)).filter((t) => t.items.length > 0);
+  // As áreas aparecem sempre, mesmo antes de ter conteúdo publicado ("Em breve")
+  const topics = topicIds.map((id) => getTopic(id));
 
   // Listagem por formato, opcionalmente filtrada por área
   function listing(format, topic) {

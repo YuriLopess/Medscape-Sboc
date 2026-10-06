@@ -1,4 +1,4 @@
-import { ArrowRight, Doc, Play } from './Icons.jsx';
+import { ArrowRight, Clock, Doc, Play } from './Icons.jsx';
 import { Media } from './Media.jsx';
 import { useContent } from '../i18n.jsx';
 import { topicHref } from '../hooks/useRoute.js';
@@ -22,7 +22,7 @@ export default function TopicAreas() {
               <a
                 className="area-card"
                 href={topicHref(t.id)}
-                aria-label={`${ui.areaCta(t.label)}: ${ui.areaCount(t.videos.length, t.news.length)}`}
+                aria-label={`${ui.areaCta(t.label)}: ${t.items.length > 0 ? ui.areaCount(t.videos.length, t.news.length) : ui.soon}`}
               >
                 <Media src={t.cover} className="area-media" sizes={i < 2 ? '(max-width: 900px) 100vw, 640px' : undefined} />
                 <ArrowRight className="area-arrow" />
@@ -30,6 +30,8 @@ export default function TopicAreas() {
                 <span className="area-meta" aria-hidden="true">
                   {t.videos.length > 0 && <span className="area-tag"><Play />{ui.areaVideos(t.videos.length)}</span>}
                   {t.news.length > 0 && <span className="area-tag"><Doc />{ui.areaNews(t.news.length)}</span>}
+                  {/* Antes da publicação: o card continua abrindo a área, com o aviso no lugar da contagem */}
+                  {t.items.length === 0 && <span className="area-tag"><Clock />{ui.soon}</span>}
                 </span>
               </a>
             </li>

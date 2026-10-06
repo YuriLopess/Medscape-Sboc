@@ -1,5 +1,6 @@
 import CarouselControls from './CarouselControls.jsx';
 import CarouselProgress from './CarouselProgress.jsx';
+import ComingSoon from './ComingSoon.jsx';
 import ContentCard from './ContentCard.jsx';
 import { useContent } from '../i18n.jsx';
 import { useCarousel } from '../hooks/useCarousel.js';
@@ -18,16 +19,29 @@ export default function FeaturedCarousel() {
           <h2 id="destaques-title" className="section-title">{ui.featuredTitle}</h2>
           <p className="section-sub">{ui.featuredSub}</p>
         </div>
-        <CarouselControls carousel={carousel} label={ui.featuredLabel} counter={`${pad(carousel.index + 1)} / ${pad(total)}`} />
+        {total > 0 && (
+          <CarouselControls
+            carousel={carousel}
+            label={ui.featuredLabel}
+            counter={`${pad(carousel.index + 1)} / ${pad(total)}`}
+          />
+        )}
       </div>
 
-      <div className="carousel-track" ref={carousel.trackRef}>
-        {featuredVideos.map((video, i) => (
-          <ContentCard key={video.id} item={video} size="lg" index={i} origin="destaques" />
-        ))}
-      </div>
-
-      <CarouselProgress carousel={carousel} items={featuredVideos} label={ui.goToVideo} />
+      {total > 0 ? (
+        <>
+          <div className="carousel-track" ref={carousel.trackRef}>
+            {featuredVideos.map((video, i) => (
+              <ContentCard key={video.id} item={video} size="lg" index={i} origin="destaques" />
+            ))}
+          </div>
+          <CarouselProgress carousel={carousel} items={featuredVideos} label={ui.goToVideo} />
+        </>
+      ) : (
+        <div className="container">
+          <ComingSoon text={ui.soonText} />
+        </div>
+      )}
     </section>
   );
 }

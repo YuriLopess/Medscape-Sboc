@@ -58,33 +58,8 @@ export default {
     },
   },
 
-  content: {
-    panorama: ['Panorama del congreso', 'Una visión general de los principales temas y debates de esta edición del ESMO.'],
-    mama: ['Lo más destacado en cáncer de mama', 'Avances, desafíos y perspectivas para la práctica clínica.'],
-    toracicos: ['Tumores torácicos', 'Lo que se presentó y lo que cambia en la práctica.'],
-    gastro: ['Tumores gastrointestinales', 'Estudios que pueden redefinir las conductas de tratamiento.'],
-    gineco: ['Tumores ginecológicos', 'Nuevos enfoques y su impacto en las pacientes.'],
-    gu: ['Cáncer colorrectal', 'Del cribado al tratamiento de la enfermedad metastásica.'],
-    imuno: ['Inmunoterapia en melanoma', 'Combinaciones, secuenciación y selección de pacientes.'],
-    precisao: ['Oncología de precisión en cáncer de pulmón', 'Biomarcadores y terapias dirigidas en evolución en la enfermedad avanzada.'],
-    linfomas: ['Linfomas cutáneos', 'Nuevos enfoques para linfomas con manifestación en la piel.'],
-    melanoma: ['Melanoma y piel', 'Resultados a largo plazo y nuevas estrategias.'],
-    'cabeca-pescoco': ['Cabeza y cuello', 'Perspectivas para el tratamiento multidisciplinario.'],
-    'pulmao-avancado': ['Pulmón avanzado', 'Primera línea, secuenciación y biomarcadores.'],
-    suporte: ['Cuidados de soporte en cáncer de mama', 'Calidad de vida y manejo de toxicidades durante el tratamiento.'],
-    mieloma: ['Mieloma múltiple', 'Estrategias de inducción y mantenimiento en debate.'],
-    sarcomas: ['Sarcomas y GIST', 'Tumores del estroma gastrointestinal y otros sarcomas: lo que cambia en la práctica.'],
-    sintese: ['Lo más destacado del congreso', 'Una visión integrada de los temas que marcaron el ESMO 2026.'],
-    'sintese-pratica': ['Lo que cambia en la práctica en Brasil', 'Los especialistas trasladan los resultados a la realidad brasileña.'],
-    'texto-digestivos': ['El panorama de los tumores digestivos', 'Debates que pueden impactar la práctica clínica en los próximos años.'],
-    'texto-biomarcadores': ['Biomarcadores en cáncer de mama', 'El papel de los biomarcadores en la elección del tratamiento.'],
-    'texto-mama': ['Mama: lo que cambia después del ESMO', 'Lectura crítica de los estudios con mayor potencial de impacto.'],
-    'texto-pulmao': ['Pulmón: de la adyuvancia a la enfermedad avanzada', 'Datos presentados y preguntas aún abiertas.'],
-    'texto-gineco': ['Nuevos enfoques en tumores ginecológicos', 'Lo que el congreso trajo como horizonte.'],
-    'texto-hemato': ['Oncohematología: combinaciones en debate', 'Lo que indican los nuevos datos para linfomas y mieloma.'],
-    'texto-prostata': ['Cáncer de cuello uterino en debate', 'Prevención, cribado y tratamiento de la enfermedad avanzada.'],
-    'texto-suporte': ['Calidad de vida en tumores ginecológicos', 'Cuidados de soporte y resultados reportados por las pacientes.'],
-  },
+  // Título e descrição de cada conteúdo, pelo id: { id: ['Título', 'Descrição.'] }
+  content: {},
 
   finalSynthesis: {
     eyebrow: 'Síntesis final',
@@ -204,6 +179,15 @@ export default {
     searchResults: (n) => `${n} ${n === 1 ? 'resultado' : 'resultados'}`,
     searchEmpty: (q) => `No se encontró nada para “${q}”. Pruebe otro término o explore por área terapéutica.`,
     searchPrompt: 'Busque por tema, estudio o especialista en los videos y noticias de la cobertura.',
+
+    // Antes de la publicación de los contenidos
+    soon: 'Próximamente',
+    soonText: 'Los videos y las noticias de la cobertura se publicarán durante el congreso.',
+    soonTopic: (topic) => `Los videos y las noticias de ${topic} se publicarán durante el congreso.`,
+    soonVideos: 'Los videos de la cobertura se publicarán durante el congreso.',
+    soonNews: 'Las noticias de la cobertura se publicarán durante el congreso.',
+    soonSynthesis: 'Las dos conversaciones de cierre se publicarán al final del congreso.',
+    soonSearch: 'Los contenidos de la cobertura aún no se han publicado. Vuelva durante el congreso para buscar.',
 
     video: 'Video',
     text: 'Noticia',

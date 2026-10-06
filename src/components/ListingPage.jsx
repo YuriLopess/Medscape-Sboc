@@ -1,3 +1,4 @@
+import ComingSoon from './ComingSoon.jsx';
 import ContentCard from './ContentCard.jsx';
 import NewsList from './NewsList.jsx';
 import { useContent } from '../i18n.jsx';
@@ -11,6 +12,7 @@ export default function ListingPage({ format, topic }) {
   const { listing, topics, ui } = useContent();
   const isVideos = format === 'videos';
   const items = listing(format, topic);
+  const published = listing(format, '').length > 0;
 
   const filters = [{ id: '', label: ui.all }, ...topics.map((t) => ({ id: t.id, label: t.label }))];
 
@@ -24,6 +26,11 @@ export default function ListingPage({ format, topic }) {
       </header>
 
       <div className="container lp-main">
+        {/* Nada publicado ainda neste formato: sem filtros nem contagem, só o aviso */}
+        {!published ? (
+          <ComingSoon text={isVideos ? ui.soonVideos : ui.soonNews} />
+        ) : (
+        <>
         <div className="chips lp-filters" role="group" aria-label={ui.filterByArea}>
           {filters.map((f) => (
             <a
@@ -49,6 +56,8 @@ export default function ListingPage({ format, topic }) {
           </div>
         ) : (
           <NewsList items={items} origin="listagem-noticias" />
+        )}
+        </>
         )}
       </div>
     </article>

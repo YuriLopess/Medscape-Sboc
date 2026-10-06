@@ -62,33 +62,8 @@ export default {
     },
   },
 
-  content: {
-    panorama: ['Congress overview', 'An overview of the key topics and discussions at this edition of ESMO.'],
-    mama: ['Breast cancer highlights', 'Advances, challenges, and perspectives for clinical practice.'],
-    toracicos: ['Thoracic tumors', 'What was presented and what changes in practice.'],
-    gastro: ['Gastrointestinal tumors', 'Studies that may redefine treatment approaches.'],
-    gineco: ['Gynecologic tumors', 'New approaches and their impact on patients.'],
-    gu: ['Colorectal cancer', 'From screening to treatment of metastatic disease.'],
-    imuno: ['Immunotherapy in melanoma', 'Combinations, sequencing and patient selection.'],
-    precisao: ['Precision oncology in lung cancer', 'Evolving biomarkers and targeted therapies in advanced disease.'],
-    linfomas: ['Cutaneous lymphomas', 'New approaches to lymphomas with skin involvement.'],
-    melanoma: ['Melanoma and skin cancer', 'Long-term results and new strategies.'],
-    'cabeca-pescoco': ['Head and neck', 'Perspectives on multidisciplinary treatment.'],
-    'pulmao-avancado': ['Advanced lung cancer', 'First line, sequencing, and biomarkers.'],
-    suporte: ['Supportive care in breast cancer', 'Quality of life and toxicity management during treatment.'],
-    mieloma: ['Multiple myeloma', 'Induction and maintenance strategies under debate.'],
-    sarcomas: ['Sarcomas and GIST', 'Gastrointestinal stromal tumors and other sarcomas: what changes in practice.'],
-    sintese: ['The congress highlights', 'An integrated view of the topics that shaped ESMO 2026.'],
-    'sintese-pratica': ['What changes in practice in Brazil', 'Experts translate the results into the Brazilian context.'],
-    'texto-digestivos': ['The landscape of digestive tumors', 'Discussions that may shape clinical practice in the coming years.'],
-    'texto-biomarcadores': ['Biomarkers in breast cancer', 'The role of biomarkers in choosing treatment.'],
-    'texto-mama': ['Breast cancer: what changes after ESMO', 'A critical reading of the studies with the greatest potential impact.'],
-    'texto-pulmao': ['Lung cancer: from adjuvant to advanced disease', 'Data presented and questions still open.'],
-    'texto-gineco': ['New approaches in gynecologic cancers', 'What the congress brought to the horizon.'],
-    'texto-hemato': ['Hematologic oncology: combinations under debate', 'What the new data suggest for lymphoma and myeloma.'],
-    'texto-prostata': ['Cervical cancer under debate', 'Prevention, screening and treatment of advanced disease.'],
-    'texto-suporte': ['Quality of life in gynecologic cancers', 'Supportive care and patient-reported outcomes.'],
-  },
+  // Título e descrição de cada conteúdo, pelo id: { id: ['Título', 'Descrição.'] }
+  content: {},
 
   finalSynthesis: {
     eyebrow: 'Final synthesis',
@@ -208,6 +183,15 @@ export default {
     searchResults: (n) => `${n} ${n === 1 ? 'result' : 'results'}`,
     searchEmpty: (q) => `Nothing found for “${q}”. Try another term or explore by therapeutic area.`,
     searchPrompt: 'Search by topic, study or expert across the coverage videos and news.',
+
+    // Before the content is published
+    soon: 'Coming soon',
+    soonText: 'The coverage videos and news will be published during the congress.',
+    soonTopic: (topic) => `The ${topic} videos and news will be published during the congress.`,
+    soonVideos: 'The coverage videos will be published during the congress.',
+    soonNews: 'The coverage news will be published during the congress.',
+    soonSynthesis: 'The two closing conversations will be published at the end of the congress.',
+    soonSearch: 'The coverage content has not been published yet. Come back during the congress to search.',
 
     video: 'Video',
     text: 'News',

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ComingSoon from './ComingSoon.jsx';
 import { Media } from './Media.jsx';
 import { useContent } from '../i18n.jsx';
 import { searchHref } from '../hooks/useRoute.js';
@@ -9,7 +10,7 @@ import { trackCard } from '../analytics.js';
   então o resultado pode ser compartilhado. A identificação de patrocinado continua visível aqui.
 */
 export default function SearchPage({ q }) {
-  const { search, topicLabel, ui } = useContent();
+  const { allContent, search, topicLabel, ui } = useContent();
   const [term, setTerm] = useState(q);
   const results = search(q);
 
@@ -39,8 +40,10 @@ export default function SearchPage({ q }) {
           <button type="submit" className="btn btn--dark">{ui.searchButton}</button>
         </form>
 
-        {!q && <p className="se-hint">{ui.searchPrompt}</p>}
-        {q && results.length === 0 && <p className="se-hint">{ui.searchEmpty(q)}</p>}
+        {/* Antes da publicação não há o que buscar: o aviso substitui as dicas */}
+        {allContent.length === 0 && <ComingSoon text={ui.soonSearch} />}
+        {allContent.length > 0 && !q && <p className="se-hint">{ui.searchPrompt}</p>}
+        {allContent.length > 0 && q && results.length === 0 && <p className="se-hint">{ui.searchEmpty(q)}</p>}
 
         {results.length > 0 && (
           <>
