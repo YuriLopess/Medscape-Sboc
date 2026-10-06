@@ -37,23 +37,23 @@ export default {
   // Apresentação de cada área (página da área): texto de abertura e três temas em foco. Provisório.
   areas: {
     pulmao: {
-      intro: 'Do rastreamento à doença metastática, o câncer de pulmão concentrou algumas das apresentações mais aguardadas do congresso, com foco em terapias-alvo, imunoterapia perioperatória e seleção de pacientes por biomarcadores.',
+      intro: 'Do rastreamento à doença metastática, o câncer de pulmão deve concentrar algumas das apresentações mais aguardadas do congresso, com foco em terapias-alvo, imunoterapia perioperatória e seleção de pacientes por biomarcadores.',
       points: ['Tratamento perioperatório e o papel da imunoterapia antes e depois da cirurgia', 'Terapias-alvo em primeira linha e o manejo da resistência', 'Biomarcadores para escolher quem se beneficia de cada estratégia'],
     },
     mama: {
-      intro: 'O câncer de mama segue entre os temas mais discutidos, com novos dados sobre conjugados anticorpo-fármaco, terapia endócrina e a desescalada de tratamento na doença inicial.',
+      intro: 'O câncer de mama deve seguir entre os temas mais discutidos, com novos dados esperados sobre conjugados anticorpo-fármaco, terapia endócrina e a desescalada de tratamento na doença inicial.',
       points: ['Conjugados anticorpo-fármaco em diferentes subtipos', 'Terapia endócrina e inibidores de CDK4/6', 'Quando é possível reduzir o tratamento sem perder eficácia'],
     },
     gastro: {
-      intro: 'Tumores de esôfago, estômago, colorretal e fígado trouxeram atualizações em imunoterapia, tratamento perioperatório e na definição de subgrupos moleculares.',
+      intro: 'Nos tumores de esôfago, estômago, colorretal e fígado, a expectativa é de atualizações em imunoterapia, tratamento perioperatório e na definição de subgrupos moleculares.',
       points: ['Imunoterapia em tumores gastroesofágicos', 'Estratégias perioperatórias no câncer colorretal', 'Subgrupos moleculares que mudam a conduta'],
     },
     gineco: {
-      intro: 'Em ovário, endométrio e colo do útero, o congresso reforçou o peso da classificação molecular e das combinações com imunoterapia na escolha do tratamento.',
+      intro: 'Em ovário, endométrio e colo do útero, o congresso deve reforçar o peso da classificação molecular e das combinações com imunoterapia na escolha do tratamento.',
       points: ['Classificação molecular no câncer de endométrio', 'Manutenção no câncer de ovário', 'Imunoterapia no câncer de colo do útero avançado'],
     },
     pele: {
-      intro: 'Melanoma e outros tumores de pele reuniram resultados de longo prazo da imunoterapia, novas estratégias para a doença de alto risco e avanços nos linfomas cutâneos.',
+      intro: 'Melanoma e outros tumores de pele devem reunir resultados de longo prazo da imunoterapia, novas estratégias para a doença de alto risco e avanços nos linfomas cutâneos.',
       points: ['Imunoterapia no melanoma', 'Tratamento adjuvante e neoadjuvante na doença de alto risco', 'Linfomas cutâneos e carcinomas avançados'],
     },
     outros: {
@@ -68,7 +68,7 @@ export default {
   finalSynthesis: {
     eyebrow: 'Síntese final',
     title: ['Os principais destaques,', 'em duas conversas.'],
-    description: 'Uma visão integrada dos temas que marcaram o congresso e do que muda na prática.',
+    description: 'Ao fim do congresso, uma visão integrada dos temas de maior impacto e do que muda na prática.',
   },
 
   /* Avisos obrigatórios (diretrizes Medscape, versão em português do PDF).
@@ -175,7 +175,7 @@ export default {
     // Síntese final
     synthesisTitle: (name) => `Síntese final ${name}`,
     synthesisSub: 'Principais mensagens por área terapêutica',
-    synthesisAreasSub: 'O que cada área levou do congresso, em poucas linhas, com o caminho para os vídeos e as notícias.',
+    synthesisAreasSub: 'O que esperar de cada área no congresso, em poucas linhas, com o caminho para os vídeos e as notícias.',
     explore: 'Explorar',
 
     // Busca

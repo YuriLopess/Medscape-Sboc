@@ -37,23 +37,23 @@ export default {
   // Apresentação de cada área (página da área): texto de abertura e três temas em foco. Provisório.
   areas: {
     pulmao: {
-      intro: 'From screening to metastatic disease, lung cancer drew some of the most anticipated presentations of the congress, with a focus on targeted therapies, perioperative immunotherapy and biomarker-driven patient selection.',
+      intro: 'From screening to metastatic disease, lung cancer is set to draw some of the most anticipated presentations of the congress, with a focus on targeted therapies, perioperative immunotherapy and biomarker-driven patient selection.',
       points: ['Perioperative treatment and the role of immunotherapy before and after surgery', 'First-line targeted therapies and managing resistance', 'Biomarkers to identify who benefits from each strategy'],
     },
     mama: {
-      intro: 'Breast cancer remains among the most discussed topics, with new data on antibody-drug conjugates, endocrine therapy and treatment de-escalation in early disease.',
+      intro: 'Breast cancer is expected to remain among the most discussed topics, with new data due on antibody-drug conjugates, endocrine therapy and treatment de-escalation in early disease.',
       points: ['Antibody-drug conjugates across subtypes', 'Endocrine therapy and CDK4/6 inhibitors', 'When treatment can be reduced without losing efficacy'],
     },
     gastro: {
-      intro: 'Esophageal, gastric, colorectal and liver tumors brought updates on immunotherapy, perioperative treatment and the definition of molecular subgroups.',
+      intro: 'Esophageal, gastric, colorectal and liver tumors are expected to bring updates on immunotherapy, perioperative treatment and the definition of molecular subgroups.',
       points: ['Immunotherapy in gastroesophageal tumors', 'Perioperative strategies in colorectal cancer', 'Molecular subgroups that change management'],
     },
     gineco: {
-      intro: 'In ovarian, endometrial and cervical cancer, the congress reinforced the weight of molecular classification and immunotherapy combinations in choosing treatment.',
+      intro: 'In ovarian, endometrial and cervical cancer, the congress is set to reinforce the weight of molecular classification and immunotherapy combinations in choosing treatment.',
       points: ['Molecular classification in endometrial cancer', 'Maintenance therapy in ovarian cancer', 'Immunotherapy in advanced cervical cancer'],
     },
     pele: {
-      intro: 'Melanoma and other skin cancers brought long-term immunotherapy results, new strategies for high-risk disease and advances in cutaneous lymphomas.',
+      intro: 'Melanoma and other skin cancers are expected to bring long-term immunotherapy results, new strategies for high-risk disease and advances in cutaneous lymphomas.',
       points: ['Immunotherapy in melanoma', 'Adjuvant and neoadjuvant treatment in high-risk disease', 'Cutaneous lymphomas and advanced carcinomas'],
     },
     outros: {
@@ -68,7 +68,7 @@ export default {
   finalSynthesis: {
     eyebrow: 'Final synthesis',
     title: ['The key highlights,', 'in two conversations.'],
-    description: 'An integrated view of the topics that shaped the congress and what changes in practice.',
+    description: 'At the close of the congress, an integrated view of the most impactful topics and what changes in practice.',
   },
 
   // Required disclaimers (Medscape guidelines, English version from the PDF)
@@ -173,7 +173,7 @@ export default {
     // Final synthesis
     synthesisTitle: (name) => `${name} final synthesis`,
     synthesisSub: 'Key messages by therapeutic area',
-    synthesisAreasSub: 'What each area took from the congress, in a few lines, with the way to its videos and news.',
+    synthesisAreasSub: 'What to expect from each area at the congress, in a few lines, with the way to its videos and news.',
     explore: 'Explore',
 
     // Search

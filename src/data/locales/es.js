@@ -33,23 +33,23 @@ export default {
   // Apresentação de cada área (página da área): texto de abertura e três temas em foco. Provisório.
   areas: {
     pulmao: {
-      intro: 'Del cribado a la enfermedad metastásica, el cáncer de pulmón concentró algunas de las presentaciones más esperadas del congreso, con foco en terapias dirigidas, inmunoterapia perioperatoria y selección de pacientes por biomarcadores.',
+      intro: 'Del cribado a la enfermedad metastásica, el cáncer de pulmón debe concentrar algunas de las presentaciones más esperadas del congreso, con foco en terapias dirigidas, inmunoterapia perioperatoria y selección de pacientes por biomarcadores.',
       points: ['Tratamiento perioperatorio y el papel de la inmunoterapia antes y después de la cirugía', 'Terapias dirigidas en primera línea y manejo de la resistencia', 'Biomarcadores para elegir quién se beneficia de cada estrategia'],
     },
     mama: {
-      intro: 'El cáncer de mama sigue entre los temas más discutidos, con nuevos datos sobre conjugados anticuerpo-fármaco, terapia endocrina y desescalada del tratamiento en la enfermedad inicial.',
+      intro: 'El cáncer de mama debe seguir entre los temas más discutidos, con nuevos datos esperados sobre conjugados anticuerpo-fármaco, terapia endocrina y desescalada del tratamiento en la enfermedad inicial.',
       points: ['Conjugados anticuerpo-fármaco en distintos subtipos', 'Terapia endocrina e inhibidores de CDK4/6', 'Cuándo es posible reducir el tratamiento sin perder eficacia'],
     },
     gastro: {
-      intro: 'Los tumores de esófago, estómago, colorrectal e hígado trajeron actualizaciones en inmunoterapia, tratamiento perioperatorio y definición de subgrupos moleculares.',
+      intro: 'En los tumores de esófago, estómago, colorrectal e hígado, se esperan actualizaciones en inmunoterapia, tratamiento perioperatorio y definición de subgrupos moleculares.',
       points: ['Inmunoterapia en tumores gastroesofágicos', 'Estrategias perioperatorias en cáncer colorrectal', 'Subgrupos moleculares que cambian la conducta'],
     },
     gineco: {
-      intro: 'En ovario, endometrio y cuello uterino, el congreso reforzó el peso de la clasificación molecular y de las combinaciones con inmunoterapia en la elección del tratamiento.',
+      intro: 'En ovario, endometrio y cuello uterino, el congreso debe reforzar el peso de la clasificación molecular y de las combinaciones con inmunoterapia en la elección del tratamiento.',
       points: ['Clasificación molecular en cáncer de endometrio', 'Mantenimiento en cáncer de ovario', 'Inmunoterapia en cáncer de cuello uterino avanzado'],
     },
     pele: {
-      intro: 'El melanoma y otros tumores de piel reunieron resultados a largo plazo de la inmunoterapia, nuevas estrategias para la enfermedad de alto riesgo y avances en linfomas cutáneos.',
+      intro: 'El melanoma y otros tumores de piel deben reunir resultados a largo plazo de la inmunoterapia, nuevas estrategias para la enfermedad de alto riesgo y avances en linfomas cutáneos.',
       points: ['Inmunoterapia en melanoma', 'Tratamiento adyuvante y neoadyuvante en enfermedad de alto riesgo', 'Linfomas cutáneos y carcinomas avanzados'],
     },
     outros: {
@@ -64,7 +64,7 @@ export default {
   finalSynthesis: {
     eyebrow: 'Síntesis final',
     title: ['Lo más destacado,', 'en dos conversaciones.'],
-    description: 'Una visión integrada de los temas que marcaron el congreso y de lo que cambia en la práctica.',
+    description: 'Al final del congreso, una visión integrada de los temas de mayor impacto y de lo que cambia en la práctica.',
   },
 
   // Avisos obligatorios (directrices Medscape, versión en español del PDF)
@@ -169,7 +169,7 @@ export default {
     // Síntesis final
     synthesisTitle: (name) => `Síntesis final ${name}`,
     synthesisSub: 'Principales mensajes por área terapéutica',
-    synthesisAreasSub: 'Lo que cada área se llevó del congreso, en pocas líneas, con el camino a los videos y las noticias.',
+    synthesisAreasSub: 'Qué esperar de cada área en el congreso, en pocas líneas, con el camino a los videos y las noticias.',
     explore: 'Explorar',
 
     // Búsqueda
